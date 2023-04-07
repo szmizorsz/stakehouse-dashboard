@@ -1,0 +1,8 @@
+sources:
+  - name: stakehouse-protocol
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/bswap-eng/stakehouse-protocol
+
+documents:
+  - ./src/graph/stakehouses.graphql

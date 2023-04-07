@@ -1,0 +1,13 @@
+query StakeHousesQuery {
+  stakeHouses {
+    dETHMintedWithinHouse
+    numberOfKnots
+    numberOfRageQuitKnots
+    foundedBrandId
+    id
+    index
+    sETH
+    totalAmountOfSlotSlashed
+    sETHTicker
+  }
+}
