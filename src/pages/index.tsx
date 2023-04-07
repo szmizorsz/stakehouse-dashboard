@@ -10,42 +10,39 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Firm: Build an internet-native company</title>
+        <link rel="icon" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <title>Stakehouse LSD Networks dApp</title>
+        <meta name="theme-color" content="#121212" />
         <meta
-          content="Start a company, issue shares and handle payments. All onchain, no paperwork."
           name="description"
+          content="Stake a validator with 4 ETH. Start an LSD network in 60 seconds. Unique yield with fungible derivatives. Empowering home stakers."
         />
+        <meta property="og:url" content="https://joinstakehouse.com/" />
+        <meta property="og:title" content="Stakehouse LSD Networks dApp" />
         <meta
-          content="Firm: Build an internet-native company"
-          property="og:title"
-        />
-        <meta
-          content="Start a company, issue shares and handle payments. All onchain, no paperwork."
           property="og:description"
+          content="Stake a validator with 4 ETH. Start an LSD network in 60 seconds. Unique yield with fungible derivatives. Empowering home stakers."
         />
         <meta
-          content="https://uploads-ssl.webflow.com/6331d579cfc14f02a29e1f65/63fca893a8b0c1643ba627af_Frame%2033645.png"
           property="og:image"
+          content="https://lsdapp.netlify.app/Homepage.jpg"
         />
+        <meta property="twitter:domain" content="https://joinstakehouse.com/" />
+        <meta property="twitter:url" content="https://joinstakehouse.com/" />
+        <meta name="twitter:title" content="Stakehouse LSD Networks dApp" />
         <meta
-          content="Firm: Build an internet-native company"
-          property="twitter:title"
+          name="twitter:description"
+          content="Stake a validator with 4 ETH. Start an LSD network in 60 seconds. Unique yield with fungible derivatives. Empowering home stakers."
         />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
-          content="Start a company, issue shares and handle payments. All onchain, no paperwork."
-          property="twitter:description"
-        />
-        <meta
-          content="https://uploads-ssl.webflow.com/6331d579cfc14f02a29e1f65/63fca893a8b0c1643ba627af_Frame%2033645.png"
-          property="twitter:image"
+          name="twitter:image"
+          content="https://lsdapp.netlify.app/Homepage.jpg"
         />
         <meta property="og:type" content="website" />
-        <meta content="summary_large_image" name="twitter:card" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link
-          rel="icon"
-          href="https://uploads-ssl.webflow.com/6331d579cfc14f02a29e1f65/6331d6c2e63fc2333b92f77f_f2.png"
-        />
       </Head>
       <Box>
         <MenuBar />

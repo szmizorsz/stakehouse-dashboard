@@ -4,7 +4,6 @@ import {
   Button,
   Container,
   Flex,
-  Heading,
   HStack,
   Image,
   Link,
@@ -28,7 +27,7 @@ function MenuBar() {
               </VStack>
             </HStack>
 
-            <Button bg="#6485ff" _hover={{ bg: "#284779" }} color="white">
+            <Button bg="#284779" _hover={{ bg: "#6485ff" }} color="white">
               Connect wallet
             </Button>
           </Flex>
