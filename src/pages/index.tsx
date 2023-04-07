@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import MenuBar from "@/components/menuBar";
 import Footer from "@/components/footer";
 import { Box, VStack } from "@chakra-ui/react";
+import StakeHouses from "@/components/stakeHouses";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,7 +47,9 @@ export default function Home() {
       </Head>
       <Box>
         <MenuBar />
-        <Box minHeight="800px"></Box>
+        <Box minHeight="800px">
+          <StakeHouses />
+        </Box>
         <Footer />
       </Box>
     </>
