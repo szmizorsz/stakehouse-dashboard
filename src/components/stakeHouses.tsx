@@ -7,6 +7,7 @@ import {
   StakeHousesQueryQuery,
   execute,
 } from "../../.graphclient";
+import { truncateString } from "@/util/stringUtil";
 
 function StakeHouses() {
   const [data, setData] = React.useState<StakeHousesQueryQuery>();
@@ -32,17 +33,17 @@ function StakeHouses() {
           <Thead>
             <Tr>
               <Th style={tableCellStyle}>Id</Th>
-              <Th style={tableCellStyle}>Founded Brand ID</Th>
-              <Th style={tableCellStyle}>Nr Of Knots</Th>
+              <Th style={tableCellStyle}>Brand ID</Th>
+              <Th style={tableCellStyle}>Knots</Th>
               <Th style={tableCellStyle}>dETH minted</Th>
-              <Th style={tableCellStyle}>sETH sticker</Th>
-              <Th style={tableCellStyle}>Total Amount of Slot Slashed</Th>
+              <Th style={tableCellStyle}>Sticker</Th>
+              <Th style={tableCellStyle}>Slot Slashed</Th>
             </Tr>
           </Thead>
           <Tbody>
             {data?.stakeHouses.map((sh) => (
               <Tr key={sh.id}>
-                <Td style={tableCellStyle}>{sh.id}</Td>
+                <Td style={tableCellStyle}>{truncateString(sh.id)}</Td>
                 <Td style={tableCellStyle}>{sh.foundedBrandId}</Td>
                 <Td style={tableCellStyle}>{sh.numberOfKnots}</Td>
                 <Td style={tableCellStyle}>{sh.dETHMintedWithinHouse}</Td>
