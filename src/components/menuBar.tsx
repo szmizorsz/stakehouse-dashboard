@@ -23,7 +23,9 @@ function MenuBar() {
               </Link>
               <VStack>
                 <Text fontWeight="bold">Stakehouse</Text>
-                <Text fontSize="12px">Dashboard</Text>
+                <Text fontSize="12px" style={{ margin: "0" }}>
+                  Dashboard
+                </Text>
               </VStack>
             </HStack>
 
