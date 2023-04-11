@@ -10,7 +10,7 @@ import {
   Title,
 } from "chart.js";
 import { Doughnut, Bar } from "react-chartjs-2";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { StakeHouse, StakeHousesQueryQuery } from "../../.graphclient";
 
 type StakeHouseChartsProps = {
@@ -82,11 +82,11 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
     }
   }, [data]);
 
-  const options = {
+  const barOptions = {
     responsive: true,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: "bottom" as const,
       },
       title: {
         display: true,
@@ -117,6 +117,18 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
         borderWidth: 1,
       },
     ],
+  };
+
+  const donoughtOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom" as const,
+      },
+      title: {
+        display: true,
+      },
+    },
   };
 
   const dethChart = {
@@ -157,11 +169,13 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
 
   return (
     <Flex justifyContent="space-evenly" alignItems="center" p={4}>
-      <Box width="40%" height="400px">
-        <Bar data={knotsChart} options={options} />
+      <Box width="40%" height="400px" mt="50px">
+        <Text mt="100px">Top 10 Number of Knots</Text>
+        <Bar data={knotsChart} options={barOptions} />
       </Box>
       <Box width="40%" height="400px">
-        <Doughnut data={dethChart} />
+        <Text>Top 10 dETH minted within house</Text>
+        <Doughnut data={dethChart} options={donoughtOptions} />
       </Box>
     </Flex>
   );
