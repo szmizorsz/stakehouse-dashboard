@@ -27,7 +27,7 @@ ChartJS.register(
   Legend
 );
 
-//ChartJS.defaults.color = "white";
+ChartJS.defaults.color = "white";
 
 const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
   const [topKnots, setTopKnots] = useState<
@@ -98,6 +98,11 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
           color: "white",
         },
       },
+      y: {
+        ticks: {
+          color: "white",
+        },
+      },
     },
   };
 
@@ -145,13 +150,14 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
           "rgba(75, 192, 192, 1)",
         ],
         borderWidth: 1,
+        color: "white",
       },
     ],
   };
 
   return (
     <Flex justifyContent="space-evenly" alignItems="center" p={4}>
-      <Box width="40%" height="400px" color="gray.100">
+      <Box width="40%" height="400px">
         <Bar data={knotsChart} options={options} />
       </Box>
       <Box width="40%" height="400px">

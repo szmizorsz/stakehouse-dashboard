@@ -29,7 +29,7 @@ function MenuBar() {
               </VStack>
             </HStack>
 
-            <Button bg="#284779" _hover={{ bg: "#6485ff" }} color="white">
+            <Button bg="blue.800" _hover={{ bg: "#6485ff" }} color="white">
               Connect wallet
             </Button>
           </Flex>

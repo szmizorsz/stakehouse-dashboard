@@ -1,28 +1,24 @@
-import React, { useEffect } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, Spinner } from "@chakra-ui/react";
-// ...
-// we import types and typed-graphql document from the generated code (`..graphclient/`)
+import React, { useState } from "react";
 import {
-  StakeHousesQueryDocument,
-  StakeHousesQueryQuery,
-  execute,
-} from "../../.graphclient";
-import { truncateString } from "@/util/stringUtil";
+  Spinner,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Box,
+} from "@chakra-ui/react";
+
 import StakeHouseCharts from "./stakeHouseCharts";
+import StakeHouseTable from "./stakeHouseTable";
+import { useStakehouses } from "@/hooks/useStakehouses";
 
 function StakeHouses() {
-  const [data, setData] = React.useState<StakeHousesQueryQuery>();
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const { data, isLoading } = useStakehouses();
+  const [activeTab, setActiveTab] = useState(0);
 
-  useEffect(() => {
-    execute(StakeHousesQueryDocument, {}).then((result) => {
-      setData(result?.data);
-      setIsLoading(false);
-    });
-  }, [setData]);
-
-  const tableCellStyle = {
-    color: "white",
+  const handleTabChange = (index: React.SetStateAction<number>) => {
+    setActiveTab(index);
   };
 
   return (
@@ -30,33 +26,31 @@ function StakeHouses() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <>
-          <Table variant="simple">
-            <Thead>
-              <Tr>
-                <Th style={tableCellStyle}>Id</Th>
-                <Th style={tableCellStyle}>Brand ID</Th>
-                <Th style={tableCellStyle}>Knots</Th>
-                <Th style={tableCellStyle}>dETH minted</Th>
-                <Th style={tableCellStyle}>Sticker</Th>
-                <Th style={tableCellStyle}>Slot Slashed</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {data?.stakeHouses.map((sh) => (
-                <Tr key={sh.id}>
-                  <Td style={tableCellStyle}>{truncateString(sh.id)}</Td>
-                  <Td style={tableCellStyle}>{sh.foundedBrandId}</Td>
-                  <Td style={tableCellStyle}>{sh.numberOfKnots}</Td>
-                  <Td style={tableCellStyle}>{sh.dETHMintedWithinHouse}</Td>
-                  <Td style={tableCellStyle}>{sh.sETHTicker}</Td>
-                  <Td style={tableCellStyle}>{sh.totalAmountOfSlotSlashed}</Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-          <StakeHouseCharts data={data} />
-        </>
+        <Tabs
+          index={activeTab}
+          onChange={handleTabChange}
+          variant="soft-rounded"
+          colorScheme="blue"
+          isFitted
+          align="center"
+        >
+          <TabList mb={4}>
+            <Tab _selected={{ color: "white", bg: "blue.800" }}>
+              Stakehouses
+            </Tab>
+            <Tab _selected={{ color: "white", bg: "blue.800" }}>Charts</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <StakeHouseTable data={data} />
+            </TabPanel>
+            <TabPanel>
+              <Box minHeight="680px">
+                <StakeHouseCharts data={data} />
+              </Box>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       )}
     </>
   );
