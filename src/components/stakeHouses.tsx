@@ -24,7 +24,9 @@ function StakeHouses() {
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <Box minHeight="765px">
+          <Spinner />
+        </Box>
       ) : (
         <Tabs
           index={activeTab}
@@ -42,7 +44,9 @@ function StakeHouses() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <StakeHouseTable data={data} />
+              <Box minHeight="680px">
+                <StakeHouseTable data={data} />
+              </Box>
             </TabPanel>
             <TabPanel>
               <Box minHeight="680px">
