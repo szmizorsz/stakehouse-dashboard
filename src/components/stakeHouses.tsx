@@ -25,7 +25,7 @@ function StakeHouses() {
     <>
       {isLoading ? (
         <Box minHeight="765px">
-          <Spinner />
+          <Spinner color="white" />
         </Box>
       ) : (
         <Tabs
