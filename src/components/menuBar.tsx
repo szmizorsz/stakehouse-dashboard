@@ -10,6 +10,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { RainbowConnectWallet } from "./rainbowConnectWallet";
 
 function MenuBar() {
   return (
@@ -28,10 +29,7 @@ function MenuBar() {
                 </Text>
               </VStack>
             </HStack>
-
-            <Button bg="blue.800" _hover={{ bg: "#6485ff" }} color="white">
-              Connect wallet
-            </Button>
+            <RainbowConnectWallet />
           </Flex>
         </Container>
       </Box>
