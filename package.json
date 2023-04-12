@@ -26,10 +26,11 @@
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.3",
+    "typescript": "^5.0.4",
     "wagmi": "^0.12.10"
   },
   "devDependencies": {
-    "@graphprotocol/client-cli": "^2.2.20"
+    "@graphprotocol/client-cli": "^2.2.20",
+    "cypress": "^12.9.0"
   }
 }

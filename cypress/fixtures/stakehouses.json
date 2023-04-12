@@ -1,0 +1,36 @@
+[
+  {
+    "id": "0x123456789",
+    "index": 1,
+    "sETH": "0xabcdef0123456789",
+    "sETHExchangeRate": 1000000000,
+    "sETHExchangeRateFormatted": 1.0,
+    "sETHRedemptionRate": 500000000,
+    "sETHRedemptionRateFormatted": 0.5,
+    "sETHPayoffRate": 0.25,
+    "sETHPayoffRateFormatted": 0.25,
+    "totalAmountOfSlotSlashed": 100000000000,
+    "numberOfKnots": 10,
+    "numberOfRageQuitKnots": 2,
+    "dETHMintedWithinHouse": 500000000000,
+    "foundedBrandId": 123456789,
+    "sETHTicker": "SET"
+  },
+  {
+    "id": "0x987654321",
+    "index": 2,
+    "sETH": "0x0123456789abcdef",
+    "sETHExchangeRate": 2000000000,
+    "sETHExchangeRateFormatted": 2.0,
+    "sETHRedemptionRate": 1000000000,
+    "sETHRedemptionRateFormatted": 1.0,
+    "sETHPayoffRate": 0.5,
+    "sETHPayoffRateFormatted": 0.5,
+    "totalAmountOfSlotSlashed": 200000000000,
+    "numberOfKnots": 20,
+    "numberOfRageQuitKnots": 5,
+    "dETHMintedWithinHouse": 1000000000000,
+    "foundedBrandId": 987654321,
+    "sETHTicker": "ETH"
+  }
+]
