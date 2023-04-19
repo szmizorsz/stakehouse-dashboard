@@ -45,30 +45,27 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
   const customSort = (
     a: StakeHouse,
     b: StakeHouse,
-    key: string,
+    key: keyof StakeHouse | "syndicate.totalPayout",
     direction: "asc" | "desc"
   ) => {
+    let aValue: number;
+    let bValue: number;
+
     if (key === "syndicate.totalPayout") {
-      const aValue = a.syndicate?.totalPayout ?? 0;
-      const bValue = b.syndicate?.totalPayout ?? 0;
-      return direction === "asc" ? aValue - bValue : bValue - aValue;
+      aValue = a.syndicate?.totalPayout ?? 0;
+      bValue = b.syndicate?.totalPayout ?? 0;
+    } else {
+      aValue = (a[key] as unknown as number) ?? 0;
+      bValue = (b[key] as unknown as number) ?? 0;
     }
-    return 0;
+
+    return direction === "asc" ? aValue - bValue : bValue - aValue;
   };
 
   const sortedData = React.useMemo(() => {
     if (!data?.stakeHouses || !sortConfig.key) return data?.stakeHouses;
     return [...data.stakeHouses].sort((a, b) => {
-      if (sortConfig.key === "syndicate.totalPayout") {
-        return customSort(a, b, sortConfig.key, sortConfig.direction);
-      }
-      if (sortConfig.key && a[sortConfig.key] < b[sortConfig.key]) {
-        return sortConfig.direction === "asc" ? -1 : 1;
-      }
-      if (sortConfig.key && a[sortConfig.key] > b[sortConfig.key]) {
-        return sortConfig.direction === "asc" ? 1 : -1;
-      }
-      return 0;
+      return customSort(a, b, sortConfig.key, sortConfig.direction);
     });
   }, [data, sortConfig]);
 
