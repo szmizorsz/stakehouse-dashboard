@@ -10,7 +10,7 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-import { truncateString } from "@/util/stringUtil";
+import { truncateString, formatNumber } from "@/util/stringUtil";
 import { StakeHousesWithSyndicateQueryQuery } from "@/hooks/useStakehouses";
 
 type StakeHouseChartsProps = {
@@ -62,10 +62,22 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
               <Td style={tableCellStyle}>{truncateString(sh.id)}</Td>
               <Td style={tableCellStyle}>{sh.foundedBrandId}</Td>
               <Td style={tableCellStyle}>{sh.numberOfKnots}</Td>
-              <Td style={tableCellStyle}>{sh.dETHMintedWithinHouse}</Td>
+              <Td style={tableCellStyle}>
+                {sh.dETHMintedWithinHouse
+                  ? formatNumber(sh.dETHMintedWithinHouse)
+                  : ""}
+              </Td>
               <Td style={tableCellStyle}>{sh.sETHTicker}</Td>
-              <Td style={tableCellStyle}>{sh.totalAmountOfSlotSlashed}</Td>
-              <Td style={tableCellStyle}>{sh.syndicate?.totalPayout}</Td>
+              <Td style={tableCellStyle}>
+                {sh.totalAmountOfSlotSlashed
+                  ? formatNumber(sh.totalAmountOfSlotSlashed)
+                  : ""}
+              </Td>
+              <Td style={tableCellStyle}>
+                {sh.syndicate?.totalPayout
+                  ? formatNumber(sh.syndicate?.totalPayout)
+                  : ""}
+              </Td>
             </Tr>
           ))}
         </Tbody>
