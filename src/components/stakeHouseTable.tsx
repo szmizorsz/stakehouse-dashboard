@@ -38,7 +38,7 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
   const elementsPerPage = 10;
 
   const [sortConfig, setSortConfig] = useState<{
-    key: keyof StakeHouse | "syndicate.totalPayout" | null;
+    key: keyof StakeHouse | "syndicate.totalPayout";
     direction: "asc" | "desc";
   }>({ key: "syndicate.totalPayout", direction: "desc" });
 
