@@ -1,9 +1,9 @@
-import React from 'react'
-import StakeHouseTable from './stakeHouseTable'
+import React from "react";
+import StakeHouseTable from "./stakeHouseTable";
 
-describe('<StakeHouseTable />', () => {
-  it('renders', () => {
+describe("<StakeHouseTable />", () => {
+  it("renders", () => {
     // see: https://on.cypress.io/mounting-react
-    cy.mount(<StakeHouseTable />)
-  })
-})
+    cy.mount(<StakeHouseTable data={{ stakeHouses: [] }} />);
+  });
+});

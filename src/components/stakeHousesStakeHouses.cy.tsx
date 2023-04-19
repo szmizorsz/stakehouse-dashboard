@@ -21,7 +21,6 @@ describe("useStakehouses", () => {
 
     cy.mount(<StakeHouses />);
     cy.wait("@graphql").then((interception) => {
-      console.log(interception.response.body);
       // assertions on the component that uses the hook
     });
   });
