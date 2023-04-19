@@ -1,12 +1,11 @@
 import React from "react";
 import StakeHouses from "./stakeHouses";
-import stakehouses from "@/cypress/fixtures/stakeHouses.json";
 
 describe("useStakehouses", () => {
   it("returns mocked data", () => {
     const mockedResponse = {
       data: {
-        stakehouses: stakehouses,
+        stakehouses: [],
       },
     };
 
