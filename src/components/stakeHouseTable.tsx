@@ -9,23 +9,70 @@ import {
   Button,
   Box,
   Text,
+  HStack,
 } from "@chakra-ui/react";
 import { truncateString, formatNumber } from "@/util/stringUtil";
 import { StakeHousesWithSyndicateQueryQuery } from "@/hooks/useStakehouses";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 
 type StakeHouseChartsProps = {
   data: StakeHousesWithSyndicateQueryQuery | null | undefined;
 };
+
+type StakeHouse = NonNullable<
+  StakeHousesWithSyndicateQueryQuery["stakeHouses"]
+>[number];
 
 const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
   const tableCellStyle = {
     color: "white",
   };
 
+  const sortableColumnStyle = {
+    ...tableCellStyle,
+    cursor: "pointer",
+    textDecoration: "underline",
+  };
+
   const [currentPage, setCurrentPage] = useState(0);
   const elementsPerPage = 10;
 
-  const dataSlice = data?.stakeHouses.slice(
+  const [sortConfig, setSortConfig] = useState<{
+    key: keyof StakeHouse | "syndicate.totalPayout" | null;
+    direction: "asc" | "desc";
+  }>({ key: "syndicate.totalPayout", direction: "desc" });
+
+  const customSort = (
+    a: StakeHouse,
+    b: StakeHouse,
+    key: string,
+    direction: "asc" | "desc"
+  ) => {
+    if (key === "syndicate.totalPayout") {
+      const aValue = a.syndicate?.totalPayout ?? 0;
+      const bValue = b.syndicate?.totalPayout ?? 0;
+      return direction === "asc" ? aValue - bValue : bValue - aValue;
+    }
+    return 0;
+  };
+
+  const sortedData = React.useMemo(() => {
+    if (!data?.stakeHouses || !sortConfig.key) return data?.stakeHouses;
+    return [...data.stakeHouses].sort((a, b) => {
+      if (sortConfig.key === "syndicate.totalPayout") {
+        return customSort(a, b, sortConfig.key, sortConfig.direction);
+      }
+      if (sortConfig.key && a[sortConfig.key] < b[sortConfig.key]) {
+        return sortConfig.direction === "asc" ? -1 : 1;
+      }
+      if (sortConfig.key && a[sortConfig.key] > b[sortConfig.key]) {
+        return sortConfig.direction === "asc" ? 1 : -1;
+      }
+      return 0;
+    });
+  }, [data, sortConfig]);
+
+  const dataSlice = sortedData?.slice(
     currentPage * elementsPerPage,
     (currentPage + 1) * elementsPerPage
   );
@@ -42,6 +89,18 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
     setCurrentPage((prev) => prev + 1);
   };
 
+  const handleSort = (key: keyof StakeHouse | "syndicate.totalPayout") => {
+    setSortConfig((prev) => {
+      if (prev.key === key) {
+        return {
+          ...prev,
+          direction: prev.direction === "asc" ? "desc" : "asc",
+        };
+      }
+      return { key, direction: "asc" };
+    });
+  };
+
   return (
     <>
       <Table variant="simple">
@@ -49,11 +108,75 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
           <Tr>
             <Th style={tableCellStyle}>Id</Th>
             <Th style={tableCellStyle}>Brand ID</Th>
-            <Th style={tableCellStyle}>Knots</Th>
-            <Th style={tableCellStyle}>dETH minted</Th>
+            <Th
+              style={sortableColumnStyle}
+              onClick={() => handleSort("numberOfKnots")}
+            >
+              <HStack spacing={1}>
+                <Text>Knots</Text>
+                {sortConfig.key === "numberOfKnots" ? (
+                  sortConfig.direction === "asc" ? (
+                    <TriangleUpIcon />
+                  ) : (
+                    <TriangleDownIcon />
+                  )
+                ) : (
+                  <TriangleDownIcon opacity={0.3} />
+                )}
+              </HStack>
+            </Th>
+            <Th
+              style={sortableColumnStyle}
+              onClick={() => handleSort("dETHMintedWithinHouse")}
+            >
+              <HStack spacing={1}>
+                <Text>dETH minted</Text>
+                {sortConfig.key === "dETHMintedWithinHouse" ? (
+                  sortConfig.direction === "asc" ? (
+                    <TriangleUpIcon />
+                  ) : (
+                    <TriangleDownIcon />
+                  )
+                ) : (
+                  <TriangleDownIcon opacity={0.3} />
+                )}
+              </HStack>
+            </Th>
             <Th style={tableCellStyle}>Sticker</Th>
-            <Th style={tableCellStyle}>Slot Slashed</Th>
-            <Th style={tableCellStyle}>Payout</Th>
+            <Th
+              style={sortableColumnStyle}
+              onClick={() => handleSort("totalAmountOfSlotSlashed")}
+            >
+              <HStack spacing={1}>
+                <Text>Slot Slashed</Text>
+                {sortConfig.key === "totalAmountOfSlotSlashed" ? (
+                  sortConfig.direction === "asc" ? (
+                    <TriangleUpIcon />
+                  ) : (
+                    <TriangleDownIcon />
+                  )
+                ) : (
+                  <TriangleDownIcon opacity={0.3} />
+                )}
+              </HStack>
+            </Th>
+            <Th
+              style={sortableColumnStyle}
+              onClick={() => handleSort("syndicate.totalPayout")}
+            >
+              <HStack spacing={1}>
+                <Text>Payout</Text>
+                {sortConfig.key === "syndicate.totalPayout" ? (
+                  sortConfig.direction === "asc" ? (
+                    <TriangleUpIcon />
+                  ) : (
+                    <TriangleDownIcon />
+                  )
+                ) : (
+                  <TriangleDownIcon opacity={0.3} />
+                )}
+              </HStack>
+            </Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -93,9 +216,9 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
           Showing {currentPage * elementsPerPage + 1} to{" "}
           {Math.min(
             (currentPage + 1) * elementsPerPage,
-            data?.stakeHouses.length || 0
+            sortedData?.length || 0
           )}{" "}
-          of {data?.stakeHouses.length || 0} entries
+          of {sortedData?.length || 0} entries
         </Text>
         <Box display="flex">
           <Button
@@ -108,8 +231,7 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
           <Button
             onClick={handleNextPage}
             isDisabled={
-              (currentPage + 1) * elementsPerPage >=
-              (data?.stakeHouses.length || 0)
+              (currentPage + 1) * elementsPerPage >= (sortedData?.length || 0)
             }
           >
             Next
