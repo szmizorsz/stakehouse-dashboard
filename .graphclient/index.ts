@@ -13,7 +13,7 @@ import { fetch as fetchFn } from '@whatwg-node/fetch';
 import { MeshResolvedSource } from '@graphql-mesh/runtime';
 import { MeshTransform, MeshPlugin } from '@graphql-mesh/types';
 import GraphqlHandler from "@graphql-mesh/graphql"
-import BareMerger from "@graphql-mesh/merger-bare";
+import StitchingMerger from "@graphql-mesh/merger-stitching";
 import { printWithCache } from '@graphql-mesh/utils';
 import { createMeshHTTPHandler, MeshHTTPHandler } from '@graphql-mesh/http';
 import { getMesh, ExecuteMeshFn, SubscribeMeshFn, MeshContext as BaseMeshContext, MeshInstance } from '@graphql-mesh/runtime';
@@ -21,6 +21,7 @@ import { MeshStore, FsStoreStorageAdapter } from '@graphql-mesh/store';
 import { path as pathModule } from '@graphql-mesh/cross-helpers';
 import { ImportFn } from '@graphql-mesh/types';
 import type { StakehouseProtocolTypes } from './sources/stakehouse-protocol/types';
+import type { LiquidStakingDerivativeTypes } from './sources/liquid-staking-derivative/types';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -42,6 +43,1426 @@ export type Scalars = {
   Bytes: any;
 };
 
+export type Query = {
+  liquidStakingNetwork?: Maybe<LiquidStakingNetwork>;
+  liquidStakingNetworks: Array<LiquidStakingNetwork>;
+  nodeRunner?: Maybe<NodeRunner>;
+  nodeRunners: Array<NodeRunner>;
+  smartWallet?: Maybe<SmartWallet>;
+  smartWallets: Array<SmartWallet>;
+  lsdvalidator?: Maybe<LSDValidator>;
+  lsdvalidators: Array<LSDValidator>;
+  protectedDeposit?: Maybe<ProtectedDeposit>;
+  protectedDeposits: Array<ProtectedDeposit>;
+  feesAndMevDeposit?: Maybe<FeesAndMevDeposit>;
+  feesAndMevDeposits: Array<FeesAndMevDeposit>;
+  giantSavETHPool?: Maybe<GiantSavETHPool>;
+  giantSavETHPools: Array<GiantSavETHPool>;
+  giantFeesAndMevPool?: Maybe<GiantFeesAndMevPool>;
+  giantFeesAndMevPools: Array<GiantFeesAndMevPool>;
+  event?: Maybe<Event>;
+  events: Array<Event>;
+  lptoken?: Maybe<LPToken>;
+  lptokens: Array<LPToken>;
+  protectedBatch?: Maybe<ProtectedBatch>;
+  protectedBatches: Array<ProtectedBatch>;
+  feesAndMevBatch?: Maybe<FeesAndMevBatch>;
+  feesAndMevBatches: Array<FeesAndMevBatch>;
+  giantLiquidityProvider?: Maybe<GiantLiquidityProvider>;
+  giantLiquidityProviders: Array<GiantLiquidityProvider>;
+  giantFeesAndMevLiquidityProvider?: Maybe<GiantFeesAndMevLiquidityProvider>;
+  giantFeesAndMevLiquidityProviders: Array<GiantFeesAndMevLiquidityProvider>;
+  depositor?: Maybe<Depositor>;
+  depositors: Array<Depositor>;
+  syndicate?: Maybe<Syndicate>;
+  syndicates: Array<Syndicate>;
+  payout?: Maybe<Payout>;
+  payouts: Array<Payout>;
+  /** Access to subgraph metadata */
+  _meta?: Maybe<_Meta_>;
+  universeGlobalValue?: Maybe<UniverseGlobalValue>;
+  universeGlobalValues: Array<UniverseGlobalValue>;
+  uniqueDepositor?: Maybe<UniqueDepositor>;
+  uniqueDepositors: Array<UniqueDepositor>;
+  uniqueRegisteredUser?: Maybe<UniqueRegisteredUser>;
+  uniqueRegisteredUsers: Array<UniqueRegisteredUser>;
+  collateralizedKnotOwner?: Maybe<CollateralizedKnotOwner>;
+  collateralizedKnotOwners: Array<CollateralizedKnotOwner>;
+  knot?: Maybe<KNOT>;
+  knots: Array<KNOT>;
+  savETHIndex?: Maybe<savETHIndex>;
+  savETHIndexes: Array<savETHIndex>;
+  savETHIndexGlobal?: Maybe<savETHIndexGlobal>;
+  savETHIndexGlobals: Array<savETHIndexGlobal>;
+  brandCentralGlobal?: Maybe<BrandCentralGlobal>;
+  brandCentralGlobals: Array<BrandCentralGlobal>;
+  brandNft?: Maybe<BrandNft>;
+  brandNfts: Array<BrandNft>;
+  houseGoodieBag?: Maybe<HouseGoodieBag>;
+  houseGoodieBags: Array<HouseGoodieBag>;
+  goodieBagItem?: Maybe<GoodieBagItem>;
+  goodieBagItems: Array<GoodieBagItem>;
+  stakeHouse?: Maybe<StakeHouse>;
+  stakeHouses: Array<StakeHouse>;
+  efdepositContractEvent?: Maybe<EFDepositContractEvent>;
+  efdepositContractEvents: Array<EFDepositContractEvent>;
+  efdeposit?: Maybe<EFDeposit>;
+  efdeposits: Array<EFDeposit>;
+  stakehouseAccount?: Maybe<StakehouseAccount>;
+  stakehouseAccounts: Array<StakehouseAccount>;
+  decryptionPiece?: Maybe<DecryptionPiece>;
+  decryptionPieces: Array<DecryptionPiece>;
+  decryptionRequest?: Maybe<DecryptionRequest>;
+  decryptionRequests: Array<DecryptionRequest>;
+  guardian?: Maybe<Guardian>;
+  guardians: Array<Guardian>;
+};
+
+
+export type QueryliquidStakingNetworkArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryliquidStakingNetworksArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LiquidStakingNetwork_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LiquidStakingNetwork_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerynodeRunnerArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerynodeRunnersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<NodeRunner_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<NodeRunner_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysmartWalletArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysmartWalletsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<SmartWallet_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<SmartWallet_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerylsdvalidatorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerylsdvalidatorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LSDValidator_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LSDValidator_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryprotectedDepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryprotectedDepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProtectedDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ProtectedDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryfeesAndMevDepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryfeesAndMevDepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<FeesAndMevDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<FeesAndMevDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantSavETHPoolArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantSavETHPoolsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantSavETHPool_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantSavETHPool_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantFeesAndMevPoolArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantFeesAndMevPoolsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantFeesAndMevPool_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantFeesAndMevPool_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryeventArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryeventsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Event_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Event_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerylptokenArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerylptokensArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LPToken_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LPToken_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryprotectedBatchArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryprotectedBatchesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProtectedBatch_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ProtectedBatch_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryfeesAndMevBatchArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryfeesAndMevBatchesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<FeesAndMevBatch_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<FeesAndMevBatch_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantLiquidityProviderArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantLiquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantLiquidityProvider_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantFeesAndMevLiquidityProviderArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygiantFeesAndMevLiquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantFeesAndMevLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantFeesAndMevLiquidityProvider_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydepositorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydepositorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Depositor_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Depositor_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysyndicateArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysyndicatesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Syndicate_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Syndicate_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerypayoutArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerypayoutsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Payout_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Payout_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type Query_metaArgs = {
+  block?: InputMaybe<Block_height>;
+};
+
+
+export type QueryuniverseGlobalValueArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryuniverseGlobalValuesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniverseGlobalValue_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniverseGlobalValue_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryuniqueDepositorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryuniqueDepositorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniqueDepositor_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniqueDepositor_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryuniqueRegisteredUserArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryuniqueRegisteredUsersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniqueRegisteredUser_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniqueRegisteredUser_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerycollateralizedKnotOwnerArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerycollateralizedKnotOwnersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<CollateralizedKnotOwner_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<CollateralizedKnotOwner_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryknotArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryknotsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<KNOT_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<KNOT_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysavETHIndexArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysavETHIndexesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<savETHIndex_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<savETHIndex_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysavETHIndexGlobalArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerysavETHIndexGlobalsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<savETHIndexGlobal_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<savETHIndexGlobal_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerybrandCentralGlobalArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerybrandCentralGlobalsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<BrandCentralGlobal_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<BrandCentralGlobal_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerybrandNftArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerybrandNftsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<BrandNft_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<BrandNft_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryhouseGoodieBagArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryhouseGoodieBagsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<HouseGoodieBag_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<HouseGoodieBag_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygoodieBagItemArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerygoodieBagItemsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GoodieBagItem_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GoodieBagItem_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerystakeHouseArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerystakeHousesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<StakeHouse_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<StakeHouse_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryefdepositContractEventArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryefdepositContractEventsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<EFDepositContractEvent_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<EFDepositContractEvent_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryefdepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryefdepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<EFDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<EFDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerystakehouseAccountArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerystakehouseAccountsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<StakehouseAccount_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<StakehouseAccount_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydecryptionPieceArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydecryptionPiecesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DecryptionPiece_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<DecryptionPiece_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydecryptionRequestArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QuerydecryptionRequestsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DecryptionRequest_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<DecryptionRequest_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryguardianArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type QueryguardiansArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Guardian_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Guardian_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+export type Subscription = {
+  liquidStakingNetwork?: Maybe<LiquidStakingNetwork>;
+  liquidStakingNetworks: Array<LiquidStakingNetwork>;
+  nodeRunner?: Maybe<NodeRunner>;
+  nodeRunners: Array<NodeRunner>;
+  smartWallet?: Maybe<SmartWallet>;
+  smartWallets: Array<SmartWallet>;
+  lsdvalidator?: Maybe<LSDValidator>;
+  lsdvalidators: Array<LSDValidator>;
+  protectedDeposit?: Maybe<ProtectedDeposit>;
+  protectedDeposits: Array<ProtectedDeposit>;
+  feesAndMevDeposit?: Maybe<FeesAndMevDeposit>;
+  feesAndMevDeposits: Array<FeesAndMevDeposit>;
+  giantSavETHPool?: Maybe<GiantSavETHPool>;
+  giantSavETHPools: Array<GiantSavETHPool>;
+  giantFeesAndMevPool?: Maybe<GiantFeesAndMevPool>;
+  giantFeesAndMevPools: Array<GiantFeesAndMevPool>;
+  event?: Maybe<Event>;
+  events: Array<Event>;
+  lptoken?: Maybe<LPToken>;
+  lptokens: Array<LPToken>;
+  protectedBatch?: Maybe<ProtectedBatch>;
+  protectedBatches: Array<ProtectedBatch>;
+  feesAndMevBatch?: Maybe<FeesAndMevBatch>;
+  feesAndMevBatches: Array<FeesAndMevBatch>;
+  giantLiquidityProvider?: Maybe<GiantLiquidityProvider>;
+  giantLiquidityProviders: Array<GiantLiquidityProvider>;
+  giantFeesAndMevLiquidityProvider?: Maybe<GiantFeesAndMevLiquidityProvider>;
+  giantFeesAndMevLiquidityProviders: Array<GiantFeesAndMevLiquidityProvider>;
+  depositor?: Maybe<Depositor>;
+  depositors: Array<Depositor>;
+  syndicate?: Maybe<Syndicate>;
+  syndicates: Array<Syndicate>;
+  payout?: Maybe<Payout>;
+  payouts: Array<Payout>;
+  /** Access to subgraph metadata */
+  _meta?: Maybe<_Meta_>;
+  universeGlobalValue?: Maybe<UniverseGlobalValue>;
+  universeGlobalValues: Array<UniverseGlobalValue>;
+  uniqueDepositor?: Maybe<UniqueDepositor>;
+  uniqueDepositors: Array<UniqueDepositor>;
+  uniqueRegisteredUser?: Maybe<UniqueRegisteredUser>;
+  uniqueRegisteredUsers: Array<UniqueRegisteredUser>;
+  collateralizedKnotOwner?: Maybe<CollateralizedKnotOwner>;
+  collateralizedKnotOwners: Array<CollateralizedKnotOwner>;
+  knot?: Maybe<KNOT>;
+  knots: Array<KNOT>;
+  savETHIndex?: Maybe<savETHIndex>;
+  savETHIndexes: Array<savETHIndex>;
+  savETHIndexGlobal?: Maybe<savETHIndexGlobal>;
+  savETHIndexGlobals: Array<savETHIndexGlobal>;
+  brandCentralGlobal?: Maybe<BrandCentralGlobal>;
+  brandCentralGlobals: Array<BrandCentralGlobal>;
+  brandNft?: Maybe<BrandNft>;
+  brandNfts: Array<BrandNft>;
+  houseGoodieBag?: Maybe<HouseGoodieBag>;
+  houseGoodieBags: Array<HouseGoodieBag>;
+  goodieBagItem?: Maybe<GoodieBagItem>;
+  goodieBagItems: Array<GoodieBagItem>;
+  stakeHouse?: Maybe<StakeHouse>;
+  stakeHouses: Array<StakeHouse>;
+  efdepositContractEvent?: Maybe<EFDepositContractEvent>;
+  efdepositContractEvents: Array<EFDepositContractEvent>;
+  efdeposit?: Maybe<EFDeposit>;
+  efdeposits: Array<EFDeposit>;
+  stakehouseAccount?: Maybe<StakehouseAccount>;
+  stakehouseAccounts: Array<StakehouseAccount>;
+  decryptionPiece?: Maybe<DecryptionPiece>;
+  decryptionPieces: Array<DecryptionPiece>;
+  decryptionRequest?: Maybe<DecryptionRequest>;
+  decryptionRequests: Array<DecryptionRequest>;
+  guardian?: Maybe<Guardian>;
+  guardians: Array<Guardian>;
+};
+
+
+export type SubscriptionliquidStakingNetworkArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionliquidStakingNetworksArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LiquidStakingNetwork_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LiquidStakingNetwork_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionnodeRunnerArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionnodeRunnersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<NodeRunner_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<NodeRunner_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsmartWalletArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsmartWalletsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<SmartWallet_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<SmartWallet_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionlsdvalidatorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionlsdvalidatorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LSDValidator_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LSDValidator_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionprotectedDepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionprotectedDepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProtectedDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ProtectedDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionfeesAndMevDepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionfeesAndMevDepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<FeesAndMevDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<FeesAndMevDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantSavETHPoolArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantSavETHPoolsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantSavETHPool_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantSavETHPool_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantFeesAndMevPoolArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantFeesAndMevPoolsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantFeesAndMevPool_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantFeesAndMevPool_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptioneventArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptioneventsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Event_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Event_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionlptokenArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionlptokensArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LPToken_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LPToken_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionprotectedBatchArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionprotectedBatchesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<ProtectedBatch_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<ProtectedBatch_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionfeesAndMevBatchArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionfeesAndMevBatchesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<FeesAndMevBatch_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<FeesAndMevBatch_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantLiquidityProviderArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantLiquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantLiquidityProvider_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantFeesAndMevLiquidityProviderArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongiantFeesAndMevLiquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantFeesAndMevLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantFeesAndMevLiquidityProvider_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondepositorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondepositorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Depositor_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Depositor_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsyndicateArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsyndicatesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Syndicate_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Syndicate_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionpayoutArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionpayoutsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Payout_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Payout_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type Subscription_metaArgs = {
+  block?: InputMaybe<Block_height>;
+};
+
+
+export type SubscriptionuniverseGlobalValueArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionuniverseGlobalValuesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniverseGlobalValue_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniverseGlobalValue_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionuniqueDepositorArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionuniqueDepositorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniqueDepositor_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniqueDepositor_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionuniqueRegisteredUserArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionuniqueRegisteredUsersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<UniqueRegisteredUser_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<UniqueRegisteredUser_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptioncollateralizedKnotOwnerArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptioncollateralizedKnotOwnersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<CollateralizedKnotOwner_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<CollateralizedKnotOwner_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionknotArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionknotsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<KNOT_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<KNOT_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsavETHIndexArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsavETHIndexesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<savETHIndex_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<savETHIndex_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsavETHIndexGlobalArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionsavETHIndexGlobalsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<savETHIndexGlobal_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<savETHIndexGlobal_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionbrandCentralGlobalArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionbrandCentralGlobalsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<BrandCentralGlobal_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<BrandCentralGlobal_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionbrandNftArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionbrandNftsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<BrandNft_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<BrandNft_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionhouseGoodieBagArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionhouseGoodieBagsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<HouseGoodieBag_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<HouseGoodieBag_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongoodieBagItemArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiongoodieBagItemsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GoodieBagItem_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GoodieBagItem_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionstakeHouseArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionstakeHousesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<StakeHouse_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<StakeHouse_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionefdepositContractEventArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionefdepositContractEventsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<EFDepositContractEvent_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<EFDepositContractEvent_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionefdepositArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionefdepositsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<EFDeposit_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<EFDeposit_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionstakehouseAccountArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionstakehouseAccountsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<StakehouseAccount_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<StakehouseAccount_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondecryptionPieceArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondecryptionPiecesArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DecryptionPiece_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<DecryptionPiece_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondecryptionRequestArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptiondecryptionRequestsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<DecryptionRequest_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<DecryptionRequest_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionguardianArgs = {
+  id: Scalars['ID'];
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
+
+export type SubscriptionguardiansArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Guardian_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Guardian_filter>;
+  block?: InputMaybe<Block_height>;
+  subgraphError?: _SubgraphErrorPolicy_;
+};
+
 export type BlockChangedFilter = {
   number_gte: Scalars['Int'];
 };
@@ -51,6 +1472,2264 @@ export type Block_height = {
   number?: InputMaybe<Scalars['Int']>;
   number_gte?: InputMaybe<Scalars['Int']>;
 };
+
+export type Depositor = {
+  id: Scalars['ID'];
+  lpAddress: Scalars['String'];
+  amount: Scalars['BigInt'];
+};
+
+export type Depositor_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lpAddress?: InputMaybe<Scalars['String']>;
+  lpAddress_not?: InputMaybe<Scalars['String']>;
+  lpAddress_gt?: InputMaybe<Scalars['String']>;
+  lpAddress_lt?: InputMaybe<Scalars['String']>;
+  lpAddress_gte?: InputMaybe<Scalars['String']>;
+  lpAddress_lte?: InputMaybe<Scalars['String']>;
+  lpAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['BigInt']>;
+  amount_not?: InputMaybe<Scalars['BigInt']>;
+  amount_gt?: InputMaybe<Scalars['BigInt']>;
+  amount_lt?: InputMaybe<Scalars['BigInt']>;
+  amount_gte?: InputMaybe<Scalars['BigInt']>;
+  amount_lte?: InputMaybe<Scalars['BigInt']>;
+  amount_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Depositor_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<Depositor_filter>>>;
+};
+
+export type Depositor_orderBy =
+  | 'id'
+  | 'lpAddress'
+  | 'amount';
+
+export type Event = {
+  id: Scalars['ID'];
+  tx: Scalars['String'];
+  from: Scalars['String'];
+  blockNumber: Scalars['BigInt'];
+  blockTimestamp: Scalars['BigInt'];
+  blsPubKeyForKnot: Scalars['String'];
+  key: Scalars['String'];
+  value: Scalars['String'];
+  value2?: Maybe<Scalars['String']>;
+};
+
+export type Event_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  tx?: InputMaybe<Scalars['String']>;
+  tx_not?: InputMaybe<Scalars['String']>;
+  tx_gt?: InputMaybe<Scalars['String']>;
+  tx_lt?: InputMaybe<Scalars['String']>;
+  tx_gte?: InputMaybe<Scalars['String']>;
+  tx_lte?: InputMaybe<Scalars['String']>;
+  tx_in?: InputMaybe<Array<Scalars['String']>>;
+  tx_not_in?: InputMaybe<Array<Scalars['String']>>;
+  tx_contains?: InputMaybe<Scalars['String']>;
+  tx_contains_nocase?: InputMaybe<Scalars['String']>;
+  tx_not_contains?: InputMaybe<Scalars['String']>;
+  tx_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  tx_starts_with?: InputMaybe<Scalars['String']>;
+  tx_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  tx_not_starts_with?: InputMaybe<Scalars['String']>;
+  tx_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  tx_ends_with?: InputMaybe<Scalars['String']>;
+  tx_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  tx_not_ends_with?: InputMaybe<Scalars['String']>;
+  tx_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  from?: InputMaybe<Scalars['String']>;
+  from_not?: InputMaybe<Scalars['String']>;
+  from_gt?: InputMaybe<Scalars['String']>;
+  from_lt?: InputMaybe<Scalars['String']>;
+  from_gte?: InputMaybe<Scalars['String']>;
+  from_lte?: InputMaybe<Scalars['String']>;
+  from_in?: InputMaybe<Array<Scalars['String']>>;
+  from_not_in?: InputMaybe<Array<Scalars['String']>>;
+  from_contains?: InputMaybe<Scalars['String']>;
+  from_contains_nocase?: InputMaybe<Scalars['String']>;
+  from_not_contains?: InputMaybe<Scalars['String']>;
+  from_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  from_starts_with?: InputMaybe<Scalars['String']>;
+  from_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  from_not_starts_with?: InputMaybe<Scalars['String']>;
+  from_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  from_ends_with?: InputMaybe<Scalars['String']>;
+  from_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  from_not_ends_with?: InputMaybe<Scalars['String']>;
+  from_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blockNumber?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_not?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_gt?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_lt?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_gte?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_lte?: InputMaybe<Scalars['BigInt']>;
+  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  blockTimestamp?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>;
+  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  blsPubKeyForKnot?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_gt?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_lt?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_gte?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_lte?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPubKeyForKnot_not_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPubKeyForKnot_contains?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_contains?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_starts_with?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_starts_with?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_ends_with?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_ends_with?: InputMaybe<Scalars['String']>;
+  blsPubKeyForKnot_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  key?: InputMaybe<Scalars['String']>;
+  key_not?: InputMaybe<Scalars['String']>;
+  key_gt?: InputMaybe<Scalars['String']>;
+  key_lt?: InputMaybe<Scalars['String']>;
+  key_gte?: InputMaybe<Scalars['String']>;
+  key_lte?: InputMaybe<Scalars['String']>;
+  key_in?: InputMaybe<Array<Scalars['String']>>;
+  key_not_in?: InputMaybe<Array<Scalars['String']>>;
+  key_contains?: InputMaybe<Scalars['String']>;
+  key_contains_nocase?: InputMaybe<Scalars['String']>;
+  key_not_contains?: InputMaybe<Scalars['String']>;
+  key_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  key_starts_with?: InputMaybe<Scalars['String']>;
+  key_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  key_not_starts_with?: InputMaybe<Scalars['String']>;
+  key_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  key_ends_with?: InputMaybe<Scalars['String']>;
+  key_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  key_not_ends_with?: InputMaybe<Scalars['String']>;
+  key_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']>;
+  value_not?: InputMaybe<Scalars['String']>;
+  value_gt?: InputMaybe<Scalars['String']>;
+  value_lt?: InputMaybe<Scalars['String']>;
+  value_gte?: InputMaybe<Scalars['String']>;
+  value_lte?: InputMaybe<Scalars['String']>;
+  value_in?: InputMaybe<Array<Scalars['String']>>;
+  value_not_in?: InputMaybe<Array<Scalars['String']>>;
+  value_contains?: InputMaybe<Scalars['String']>;
+  value_contains_nocase?: InputMaybe<Scalars['String']>;
+  value_not_contains?: InputMaybe<Scalars['String']>;
+  value_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  value_starts_with?: InputMaybe<Scalars['String']>;
+  value_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  value_not_starts_with?: InputMaybe<Scalars['String']>;
+  value_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  value_ends_with?: InputMaybe<Scalars['String']>;
+  value_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  value_not_ends_with?: InputMaybe<Scalars['String']>;
+  value_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  value2?: InputMaybe<Scalars['String']>;
+  value2_not?: InputMaybe<Scalars['String']>;
+  value2_gt?: InputMaybe<Scalars['String']>;
+  value2_lt?: InputMaybe<Scalars['String']>;
+  value2_gte?: InputMaybe<Scalars['String']>;
+  value2_lte?: InputMaybe<Scalars['String']>;
+  value2_in?: InputMaybe<Array<Scalars['String']>>;
+  value2_not_in?: InputMaybe<Array<Scalars['String']>>;
+  value2_contains?: InputMaybe<Scalars['String']>;
+  value2_contains_nocase?: InputMaybe<Scalars['String']>;
+  value2_not_contains?: InputMaybe<Scalars['String']>;
+  value2_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  value2_starts_with?: InputMaybe<Scalars['String']>;
+  value2_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  value2_not_starts_with?: InputMaybe<Scalars['String']>;
+  value2_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  value2_ends_with?: InputMaybe<Scalars['String']>;
+  value2_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  value2_not_ends_with?: InputMaybe<Scalars['String']>;
+  value2_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Event_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<Event_filter>>>;
+};
+
+export type Event_orderBy =
+  | 'id'
+  | 'tx'
+  | 'from'
+  | 'blockNumber'
+  | 'blockTimestamp'
+  | 'blsPubKeyForKnot'
+  | 'key'
+  | 'value'
+  | 'value2';
+
+export type FeesAndMevBatch = {
+  id: Scalars['ID'];
+  blsPublicKey?: Maybe<Scalars['String']>;
+  vaultLPToken?: Maybe<LPToken>;
+  lsdValidator?: Maybe<LSDValidator>;
+  listOfLiquidityProviderAddresses: Array<Scalars['String']>;
+  liquidityProviders: Array<GiantFeesAndMevLiquidityProvider>;
+};
+
+
+export type FeesAndMevBatchliquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantFeesAndMevLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantFeesAndMevLiquidityProvider_filter>;
+};
+
+export type FeesAndMevBatch_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  blsPublicKey?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_not_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  vaultLPToken_?: InputMaybe<LPToken_filter>;
+  lsdValidator?: InputMaybe<Scalars['String']>;
+  lsdValidator_not?: InputMaybe<Scalars['String']>;
+  lsdValidator_gt?: InputMaybe<Scalars['String']>;
+  lsdValidator_lt?: InputMaybe<Scalars['String']>;
+  lsdValidator_gte?: InputMaybe<Scalars['String']>;
+  lsdValidator_lte?: InputMaybe<Scalars['String']>;
+  lsdValidator_in?: InputMaybe<Array<Scalars['String']>>;
+  lsdValidator_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lsdValidator_contains?: InputMaybe<Scalars['String']>;
+  lsdValidator_contains_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_contains?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_starts_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_starts_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_ends_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_ends_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_?: InputMaybe<LSDValidator_filter>;
+  listOfLiquidityProviderAddresses?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_contains?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_?: InputMaybe<GiantFeesAndMevLiquidityProvider_filter>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<FeesAndMevBatch_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<FeesAndMevBatch_filter>>>;
+};
+
+export type FeesAndMevBatch_orderBy =
+  | 'id'
+  | 'blsPublicKey'
+  | 'vaultLPToken'
+  | 'vaultLPToken__id'
+  | 'vaultLPToken__blsPublicKey'
+  | 'vaultLPToken__minted'
+  | 'vaultLPToken__withdrawn'
+  | 'vaultLPToken__issuer'
+  | 'vaultLPToken__tokenType'
+  | 'vaultLPToken__giantPoolBalance'
+  | 'vaultLPToken__lifecycleStatus'
+  | 'lsdValidator'
+  | 'lsdValidator__id'
+  | 'lsdValidator__status'
+  | 'lsdValidator__isReadyToStake'
+  | 'lsdValidator__liquidStakingManager'
+  | 'lsdValidator__withdrawn'
+  | 'lsdValidator__currentIndex'
+  | 'lsdValidator__totalETHStaked'
+  | 'lsdValidator__totalETHFundedFromGiantPool'
+  | 'lsdValidator__totalETHFromGiantProtectedStakingPool'
+  | 'lsdValidator__totalETHFromGiantFeesAndMevPool'
+  | 'lsdValidator__giantPoolLastFundedTimestamp'
+  | 'lsdValidator__registerInitialsBlockNumber'
+  | 'lsdValidator__ethSentToDepositContractBlockNumber'
+  | 'lsdValidator__derivativesMintedBlockNumber'
+  | 'listOfLiquidityProviderAddresses'
+  | 'liquidityProviders';
+
+export type FeesAndMevDeposit = {
+  id: Scalars['ID'];
+  liquidStakingNetwork: LiquidStakingNetwork;
+  validator: LSDValidator;
+  token: Scalars['String'];
+  depositor: Scalars['String'];
+  totalDeposit: Scalars['BigInt'];
+};
+
+export type FeesAndMevDeposit_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  liquidStakingNetwork?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_?: InputMaybe<LiquidStakingNetwork_filter>;
+  validator?: InputMaybe<Scalars['String']>;
+  validator_not?: InputMaybe<Scalars['String']>;
+  validator_gt?: InputMaybe<Scalars['String']>;
+  validator_lt?: InputMaybe<Scalars['String']>;
+  validator_gte?: InputMaybe<Scalars['String']>;
+  validator_lte?: InputMaybe<Scalars['String']>;
+  validator_in?: InputMaybe<Array<Scalars['String']>>;
+  validator_not_in?: InputMaybe<Array<Scalars['String']>>;
+  validator_contains?: InputMaybe<Scalars['String']>;
+  validator_contains_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_contains?: InputMaybe<Scalars['String']>;
+  validator_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  validator_starts_with?: InputMaybe<Scalars['String']>;
+  validator_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_starts_with?: InputMaybe<Scalars['String']>;
+  validator_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_ends_with?: InputMaybe<Scalars['String']>;
+  validator_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_ends_with?: InputMaybe<Scalars['String']>;
+  validator_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_?: InputMaybe<LSDValidator_filter>;
+  token?: InputMaybe<Scalars['String']>;
+  token_not?: InputMaybe<Scalars['String']>;
+  token_gt?: InputMaybe<Scalars['String']>;
+  token_lt?: InputMaybe<Scalars['String']>;
+  token_gte?: InputMaybe<Scalars['String']>;
+  token_lte?: InputMaybe<Scalars['String']>;
+  token_in?: InputMaybe<Array<Scalars['String']>>;
+  token_not_in?: InputMaybe<Array<Scalars['String']>>;
+  token_contains?: InputMaybe<Scalars['String']>;
+  token_contains_nocase?: InputMaybe<Scalars['String']>;
+  token_not_contains?: InputMaybe<Scalars['String']>;
+  token_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  token_starts_with?: InputMaybe<Scalars['String']>;
+  token_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  token_not_starts_with?: InputMaybe<Scalars['String']>;
+  token_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  token_ends_with?: InputMaybe<Scalars['String']>;
+  token_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  token_not_ends_with?: InputMaybe<Scalars['String']>;
+  token_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor?: InputMaybe<Scalars['String']>;
+  depositor_not?: InputMaybe<Scalars['String']>;
+  depositor_gt?: InputMaybe<Scalars['String']>;
+  depositor_lt?: InputMaybe<Scalars['String']>;
+  depositor_gte?: InputMaybe<Scalars['String']>;
+  depositor_lte?: InputMaybe<Scalars['String']>;
+  depositor_in?: InputMaybe<Array<Scalars['String']>>;
+  depositor_not_in?: InputMaybe<Array<Scalars['String']>>;
+  depositor_contains?: InputMaybe<Scalars['String']>;
+  depositor_contains_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_contains?: InputMaybe<Scalars['String']>;
+  depositor_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  depositor_starts_with?: InputMaybe<Scalars['String']>;
+  depositor_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_starts_with?: InputMaybe<Scalars['String']>;
+  depositor_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_ends_with?: InputMaybe<Scalars['String']>;
+  depositor_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_ends_with?: InputMaybe<Scalars['String']>;
+  depositor_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  totalDeposit?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_not?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_gt?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_lt?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_gte?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_lte?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalDeposit_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<FeesAndMevDeposit_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<FeesAndMevDeposit_filter>>>;
+};
+
+export type FeesAndMevDeposit_orderBy =
+  | 'id'
+  | 'liquidStakingNetwork'
+  | 'liquidStakingNetwork__id'
+  | 'liquidStakingNetwork__liquidStakingManager'
+  | 'liquidStakingNetwork__dao'
+  | 'liquidStakingNetwork__feeRecipientAndSyndicate'
+  | 'liquidStakingNetwork__savETHPool'
+  | 'liquidStakingNetwork__feesAndMevPool'
+  | 'liquidStakingNetwork__stakehouseAddress'
+  | 'liquidStakingNetwork__optionalGatekeeper'
+  | 'liquidStakingNetwork__lsdIndex'
+  | 'liquidStakingNetwork__ticker'
+  | 'liquidStakingNetwork__commission'
+  | 'liquidStakingNetwork__isNodeRunningBehindGatekeeper'
+  | 'liquidStakingNetwork__firstKnot'
+  | 'liquidStakingNetwork__numberOfValidatorsBeingPrepared'
+  | 'liquidStakingNetwork__numberOfStakedValidators'
+  | 'liquidStakingNetwork__numberOfKnotsThatHaveMintedDerivatives'
+  | 'validator'
+  | 'validator__id'
+  | 'validator__status'
+  | 'validator__isReadyToStake'
+  | 'validator__liquidStakingManager'
+  | 'validator__withdrawn'
+  | 'validator__currentIndex'
+  | 'validator__totalETHStaked'
+  | 'validator__totalETHFundedFromGiantPool'
+  | 'validator__totalETHFromGiantProtectedStakingPool'
+  | 'validator__totalETHFromGiantFeesAndMevPool'
+  | 'validator__giantPoolLastFundedTimestamp'
+  | 'validator__registerInitialsBlockNumber'
+  | 'validator__ethSentToDepositContractBlockNumber'
+  | 'validator__derivativesMintedBlockNumber'
+  | 'token'
+  | 'depositor'
+  | 'totalDeposit';
+
+export type GiantFeesAndMevLiquidityProvider = {
+  id: Scalars['ID'];
+  lpAddress: Scalars['String'];
+  amount: Scalars['BigInt'];
+  batch: Scalars['BigInt'];
+  contractAddress: Scalars['String'];
+  withdrawn: Scalars['BigInt'];
+};
+
+export type GiantFeesAndMevLiquidityProvider_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lpAddress?: InputMaybe<Scalars['String']>;
+  lpAddress_not?: InputMaybe<Scalars['String']>;
+  lpAddress_gt?: InputMaybe<Scalars['String']>;
+  lpAddress_lt?: InputMaybe<Scalars['String']>;
+  lpAddress_gte?: InputMaybe<Scalars['String']>;
+  lpAddress_lte?: InputMaybe<Scalars['String']>;
+  lpAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['BigInt']>;
+  amount_not?: InputMaybe<Scalars['BigInt']>;
+  amount_gt?: InputMaybe<Scalars['BigInt']>;
+  amount_lt?: InputMaybe<Scalars['BigInt']>;
+  amount_gte?: InputMaybe<Scalars['BigInt']>;
+  amount_lte?: InputMaybe<Scalars['BigInt']>;
+  amount_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  batch?: InputMaybe<Scalars['BigInt']>;
+  batch_not?: InputMaybe<Scalars['BigInt']>;
+  batch_gt?: InputMaybe<Scalars['BigInt']>;
+  batch_lt?: InputMaybe<Scalars['BigInt']>;
+  batch_gte?: InputMaybe<Scalars['BigInt']>;
+  batch_lte?: InputMaybe<Scalars['BigInt']>;
+  batch_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  batch_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  contractAddress?: InputMaybe<Scalars['String']>;
+  contractAddress_not?: InputMaybe<Scalars['String']>;
+  contractAddress_gt?: InputMaybe<Scalars['String']>;
+  contractAddress_lt?: InputMaybe<Scalars['String']>;
+  contractAddress_gte?: InputMaybe<Scalars['String']>;
+  contractAddress_lte?: InputMaybe<Scalars['String']>;
+  contractAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  withdrawn?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_not?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  withdrawn_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<GiantFeesAndMevLiquidityProvider_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<GiantFeesAndMevLiquidityProvider_filter>>>;
+};
+
+export type GiantFeesAndMevLiquidityProvider_orderBy =
+  | 'id'
+  | 'lpAddress'
+  | 'amount'
+  | 'batch'
+  | 'contractAddress'
+  | 'withdrawn';
+
+export type GiantFeesAndMevPool = {
+  id: Scalars['ID'];
+  contractAddress: Scalars['String'];
+  availableToStake: Scalars['BigInt'];
+  sentToLiquidStakingNetworks: Scalars['BigInt'];
+  giantLPToken: Scalars['String'];
+};
+
+export type GiantFeesAndMevPool_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  contractAddress?: InputMaybe<Scalars['String']>;
+  contractAddress_not?: InputMaybe<Scalars['String']>;
+  contractAddress_gt?: InputMaybe<Scalars['String']>;
+  contractAddress_lt?: InputMaybe<Scalars['String']>;
+  contractAddress_gte?: InputMaybe<Scalars['String']>;
+  contractAddress_lte?: InputMaybe<Scalars['String']>;
+  contractAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  availableToStake?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_not?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  availableToStake_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  sentToLiquidStakingNetworks?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_not?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_gt?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_lt?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_gte?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_lte?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  sentToLiquidStakingNetworks_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  giantLPToken?: InputMaybe<Scalars['String']>;
+  giantLPToken_not?: InputMaybe<Scalars['String']>;
+  giantLPToken_gt?: InputMaybe<Scalars['String']>;
+  giantLPToken_lt?: InputMaybe<Scalars['String']>;
+  giantLPToken_gte?: InputMaybe<Scalars['String']>;
+  giantLPToken_lte?: InputMaybe<Scalars['String']>;
+  giantLPToken_in?: InputMaybe<Array<Scalars['String']>>;
+  giantLPToken_not_in?: InputMaybe<Array<Scalars['String']>>;
+  giantLPToken_contains?: InputMaybe<Scalars['String']>;
+  giantLPToken_contains_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_contains?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_starts_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_starts_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_ends_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_ends_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<GiantFeesAndMevPool_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<GiantFeesAndMevPool_filter>>>;
+};
+
+export type GiantFeesAndMevPool_orderBy =
+  | 'id'
+  | 'contractAddress'
+  | 'availableToStake'
+  | 'sentToLiquidStakingNetworks'
+  | 'giantLPToken';
+
+export type GiantLiquidityProvider = {
+  id: Scalars['ID'];
+  lpAddress: Scalars['String'];
+  amount: Scalars['BigInt'];
+  batch: Scalars['BigInt'];
+  contractAddress: Scalars['String'];
+  withdrawn: Scalars['BigInt'];
+};
+
+export type GiantLiquidityProvider_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  lpAddress?: InputMaybe<Scalars['String']>;
+  lpAddress_not?: InputMaybe<Scalars['String']>;
+  lpAddress_gt?: InputMaybe<Scalars['String']>;
+  lpAddress_lt?: InputMaybe<Scalars['String']>;
+  lpAddress_gte?: InputMaybe<Scalars['String']>;
+  lpAddress_lte?: InputMaybe<Scalars['String']>;
+  lpAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lpAddress_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains?: InputMaybe<Scalars['String']>;
+  lpAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  lpAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['BigInt']>;
+  amount_not?: InputMaybe<Scalars['BigInt']>;
+  amount_gt?: InputMaybe<Scalars['BigInt']>;
+  amount_lt?: InputMaybe<Scalars['BigInt']>;
+  amount_gte?: InputMaybe<Scalars['BigInt']>;
+  amount_lte?: InputMaybe<Scalars['BigInt']>;
+  amount_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  batch?: InputMaybe<Scalars['BigInt']>;
+  batch_not?: InputMaybe<Scalars['BigInt']>;
+  batch_gt?: InputMaybe<Scalars['BigInt']>;
+  batch_lt?: InputMaybe<Scalars['BigInt']>;
+  batch_gte?: InputMaybe<Scalars['BigInt']>;
+  batch_lte?: InputMaybe<Scalars['BigInt']>;
+  batch_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  batch_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  contractAddress?: InputMaybe<Scalars['String']>;
+  contractAddress_not?: InputMaybe<Scalars['String']>;
+  contractAddress_gt?: InputMaybe<Scalars['String']>;
+  contractAddress_lt?: InputMaybe<Scalars['String']>;
+  contractAddress_gte?: InputMaybe<Scalars['String']>;
+  contractAddress_lte?: InputMaybe<Scalars['String']>;
+  contractAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  withdrawn?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_not?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  withdrawn_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<GiantLiquidityProvider_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<GiantLiquidityProvider_filter>>>;
+};
+
+export type GiantLiquidityProvider_orderBy =
+  | 'id'
+  | 'lpAddress'
+  | 'amount'
+  | 'batch'
+  | 'contractAddress'
+  | 'withdrawn';
+
+export type GiantSavETHPool = {
+  id: Scalars['ID'];
+  contractAddress: Scalars['String'];
+  availableToStake: Scalars['BigInt'];
+  sentToLiquidStakingNetworks: Scalars['BigInt'];
+  giantLPToken: Scalars['String'];
+};
+
+export type GiantSavETHPool_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  contractAddress?: InputMaybe<Scalars['String']>;
+  contractAddress_not?: InputMaybe<Scalars['String']>;
+  contractAddress_gt?: InputMaybe<Scalars['String']>;
+  contractAddress_lt?: InputMaybe<Scalars['String']>;
+  contractAddress_gte?: InputMaybe<Scalars['String']>;
+  contractAddress_lte?: InputMaybe<Scalars['String']>;
+  contractAddress_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_not_in?: InputMaybe<Array<Scalars['String']>>;
+  contractAddress_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains?: InputMaybe<Scalars['String']>;
+  contractAddress_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with?: InputMaybe<Scalars['String']>;
+  contractAddress_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  availableToStake?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_not?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  availableToStake_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  sentToLiquidStakingNetworks?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_not?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_gt?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_lt?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_gte?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_lte?: InputMaybe<Scalars['BigInt']>;
+  sentToLiquidStakingNetworks_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  sentToLiquidStakingNetworks_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  giantLPToken?: InputMaybe<Scalars['String']>;
+  giantLPToken_not?: InputMaybe<Scalars['String']>;
+  giantLPToken_gt?: InputMaybe<Scalars['String']>;
+  giantLPToken_lt?: InputMaybe<Scalars['String']>;
+  giantLPToken_gte?: InputMaybe<Scalars['String']>;
+  giantLPToken_lte?: InputMaybe<Scalars['String']>;
+  giantLPToken_in?: InputMaybe<Array<Scalars['String']>>;
+  giantLPToken_not_in?: InputMaybe<Array<Scalars['String']>>;
+  giantLPToken_contains?: InputMaybe<Scalars['String']>;
+  giantLPToken_contains_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_contains?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_starts_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_starts_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_ends_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_ends_with?: InputMaybe<Scalars['String']>;
+  giantLPToken_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<GiantSavETHPool_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<GiantSavETHPool_filter>>>;
+};
+
+export type GiantSavETHPool_orderBy =
+  | 'id'
+  | 'contractAddress'
+  | 'availableToStake'
+  | 'sentToLiquidStakingNetworks'
+  | 'giantLPToken';
+
+export type LPToken = {
+  id: Scalars['ID'];
+  blsPublicKey: Scalars['String'];
+  minted: Scalars['BigInt'];
+  withdrawn: Scalars['BigInt'];
+  liquidStakingNetwork: LiquidStakingNetwork;
+  issuer: Scalars['String'];
+  tokenType: Scalars['String'];
+  giantPoolBalance: Scalars['BigInt'];
+  lifecycleStatus: Scalars['String'];
+  protectedBatch?: Maybe<ProtectedBatch>;
+  feesAndMevBatch?: Maybe<FeesAndMevBatch>;
+  liquidityProviders: Array<Depositor>;
+};
+
+
+export type LPTokenliquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Depositor_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Depositor_filter>;
+};
+
+export type LPToken_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  blsPublicKey?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_not_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  minted?: InputMaybe<Scalars['BigInt']>;
+  minted_not?: InputMaybe<Scalars['BigInt']>;
+  minted_gt?: InputMaybe<Scalars['BigInt']>;
+  minted_lt?: InputMaybe<Scalars['BigInt']>;
+  minted_gte?: InputMaybe<Scalars['BigInt']>;
+  minted_lte?: InputMaybe<Scalars['BigInt']>;
+  minted_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  minted_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  withdrawn?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_not?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lt?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_gte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_lte?: InputMaybe<Scalars['BigInt']>;
+  withdrawn_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  withdrawn_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  liquidStakingNetwork?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_?: InputMaybe<LiquidStakingNetwork_filter>;
+  issuer?: InputMaybe<Scalars['String']>;
+  issuer_not?: InputMaybe<Scalars['String']>;
+  issuer_gt?: InputMaybe<Scalars['String']>;
+  issuer_lt?: InputMaybe<Scalars['String']>;
+  issuer_gte?: InputMaybe<Scalars['String']>;
+  issuer_lte?: InputMaybe<Scalars['String']>;
+  issuer_in?: InputMaybe<Array<Scalars['String']>>;
+  issuer_not_in?: InputMaybe<Array<Scalars['String']>>;
+  issuer_contains?: InputMaybe<Scalars['String']>;
+  issuer_contains_nocase?: InputMaybe<Scalars['String']>;
+  issuer_not_contains?: InputMaybe<Scalars['String']>;
+  issuer_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  issuer_starts_with?: InputMaybe<Scalars['String']>;
+  issuer_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  issuer_not_starts_with?: InputMaybe<Scalars['String']>;
+  issuer_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  issuer_ends_with?: InputMaybe<Scalars['String']>;
+  issuer_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  issuer_not_ends_with?: InputMaybe<Scalars['String']>;
+  issuer_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  tokenType?: InputMaybe<Scalars['String']>;
+  tokenType_not?: InputMaybe<Scalars['String']>;
+  tokenType_gt?: InputMaybe<Scalars['String']>;
+  tokenType_lt?: InputMaybe<Scalars['String']>;
+  tokenType_gte?: InputMaybe<Scalars['String']>;
+  tokenType_lte?: InputMaybe<Scalars['String']>;
+  tokenType_in?: InputMaybe<Array<Scalars['String']>>;
+  tokenType_not_in?: InputMaybe<Array<Scalars['String']>>;
+  tokenType_contains?: InputMaybe<Scalars['String']>;
+  tokenType_contains_nocase?: InputMaybe<Scalars['String']>;
+  tokenType_not_contains?: InputMaybe<Scalars['String']>;
+  tokenType_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  tokenType_starts_with?: InputMaybe<Scalars['String']>;
+  tokenType_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  tokenType_not_starts_with?: InputMaybe<Scalars['String']>;
+  tokenType_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  tokenType_ends_with?: InputMaybe<Scalars['String']>;
+  tokenType_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  tokenType_not_ends_with?: InputMaybe<Scalars['String']>;
+  tokenType_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  giantPoolBalance?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_not?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_gt?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_lt?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_gte?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_lte?: InputMaybe<Scalars['BigInt']>;
+  giantPoolBalance_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  giantPoolBalance_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lifecycleStatus?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_gt?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_lt?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_gte?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_lte?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_in?: InputMaybe<Array<Scalars['String']>>;
+  lifecycleStatus_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lifecycleStatus_contains?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_contains_nocase?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_contains?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_starts_with?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_starts_with?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_ends_with?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_ends_with?: InputMaybe<Scalars['String']>;
+  lifecycleStatus_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch?: InputMaybe<Scalars['String']>;
+  protectedBatch_not?: InputMaybe<Scalars['String']>;
+  protectedBatch_gt?: InputMaybe<Scalars['String']>;
+  protectedBatch_lt?: InputMaybe<Scalars['String']>;
+  protectedBatch_gte?: InputMaybe<Scalars['String']>;
+  protectedBatch_lte?: InputMaybe<Scalars['String']>;
+  protectedBatch_in?: InputMaybe<Array<Scalars['String']>>;
+  protectedBatch_not_in?: InputMaybe<Array<Scalars['String']>>;
+  protectedBatch_contains?: InputMaybe<Scalars['String']>;
+  protectedBatch_contains_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_contains?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_starts_with?: InputMaybe<Scalars['String']>;
+  protectedBatch_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_starts_with?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_ends_with?: InputMaybe<Scalars['String']>;
+  protectedBatch_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_ends_with?: InputMaybe<Scalars['String']>;
+  protectedBatch_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  protectedBatch_?: InputMaybe<ProtectedBatch_filter>;
+  feesAndMevBatch?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_gt?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_lt?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_gte?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_lte?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_in?: InputMaybe<Array<Scalars['String']>>;
+  feesAndMevBatch_not_in?: InputMaybe<Array<Scalars['String']>>;
+  feesAndMevBatch_contains?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_contains_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_contains?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_starts_with?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_starts_with?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_ends_with?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_ends_with?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  feesAndMevBatch_?: InputMaybe<FeesAndMevBatch_filter>;
+  liquidityProviders?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_?: InputMaybe<Depositor_filter>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<LPToken_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<LPToken_filter>>>;
+};
+
+export type LPToken_orderBy =
+  | 'id'
+  | 'blsPublicKey'
+  | 'minted'
+  | 'withdrawn'
+  | 'liquidStakingNetwork'
+  | 'liquidStakingNetwork__id'
+  | 'liquidStakingNetwork__liquidStakingManager'
+  | 'liquidStakingNetwork__dao'
+  | 'liquidStakingNetwork__feeRecipientAndSyndicate'
+  | 'liquidStakingNetwork__savETHPool'
+  | 'liquidStakingNetwork__feesAndMevPool'
+  | 'liquidStakingNetwork__stakehouseAddress'
+  | 'liquidStakingNetwork__optionalGatekeeper'
+  | 'liquidStakingNetwork__lsdIndex'
+  | 'liquidStakingNetwork__ticker'
+  | 'liquidStakingNetwork__commission'
+  | 'liquidStakingNetwork__isNodeRunningBehindGatekeeper'
+  | 'liquidStakingNetwork__firstKnot'
+  | 'liquidStakingNetwork__numberOfValidatorsBeingPrepared'
+  | 'liquidStakingNetwork__numberOfStakedValidators'
+  | 'liquidStakingNetwork__numberOfKnotsThatHaveMintedDerivatives'
+  | 'issuer'
+  | 'tokenType'
+  | 'giantPoolBalance'
+  | 'lifecycleStatus'
+  | 'protectedBatch'
+  | 'protectedBatch__id'
+  | 'protectedBatch__blsPublicKey'
+  | 'feesAndMevBatch'
+  | 'feesAndMevBatch__id'
+  | 'feesAndMevBatch__blsPublicKey'
+  | 'liquidityProviders';
+
+export type LSDValidator = {
+  id: Scalars['ID'];
+  smartWallet: SmartWallet;
+  status: Scalars['String'];
+  isReadyToStake: Scalars['Boolean'];
+  liquidStakingManager: Scalars['String'];
+  withdrawn: Scalars['Boolean'];
+  currentIndex?: Maybe<Scalars['BigInt']>;
+  totalETHStaked: Scalars['BigInt'];
+  totalETHFundedFromGiantPool: Scalars['BigInt'];
+  totalETHFromGiantProtectedStakingPool: Scalars['BigInt'];
+  totalETHFromGiantFeesAndMevPool: Scalars['BigInt'];
+  giantPoolLastFundedTimestamp: Scalars['BigInt'];
+  registerInitialsBlockNumber: Scalars['BigInt'];
+  ethSentToDepositContractBlockNumber: Scalars['BigInt'];
+  derivativesMintedBlockNumber: Scalars['BigInt'];
+};
+
+export type LSDValidator_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  smartWallet?: InputMaybe<Scalars['String']>;
+  smartWallet_not?: InputMaybe<Scalars['String']>;
+  smartWallet_gt?: InputMaybe<Scalars['String']>;
+  smartWallet_lt?: InputMaybe<Scalars['String']>;
+  smartWallet_gte?: InputMaybe<Scalars['String']>;
+  smartWallet_lte?: InputMaybe<Scalars['String']>;
+  smartWallet_in?: InputMaybe<Array<Scalars['String']>>;
+  smartWallet_not_in?: InputMaybe<Array<Scalars['String']>>;
+  smartWallet_contains?: InputMaybe<Scalars['String']>;
+  smartWallet_contains_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_not_contains?: InputMaybe<Scalars['String']>;
+  smartWallet_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_starts_with?: InputMaybe<Scalars['String']>;
+  smartWallet_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_not_starts_with?: InputMaybe<Scalars['String']>;
+  smartWallet_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_ends_with?: InputMaybe<Scalars['String']>;
+  smartWallet_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_not_ends_with?: InputMaybe<Scalars['String']>;
+  smartWallet_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  smartWallet_?: InputMaybe<SmartWallet_filter>;
+  status?: InputMaybe<Scalars['String']>;
+  status_not?: InputMaybe<Scalars['String']>;
+  status_gt?: InputMaybe<Scalars['String']>;
+  status_lt?: InputMaybe<Scalars['String']>;
+  status_gte?: InputMaybe<Scalars['String']>;
+  status_lte?: InputMaybe<Scalars['String']>;
+  status_in?: InputMaybe<Array<Scalars['String']>>;
+  status_not_in?: InputMaybe<Array<Scalars['String']>>;
+  status_contains?: InputMaybe<Scalars['String']>;
+  status_contains_nocase?: InputMaybe<Scalars['String']>;
+  status_not_contains?: InputMaybe<Scalars['String']>;
+  status_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  status_starts_with?: InputMaybe<Scalars['String']>;
+  status_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  status_not_starts_with?: InputMaybe<Scalars['String']>;
+  status_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  status_ends_with?: InputMaybe<Scalars['String']>;
+  status_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  status_not_ends_with?: InputMaybe<Scalars['String']>;
+  status_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  isReadyToStake?: InputMaybe<Scalars['Boolean']>;
+  isReadyToStake_not?: InputMaybe<Scalars['Boolean']>;
+  isReadyToStake_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  isReadyToStake_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  liquidStakingManager?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingManager_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingManager_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingManager_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  withdrawn?: InputMaybe<Scalars['Boolean']>;
+  withdrawn_not?: InputMaybe<Scalars['Boolean']>;
+  withdrawn_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  withdrawn_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  currentIndex?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_not?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_gt?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_lt?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_gte?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_lte?: InputMaybe<Scalars['BigInt']>;
+  currentIndex_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  currentIndex_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHStaked?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_not?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_gt?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_lt?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_gte?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_lte?: InputMaybe<Scalars['BigInt']>;
+  totalETHStaked_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHStaked_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFundedFromGiantPool?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_not?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_gt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_lt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_gte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_lte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFundedFromGiantPool_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFundedFromGiantPool_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFromGiantProtectedStakingPool?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_not?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_gt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_lt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_gte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_lte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantProtectedStakingPool_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFromGiantProtectedStakingPool_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFromGiantFeesAndMevPool?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_not?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_gt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_lt?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_gte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_lte?: InputMaybe<Scalars['BigInt']>;
+  totalETHFromGiantFeesAndMevPool_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalETHFromGiantFeesAndMevPool_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  giantPoolLastFundedTimestamp?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_not?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_gt?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_lt?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_gte?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_lte?: InputMaybe<Scalars['BigInt']>;
+  giantPoolLastFundedTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  giantPoolLastFundedTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  registerInitialsBlockNumber?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_not?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_gt?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_lt?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_gte?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_lte?: InputMaybe<Scalars['BigInt']>;
+  registerInitialsBlockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  registerInitialsBlockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  ethSentToDepositContractBlockNumber?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_not?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_gt?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_lt?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_gte?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_lte?: InputMaybe<Scalars['BigInt']>;
+  ethSentToDepositContractBlockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  ethSentToDepositContractBlockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  derivativesMintedBlockNumber?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_not?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_gt?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_lt?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_gte?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_lte?: InputMaybe<Scalars['BigInt']>;
+  derivativesMintedBlockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  derivativesMintedBlockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<LSDValidator_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<LSDValidator_filter>>>;
+};
+
+export type LSDValidator_orderBy =
+  | 'id'
+  | 'smartWallet'
+  | 'smartWallet__id'
+  | 'smartWallet__availableToStake'
+  | 'smartWallet__inProcessOfAwaitingActivation'
+  | 'status'
+  | 'isReadyToStake'
+  | 'liquidStakingManager'
+  | 'withdrawn'
+  | 'currentIndex'
+  | 'totalETHStaked'
+  | 'totalETHFundedFromGiantPool'
+  | 'totalETHFromGiantProtectedStakingPool'
+  | 'totalETHFromGiantFeesAndMevPool'
+  | 'giantPoolLastFundedTimestamp'
+  | 'registerInitialsBlockNumber'
+  | 'ethSentToDepositContractBlockNumber'
+  | 'derivativesMintedBlockNumber';
+
+export type LiquidStakingNetwork = {
+  id: Scalars['ID'];
+  liquidStakingManager: Scalars['Bytes'];
+  dao: Scalars['Bytes'];
+  feeRecipientAndSyndicate: Scalars['Bytes'];
+  savETHPool: Scalars['Bytes'];
+  feesAndMevPool: Scalars['Bytes'];
+  stakehouseAddress?: Maybe<Scalars['Bytes']>;
+  optionalGatekeeper?: Maybe<Scalars['Bytes']>;
+  lsdIndex: Scalars['BigInt'];
+  ticker: Scalars['String'];
+  commission: Scalars['BigInt'];
+  isNodeRunningBehindGatekeeper: Scalars['Boolean'];
+  firstKnot?: Maybe<Scalars['String']>;
+  numberOfValidatorsBeingPrepared: Scalars['BigInt'];
+  numberOfStakedValidators: Scalars['BigInt'];
+  numberOfKnotsThatHaveMintedDerivatives: Scalars['BigInt'];
+};
+
+export type LiquidStakingNetwork_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  liquidStakingManager?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_not?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_gt?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_lt?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_gte?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_lte?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  liquidStakingManager_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  liquidStakingManager_contains?: InputMaybe<Scalars['Bytes']>;
+  liquidStakingManager_not_contains?: InputMaybe<Scalars['Bytes']>;
+  dao?: InputMaybe<Scalars['Bytes']>;
+  dao_not?: InputMaybe<Scalars['Bytes']>;
+  dao_gt?: InputMaybe<Scalars['Bytes']>;
+  dao_lt?: InputMaybe<Scalars['Bytes']>;
+  dao_gte?: InputMaybe<Scalars['Bytes']>;
+  dao_lte?: InputMaybe<Scalars['Bytes']>;
+  dao_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  dao_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  dao_contains?: InputMaybe<Scalars['Bytes']>;
+  dao_not_contains?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_not?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_gt?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_lt?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_gte?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_lte?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  feeRecipientAndSyndicate_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  feeRecipientAndSyndicate_contains?: InputMaybe<Scalars['Bytes']>;
+  feeRecipientAndSyndicate_not_contains?: InputMaybe<Scalars['Bytes']>;
+  savETHPool?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_not?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_gt?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_lt?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_gte?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_lte?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  savETHPool_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  savETHPool_contains?: InputMaybe<Scalars['Bytes']>;
+  savETHPool_not_contains?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_not?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_gt?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_lt?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_gte?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_lte?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  feesAndMevPool_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  feesAndMevPool_contains?: InputMaybe<Scalars['Bytes']>;
+  feesAndMevPool_not_contains?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_not?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_gt?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_lt?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_gte?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_lte?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  stakehouseAddress_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  stakehouseAddress_contains?: InputMaybe<Scalars['Bytes']>;
+  stakehouseAddress_not_contains?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_not?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_gt?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_lt?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_gte?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_lte?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  optionalGatekeeper_not_in?: InputMaybe<Array<Scalars['Bytes']>>;
+  optionalGatekeeper_contains?: InputMaybe<Scalars['Bytes']>;
+  optionalGatekeeper_not_contains?: InputMaybe<Scalars['Bytes']>;
+  lsdIndex?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_not?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_gt?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_lt?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_gte?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_lte?: InputMaybe<Scalars['BigInt']>;
+  lsdIndex_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  lsdIndex_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  ticker?: InputMaybe<Scalars['String']>;
+  ticker_not?: InputMaybe<Scalars['String']>;
+  ticker_gt?: InputMaybe<Scalars['String']>;
+  ticker_lt?: InputMaybe<Scalars['String']>;
+  ticker_gte?: InputMaybe<Scalars['String']>;
+  ticker_lte?: InputMaybe<Scalars['String']>;
+  ticker_in?: InputMaybe<Array<Scalars['String']>>;
+  ticker_not_in?: InputMaybe<Array<Scalars['String']>>;
+  ticker_contains?: InputMaybe<Scalars['String']>;
+  ticker_contains_nocase?: InputMaybe<Scalars['String']>;
+  ticker_not_contains?: InputMaybe<Scalars['String']>;
+  ticker_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  ticker_starts_with?: InputMaybe<Scalars['String']>;
+  ticker_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  ticker_not_starts_with?: InputMaybe<Scalars['String']>;
+  ticker_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  ticker_ends_with?: InputMaybe<Scalars['String']>;
+  ticker_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  ticker_not_ends_with?: InputMaybe<Scalars['String']>;
+  ticker_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  commission?: InputMaybe<Scalars['BigInt']>;
+  commission_not?: InputMaybe<Scalars['BigInt']>;
+  commission_gt?: InputMaybe<Scalars['BigInt']>;
+  commission_lt?: InputMaybe<Scalars['BigInt']>;
+  commission_gte?: InputMaybe<Scalars['BigInt']>;
+  commission_lte?: InputMaybe<Scalars['BigInt']>;
+  commission_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  commission_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  isNodeRunningBehindGatekeeper?: InputMaybe<Scalars['Boolean']>;
+  isNodeRunningBehindGatekeeper_not?: InputMaybe<Scalars['Boolean']>;
+  isNodeRunningBehindGatekeeper_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  isNodeRunningBehindGatekeeper_not_in?: InputMaybe<Array<Scalars['Boolean']>>;
+  firstKnot?: InputMaybe<Scalars['String']>;
+  firstKnot_not?: InputMaybe<Scalars['String']>;
+  firstKnot_gt?: InputMaybe<Scalars['String']>;
+  firstKnot_lt?: InputMaybe<Scalars['String']>;
+  firstKnot_gte?: InputMaybe<Scalars['String']>;
+  firstKnot_lte?: InputMaybe<Scalars['String']>;
+  firstKnot_in?: InputMaybe<Array<Scalars['String']>>;
+  firstKnot_not_in?: InputMaybe<Array<Scalars['String']>>;
+  firstKnot_contains?: InputMaybe<Scalars['String']>;
+  firstKnot_contains_nocase?: InputMaybe<Scalars['String']>;
+  firstKnot_not_contains?: InputMaybe<Scalars['String']>;
+  firstKnot_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  firstKnot_starts_with?: InputMaybe<Scalars['String']>;
+  firstKnot_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  firstKnot_not_starts_with?: InputMaybe<Scalars['String']>;
+  firstKnot_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  firstKnot_ends_with?: InputMaybe<Scalars['String']>;
+  firstKnot_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  firstKnot_not_ends_with?: InputMaybe<Scalars['String']>;
+  firstKnot_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  numberOfValidatorsBeingPrepared?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_not?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_gt?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_lt?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_gte?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_lte?: InputMaybe<Scalars['BigInt']>;
+  numberOfValidatorsBeingPrepared_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numberOfValidatorsBeingPrepared_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numberOfStakedValidators?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_not?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_gt?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_lt?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_gte?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_lte?: InputMaybe<Scalars['BigInt']>;
+  numberOfStakedValidators_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numberOfStakedValidators_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numberOfKnotsThatHaveMintedDerivatives?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_not?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_gt?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_lt?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_gte?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_lte?: InputMaybe<Scalars['BigInt']>;
+  numberOfKnotsThatHaveMintedDerivatives_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  numberOfKnotsThatHaveMintedDerivatives_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<LiquidStakingNetwork_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<LiquidStakingNetwork_filter>>>;
+};
+
+export type LiquidStakingNetwork_orderBy =
+  | 'id'
+  | 'liquidStakingManager'
+  | 'dao'
+  | 'feeRecipientAndSyndicate'
+  | 'savETHPool'
+  | 'feesAndMevPool'
+  | 'stakehouseAddress'
+  | 'optionalGatekeeper'
+  | 'lsdIndex'
+  | 'ticker'
+  | 'commission'
+  | 'isNodeRunningBehindGatekeeper'
+  | 'firstKnot'
+  | 'numberOfValidatorsBeingPrepared'
+  | 'numberOfStakedValidators'
+  | 'numberOfKnotsThatHaveMintedDerivatives';
+
+export type NodeRunner = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  smartWallets: Array<SmartWallet>;
+  liquidStakingNetworks: Array<LiquidStakingNetwork>;
+  validators: Array<LSDValidator>;
+};
+
+
+export type NodeRunnersmartWalletsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<SmartWallet_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<SmartWallet_filter>;
+};
+
+
+export type NodeRunnerliquidStakingNetworksArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LiquidStakingNetwork_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LiquidStakingNetwork_filter>;
+};
+
+
+export type NodeRunnervalidatorsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<LSDValidator_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<LSDValidator_filter>;
+};
+
+export type NodeRunner_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  name?: InputMaybe<Scalars['String']>;
+  name_not?: InputMaybe<Scalars['String']>;
+  name_gt?: InputMaybe<Scalars['String']>;
+  name_lt?: InputMaybe<Scalars['String']>;
+  name_gte?: InputMaybe<Scalars['String']>;
+  name_lte?: InputMaybe<Scalars['String']>;
+  name_in?: InputMaybe<Array<Scalars['String']>>;
+  name_not_in?: InputMaybe<Array<Scalars['String']>>;
+  name_contains?: InputMaybe<Scalars['String']>;
+  name_contains_nocase?: InputMaybe<Scalars['String']>;
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  name_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  name_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  name_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  name_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  name_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  smartWallets?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_not?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_contains?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  smartWallets_?: InputMaybe<SmartWallet_filter>;
+  liquidStakingNetworks?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_not?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetworks_?: InputMaybe<LiquidStakingNetwork_filter>;
+  validators?: InputMaybe<Array<Scalars['String']>>;
+  validators_not?: InputMaybe<Array<Scalars['String']>>;
+  validators_contains?: InputMaybe<Array<Scalars['String']>>;
+  validators_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  validators_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  validators_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  validators_?: InputMaybe<LSDValidator_filter>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<NodeRunner_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<NodeRunner_filter>>>;
+};
+
+export type NodeRunner_orderBy =
+  | 'id'
+  | 'name'
+  | 'smartWallets'
+  | 'liquidStakingNetworks'
+  | 'validators';
+
+/** Defines the order direction, either ascending or descending */
+export type OrderDirection =
+  | 'asc'
+  | 'desc';
+
+export type Payout = {
+  id: Scalars['ID'];
+  user: Scalars['String'];
+  amount: Scalars['BigInt'];
+  recipient: Scalars['String'];
+  blsPublicKey?: Maybe<Scalars['String']>;
+  type: Scalars['String'];
+  timestamp: Scalars['BigInt'];
+};
+
+export type Payout_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  user?: InputMaybe<Scalars['String']>;
+  user_not?: InputMaybe<Scalars['String']>;
+  user_gt?: InputMaybe<Scalars['String']>;
+  user_lt?: InputMaybe<Scalars['String']>;
+  user_gte?: InputMaybe<Scalars['String']>;
+  user_lte?: InputMaybe<Scalars['String']>;
+  user_in?: InputMaybe<Array<Scalars['String']>>;
+  user_not_in?: InputMaybe<Array<Scalars['String']>>;
+  user_contains?: InputMaybe<Scalars['String']>;
+  user_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_not_contains?: InputMaybe<Scalars['String']>;
+  user_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  user_starts_with?: InputMaybe<Scalars['String']>;
+  user_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_starts_with?: InputMaybe<Scalars['String']>;
+  user_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  user_ends_with?: InputMaybe<Scalars['String']>;
+  user_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  user_not_ends_with?: InputMaybe<Scalars['String']>;
+  user_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  amount?: InputMaybe<Scalars['BigInt']>;
+  amount_not?: InputMaybe<Scalars['BigInt']>;
+  amount_gt?: InputMaybe<Scalars['BigInt']>;
+  amount_lt?: InputMaybe<Scalars['BigInt']>;
+  amount_gte?: InputMaybe<Scalars['BigInt']>;
+  amount_lte?: InputMaybe<Scalars['BigInt']>;
+  amount_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  amount_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  recipient?: InputMaybe<Scalars['String']>;
+  recipient_not?: InputMaybe<Scalars['String']>;
+  recipient_gt?: InputMaybe<Scalars['String']>;
+  recipient_lt?: InputMaybe<Scalars['String']>;
+  recipient_gte?: InputMaybe<Scalars['String']>;
+  recipient_lte?: InputMaybe<Scalars['String']>;
+  recipient_in?: InputMaybe<Array<Scalars['String']>>;
+  recipient_not_in?: InputMaybe<Array<Scalars['String']>>;
+  recipient_contains?: InputMaybe<Scalars['String']>;
+  recipient_contains_nocase?: InputMaybe<Scalars['String']>;
+  recipient_not_contains?: InputMaybe<Scalars['String']>;
+  recipient_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  recipient_starts_with?: InputMaybe<Scalars['String']>;
+  recipient_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  recipient_not_starts_with?: InputMaybe<Scalars['String']>;
+  recipient_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  recipient_ends_with?: InputMaybe<Scalars['String']>;
+  recipient_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  recipient_not_ends_with?: InputMaybe<Scalars['String']>;
+  recipient_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_not_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
+  type_not?: InputMaybe<Scalars['String']>;
+  type_gt?: InputMaybe<Scalars['String']>;
+  type_lt?: InputMaybe<Scalars['String']>;
+  type_gte?: InputMaybe<Scalars['String']>;
+  type_lte?: InputMaybe<Scalars['String']>;
+  type_in?: InputMaybe<Array<Scalars['String']>>;
+  type_not_in?: InputMaybe<Array<Scalars['String']>>;
+  type_contains?: InputMaybe<Scalars['String']>;
+  type_contains_nocase?: InputMaybe<Scalars['String']>;
+  type_not_contains?: InputMaybe<Scalars['String']>;
+  type_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  type_starts_with?: InputMaybe<Scalars['String']>;
+  type_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  type_not_starts_with?: InputMaybe<Scalars['String']>;
+  type_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  type_ends_with?: InputMaybe<Scalars['String']>;
+  type_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  type_not_ends_with?: InputMaybe<Scalars['String']>;
+  type_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['BigInt']>;
+  timestamp_not?: InputMaybe<Scalars['BigInt']>;
+  timestamp_gt?: InputMaybe<Scalars['BigInt']>;
+  timestamp_lt?: InputMaybe<Scalars['BigInt']>;
+  timestamp_gte?: InputMaybe<Scalars['BigInt']>;
+  timestamp_lte?: InputMaybe<Scalars['BigInt']>;
+  timestamp_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Payout_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<Payout_filter>>>;
+};
+
+export type Payout_orderBy =
+  | 'id'
+  | 'user'
+  | 'amount'
+  | 'recipient'
+  | 'blsPublicKey'
+  | 'type'
+  | 'timestamp';
+
+export type ProtectedBatch = {
+  id: Scalars['ID'];
+  blsPublicKey?: Maybe<Scalars['String']>;
+  vaultLPToken?: Maybe<LPToken>;
+  lsdValidator?: Maybe<LSDValidator>;
+  listOfLiquidityProviderAddresses: Array<Scalars['String']>;
+  liquidityProviders: Array<GiantLiquidityProvider>;
+};
+
+
+export type ProtectedBatchliquidityProvidersArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<GiantLiquidityProvider_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<GiantLiquidityProvider_filter>;
+};
+
+export type ProtectedBatch_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  blsPublicKey?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lt?: InputMaybe<Scalars['String']>;
+  blsPublicKey_gte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_lte?: InputMaybe<Scalars['String']>;
+  blsPublicKey_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_not_in?: InputMaybe<Array<Scalars['String']>>;
+  blsPublicKey_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with?: InputMaybe<Scalars['String']>;
+  blsPublicKey_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  vaultLPToken_?: InputMaybe<LPToken_filter>;
+  lsdValidator?: InputMaybe<Scalars['String']>;
+  lsdValidator_not?: InputMaybe<Scalars['String']>;
+  lsdValidator_gt?: InputMaybe<Scalars['String']>;
+  lsdValidator_lt?: InputMaybe<Scalars['String']>;
+  lsdValidator_gte?: InputMaybe<Scalars['String']>;
+  lsdValidator_lte?: InputMaybe<Scalars['String']>;
+  lsdValidator_in?: InputMaybe<Array<Scalars['String']>>;
+  lsdValidator_not_in?: InputMaybe<Array<Scalars['String']>>;
+  lsdValidator_contains?: InputMaybe<Scalars['String']>;
+  lsdValidator_contains_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_contains?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_starts_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_starts_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_ends_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_ends_with?: InputMaybe<Scalars['String']>;
+  lsdValidator_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  lsdValidator_?: InputMaybe<LSDValidator_filter>;
+  listOfLiquidityProviderAddresses?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_contains?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  listOfLiquidityProviderAddresses_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  liquidityProviders_?: InputMaybe<GiantLiquidityProvider_filter>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<ProtectedBatch_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<ProtectedBatch_filter>>>;
+};
+
+export type ProtectedBatch_orderBy =
+  | 'id'
+  | 'blsPublicKey'
+  | 'vaultLPToken'
+  | 'vaultLPToken__id'
+  | 'vaultLPToken__blsPublicKey'
+  | 'vaultLPToken__minted'
+  | 'vaultLPToken__withdrawn'
+  | 'vaultLPToken__issuer'
+  | 'vaultLPToken__tokenType'
+  | 'vaultLPToken__giantPoolBalance'
+  | 'vaultLPToken__lifecycleStatus'
+  | 'lsdValidator'
+  | 'lsdValidator__id'
+  | 'lsdValidator__status'
+  | 'lsdValidator__isReadyToStake'
+  | 'lsdValidator__liquidStakingManager'
+  | 'lsdValidator__withdrawn'
+  | 'lsdValidator__currentIndex'
+  | 'lsdValidator__totalETHStaked'
+  | 'lsdValidator__totalETHFundedFromGiantPool'
+  | 'lsdValidator__totalETHFromGiantProtectedStakingPool'
+  | 'lsdValidator__totalETHFromGiantFeesAndMevPool'
+  | 'lsdValidator__giantPoolLastFundedTimestamp'
+  | 'lsdValidator__registerInitialsBlockNumber'
+  | 'lsdValidator__ethSentToDepositContractBlockNumber'
+  | 'lsdValidator__derivativesMintedBlockNumber'
+  | 'listOfLiquidityProviderAddresses'
+  | 'liquidityProviders';
+
+export type ProtectedDeposit = {
+  id: Scalars['ID'];
+  liquidStakingNetwork: LiquidStakingNetwork;
+  validator: LSDValidator;
+  token: Scalars['String'];
+  depositor: Scalars['String'];
+  totalDeposit: Scalars['BigInt'];
+};
+
+export type ProtectedDeposit_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  liquidStakingNetwork?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_?: InputMaybe<LiquidStakingNetwork_filter>;
+  validator?: InputMaybe<Scalars['String']>;
+  validator_not?: InputMaybe<Scalars['String']>;
+  validator_gt?: InputMaybe<Scalars['String']>;
+  validator_lt?: InputMaybe<Scalars['String']>;
+  validator_gte?: InputMaybe<Scalars['String']>;
+  validator_lte?: InputMaybe<Scalars['String']>;
+  validator_in?: InputMaybe<Array<Scalars['String']>>;
+  validator_not_in?: InputMaybe<Array<Scalars['String']>>;
+  validator_contains?: InputMaybe<Scalars['String']>;
+  validator_contains_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_contains?: InputMaybe<Scalars['String']>;
+  validator_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  validator_starts_with?: InputMaybe<Scalars['String']>;
+  validator_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_starts_with?: InputMaybe<Scalars['String']>;
+  validator_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_ends_with?: InputMaybe<Scalars['String']>;
+  validator_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_not_ends_with?: InputMaybe<Scalars['String']>;
+  validator_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  validator_?: InputMaybe<LSDValidator_filter>;
+  token?: InputMaybe<Scalars['String']>;
+  token_not?: InputMaybe<Scalars['String']>;
+  token_gt?: InputMaybe<Scalars['String']>;
+  token_lt?: InputMaybe<Scalars['String']>;
+  token_gte?: InputMaybe<Scalars['String']>;
+  token_lte?: InputMaybe<Scalars['String']>;
+  token_in?: InputMaybe<Array<Scalars['String']>>;
+  token_not_in?: InputMaybe<Array<Scalars['String']>>;
+  token_contains?: InputMaybe<Scalars['String']>;
+  token_contains_nocase?: InputMaybe<Scalars['String']>;
+  token_not_contains?: InputMaybe<Scalars['String']>;
+  token_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  token_starts_with?: InputMaybe<Scalars['String']>;
+  token_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  token_not_starts_with?: InputMaybe<Scalars['String']>;
+  token_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  token_ends_with?: InputMaybe<Scalars['String']>;
+  token_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  token_not_ends_with?: InputMaybe<Scalars['String']>;
+  token_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor?: InputMaybe<Scalars['String']>;
+  depositor_not?: InputMaybe<Scalars['String']>;
+  depositor_gt?: InputMaybe<Scalars['String']>;
+  depositor_lt?: InputMaybe<Scalars['String']>;
+  depositor_gte?: InputMaybe<Scalars['String']>;
+  depositor_lte?: InputMaybe<Scalars['String']>;
+  depositor_in?: InputMaybe<Array<Scalars['String']>>;
+  depositor_not_in?: InputMaybe<Array<Scalars['String']>>;
+  depositor_contains?: InputMaybe<Scalars['String']>;
+  depositor_contains_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_contains?: InputMaybe<Scalars['String']>;
+  depositor_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  depositor_starts_with?: InputMaybe<Scalars['String']>;
+  depositor_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_starts_with?: InputMaybe<Scalars['String']>;
+  depositor_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_ends_with?: InputMaybe<Scalars['String']>;
+  depositor_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  depositor_not_ends_with?: InputMaybe<Scalars['String']>;
+  depositor_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  totalDeposit?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_not?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_gt?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_lt?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_gte?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_lte?: InputMaybe<Scalars['BigInt']>;
+  totalDeposit_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalDeposit_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<ProtectedDeposit_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<ProtectedDeposit_filter>>>;
+};
+
+export type ProtectedDeposit_orderBy =
+  | 'id'
+  | 'liquidStakingNetwork'
+  | 'liquidStakingNetwork__id'
+  | 'liquidStakingNetwork__liquidStakingManager'
+  | 'liquidStakingNetwork__dao'
+  | 'liquidStakingNetwork__feeRecipientAndSyndicate'
+  | 'liquidStakingNetwork__savETHPool'
+  | 'liquidStakingNetwork__feesAndMevPool'
+  | 'liquidStakingNetwork__stakehouseAddress'
+  | 'liquidStakingNetwork__optionalGatekeeper'
+  | 'liquidStakingNetwork__lsdIndex'
+  | 'liquidStakingNetwork__ticker'
+  | 'liquidStakingNetwork__commission'
+  | 'liquidStakingNetwork__isNodeRunningBehindGatekeeper'
+  | 'liquidStakingNetwork__firstKnot'
+  | 'liquidStakingNetwork__numberOfValidatorsBeingPrepared'
+  | 'liquidStakingNetwork__numberOfStakedValidators'
+  | 'liquidStakingNetwork__numberOfKnotsThatHaveMintedDerivatives'
+  | 'validator'
+  | 'validator__id'
+  | 'validator__status'
+  | 'validator__isReadyToStake'
+  | 'validator__liquidStakingManager'
+  | 'validator__withdrawn'
+  | 'validator__currentIndex'
+  | 'validator__totalETHStaked'
+  | 'validator__totalETHFundedFromGiantPool'
+  | 'validator__totalETHFromGiantProtectedStakingPool'
+  | 'validator__totalETHFromGiantFeesAndMevPool'
+  | 'validator__giantPoolLastFundedTimestamp'
+  | 'validator__registerInitialsBlockNumber'
+  | 'validator__ethSentToDepositContractBlockNumber'
+  | 'validator__derivativesMintedBlockNumber'
+  | 'token'
+  | 'depositor'
+  | 'totalDeposit';
+
+export type SmartWallet = {
+  id: Scalars['ID'];
+  liquidStakingNetwork: LiquidStakingNetwork;
+  nodeRunner: NodeRunner;
+  availableToStake: Scalars['BigInt'];
+  inProcessOfAwaitingActivation: Scalars['BigInt'];
+};
+
+export type SmartWallet_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  liquidStakingNetwork?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_?: InputMaybe<LiquidStakingNetwork_filter>;
+  nodeRunner?: InputMaybe<Scalars['String']>;
+  nodeRunner_not?: InputMaybe<Scalars['String']>;
+  nodeRunner_gt?: InputMaybe<Scalars['String']>;
+  nodeRunner_lt?: InputMaybe<Scalars['String']>;
+  nodeRunner_gte?: InputMaybe<Scalars['String']>;
+  nodeRunner_lte?: InputMaybe<Scalars['String']>;
+  nodeRunner_in?: InputMaybe<Array<Scalars['String']>>;
+  nodeRunner_not_in?: InputMaybe<Array<Scalars['String']>>;
+  nodeRunner_contains?: InputMaybe<Scalars['String']>;
+  nodeRunner_contains_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_contains?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_starts_with?: InputMaybe<Scalars['String']>;
+  nodeRunner_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_starts_with?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_ends_with?: InputMaybe<Scalars['String']>;
+  nodeRunner_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_ends_with?: InputMaybe<Scalars['String']>;
+  nodeRunner_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  nodeRunner_?: InputMaybe<NodeRunner_filter>;
+  availableToStake?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_not?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lt?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_gte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_lte?: InputMaybe<Scalars['BigInt']>;
+  availableToStake_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  availableToStake_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  inProcessOfAwaitingActivation?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_not?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_gt?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_lt?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_gte?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_lte?: InputMaybe<Scalars['BigInt']>;
+  inProcessOfAwaitingActivation_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  inProcessOfAwaitingActivation_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<SmartWallet_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<SmartWallet_filter>>>;
+};
+
+export type SmartWallet_orderBy =
+  | 'id'
+  | 'liquidStakingNetwork'
+  | 'liquidStakingNetwork__id'
+  | 'liquidStakingNetwork__liquidStakingManager'
+  | 'liquidStakingNetwork__dao'
+  | 'liquidStakingNetwork__feeRecipientAndSyndicate'
+  | 'liquidStakingNetwork__savETHPool'
+  | 'liquidStakingNetwork__feesAndMevPool'
+  | 'liquidStakingNetwork__stakehouseAddress'
+  | 'liquidStakingNetwork__optionalGatekeeper'
+  | 'liquidStakingNetwork__lsdIndex'
+  | 'liquidStakingNetwork__ticker'
+  | 'liquidStakingNetwork__commission'
+  | 'liquidStakingNetwork__isNodeRunningBehindGatekeeper'
+  | 'liquidStakingNetwork__firstKnot'
+  | 'liquidStakingNetwork__numberOfValidatorsBeingPrepared'
+  | 'liquidStakingNetwork__numberOfStakedValidators'
+  | 'liquidStakingNetwork__numberOfKnotsThatHaveMintedDerivatives'
+  | 'nodeRunner'
+  | 'nodeRunner__id'
+  | 'nodeRunner__name'
+  | 'availableToStake'
+  | 'inProcessOfAwaitingActivation';
+
+export type Syndicate = {
+  id: Scalars['ID'];
+  liquidStakingNetwork: LiquidStakingNetwork;
+  totalPayout: Scalars['BigInt'];
+  payouts: Array<Payout>;
+  totalNodeOperatorPayout: Scalars['BigInt'];
+  totalFeesAndMevPayout: Scalars['BigInt'];
+};
+
+
+export type SyndicatepayoutsArgs = {
+  skip?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Payout_orderBy>;
+  orderDirection?: InputMaybe<OrderDirection>;
+  where?: InputMaybe<Payout_filter>;
+};
+
+export type Syndicate_filter = {
+  id?: InputMaybe<Scalars['ID']>;
+  id_not?: InputMaybe<Scalars['ID']>;
+  id_gt?: InputMaybe<Scalars['ID']>;
+  id_lt?: InputMaybe<Scalars['ID']>;
+  id_gte?: InputMaybe<Scalars['ID']>;
+  id_lte?: InputMaybe<Scalars['ID']>;
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  liquidStakingNetwork?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lt?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_gte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_lte?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_not_in?: InputMaybe<Array<Scalars['String']>>;
+  liquidStakingNetwork_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_contains_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
+  liquidStakingNetwork_?: InputMaybe<LiquidStakingNetwork_filter>;
+  totalPayout?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_not?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_gt?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_lt?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_gte?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_lte?: InputMaybe<Scalars['BigInt']>;
+  totalPayout_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalPayout_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  payouts?: InputMaybe<Array<Scalars['String']>>;
+  payouts_not?: InputMaybe<Array<Scalars['String']>>;
+  payouts_contains?: InputMaybe<Array<Scalars['String']>>;
+  payouts_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  payouts_not_contains?: InputMaybe<Array<Scalars['String']>>;
+  payouts_not_contains_nocase?: InputMaybe<Array<Scalars['String']>>;
+  payouts_?: InputMaybe<Payout_filter>;
+  totalNodeOperatorPayout?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_not?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_gt?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_lt?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_gte?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_lte?: InputMaybe<Scalars['BigInt']>;
+  totalNodeOperatorPayout_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalNodeOperatorPayout_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalFeesAndMevPayout?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_not?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_gt?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_lt?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_gte?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_lte?: InputMaybe<Scalars['BigInt']>;
+  totalFeesAndMevPayout_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  totalFeesAndMevPayout_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  /** Filter for the block changed event. */
+  _change_block?: InputMaybe<BlockChangedFilter>;
+  and?: InputMaybe<Array<InputMaybe<Syndicate_filter>>>;
+  or?: InputMaybe<Array<InputMaybe<Syndicate_filter>>>;
+};
+
+export type Syndicate_orderBy =
+  | 'id'
+  | 'liquidStakingNetwork'
+  | 'liquidStakingNetwork__id'
+  | 'liquidStakingNetwork__liquidStakingManager'
+  | 'liquidStakingNetwork__dao'
+  | 'liquidStakingNetwork__feeRecipientAndSyndicate'
+  | 'liquidStakingNetwork__savETHPool'
+  | 'liquidStakingNetwork__feesAndMevPool'
+  | 'liquidStakingNetwork__stakehouseAddress'
+  | 'liquidStakingNetwork__optionalGatekeeper'
+  | 'liquidStakingNetwork__lsdIndex'
+  | 'liquidStakingNetwork__ticker'
+  | 'liquidStakingNetwork__commission'
+  | 'liquidStakingNetwork__isNodeRunningBehindGatekeeper'
+  | 'liquidStakingNetwork__firstKnot'
+  | 'liquidStakingNetwork__numberOfValidatorsBeingPrepared'
+  | 'liquidStakingNetwork__numberOfStakedValidators'
+  | 'liquidStakingNetwork__numberOfKnotsThatHaveMintedDerivatives'
+  | 'totalPayout'
+  | 'payouts'
+  | 'totalNodeOperatorPayout'
+  | 'totalFeesAndMevPayout';
+
+export type _Block_ = {
+  /** The hash of the block */
+  hash?: Maybe<Scalars['Bytes']>;
+  /** The block number */
+  number: Scalars['Int'];
+  /** Integer representation of the timestamp stored in blocks for the chain */
+  timestamp?: Maybe<Scalars['Int']>;
+};
+
+/** The type for the top-level _meta field */
+export type _Meta_ = {
+  /**
+   * Information about a specific subgraph block. The hash of the block
+   * will be null if the _meta field has a block constraint that asks for
+   * a block number. It will be filled if the _meta field has no block constraint
+   * and therefore asks for the latest  block
+   *
+   */
+  block: _Block_;
+  /** The deployment ID */
+  deployment: Scalars['String'];
+  /** If `true`, the subgraph encountered indexing errors at some past block */
+  hasIndexingErrors: Scalars['Boolean'];
+};
+
+export type _SubgraphErrorPolicy_ =
+  /** Data will be returned even if the subgraph has indexing errors */
+  | 'allow'
+  /** If the subgraph has indexing errors, data will be omitted. The default. */
+  | 'deny';
 
 export type BrandCentralGlobal = {
   id: Scalars['ID'];
@@ -838,158 +4517,6 @@ export type EFDeposit_orderBy =
   | 'amount'
   | 'blockNumber';
 
-export type Event = {
-  id: Scalars['ID'];
-  from: Scalars['String'];
-  blockNumber: Scalars['BigInt'];
-  blockTimestamp: Scalars['BigInt'];
-  blsPubKeyForKnot: Scalars['String'];
-  key: Scalars['String'];
-  value: Scalars['String'];
-  value2?: Maybe<Scalars['String']>;
-};
-
-export type Event_filter = {
-  id?: InputMaybe<Scalars['ID']>;
-  id_not?: InputMaybe<Scalars['ID']>;
-  id_gt?: InputMaybe<Scalars['ID']>;
-  id_lt?: InputMaybe<Scalars['ID']>;
-  id_gte?: InputMaybe<Scalars['ID']>;
-  id_lte?: InputMaybe<Scalars['ID']>;
-  id_in?: InputMaybe<Array<Scalars['ID']>>;
-  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
-  from?: InputMaybe<Scalars['String']>;
-  from_not?: InputMaybe<Scalars['String']>;
-  from_gt?: InputMaybe<Scalars['String']>;
-  from_lt?: InputMaybe<Scalars['String']>;
-  from_gte?: InputMaybe<Scalars['String']>;
-  from_lte?: InputMaybe<Scalars['String']>;
-  from_in?: InputMaybe<Array<Scalars['String']>>;
-  from_not_in?: InputMaybe<Array<Scalars['String']>>;
-  from_contains?: InputMaybe<Scalars['String']>;
-  from_contains_nocase?: InputMaybe<Scalars['String']>;
-  from_not_contains?: InputMaybe<Scalars['String']>;
-  from_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  from_starts_with?: InputMaybe<Scalars['String']>;
-  from_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  from_not_starts_with?: InputMaybe<Scalars['String']>;
-  from_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  from_ends_with?: InputMaybe<Scalars['String']>;
-  from_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  from_not_ends_with?: InputMaybe<Scalars['String']>;
-  from_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  blockNumber?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_not?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_gt?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_lt?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_gte?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_lte?: InputMaybe<Scalars['BigInt']>;
-  blockNumber_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  blockNumber_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  blockTimestamp?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_not?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_gt?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_lt?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_gte?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_lte?: InputMaybe<Scalars['BigInt']>;
-  blockTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  blockTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
-  blsPubKeyForKnot?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_gt?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_lt?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_gte?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_lte?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_in?: InputMaybe<Array<Scalars['String']>>;
-  blsPubKeyForKnot_not_in?: InputMaybe<Array<Scalars['String']>>;
-  blsPubKeyForKnot_contains?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_contains_nocase?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_contains?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_starts_with?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_starts_with?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_ends_with?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_ends_with?: InputMaybe<Scalars['String']>;
-  blsPubKeyForKnot_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  key?: InputMaybe<Scalars['String']>;
-  key_not?: InputMaybe<Scalars['String']>;
-  key_gt?: InputMaybe<Scalars['String']>;
-  key_lt?: InputMaybe<Scalars['String']>;
-  key_gte?: InputMaybe<Scalars['String']>;
-  key_lte?: InputMaybe<Scalars['String']>;
-  key_in?: InputMaybe<Array<Scalars['String']>>;
-  key_not_in?: InputMaybe<Array<Scalars['String']>>;
-  key_contains?: InputMaybe<Scalars['String']>;
-  key_contains_nocase?: InputMaybe<Scalars['String']>;
-  key_not_contains?: InputMaybe<Scalars['String']>;
-  key_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  key_starts_with?: InputMaybe<Scalars['String']>;
-  key_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  key_not_starts_with?: InputMaybe<Scalars['String']>;
-  key_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  key_ends_with?: InputMaybe<Scalars['String']>;
-  key_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  key_not_ends_with?: InputMaybe<Scalars['String']>;
-  key_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  value?: InputMaybe<Scalars['String']>;
-  value_not?: InputMaybe<Scalars['String']>;
-  value_gt?: InputMaybe<Scalars['String']>;
-  value_lt?: InputMaybe<Scalars['String']>;
-  value_gte?: InputMaybe<Scalars['String']>;
-  value_lte?: InputMaybe<Scalars['String']>;
-  value_in?: InputMaybe<Array<Scalars['String']>>;
-  value_not_in?: InputMaybe<Array<Scalars['String']>>;
-  value_contains?: InputMaybe<Scalars['String']>;
-  value_contains_nocase?: InputMaybe<Scalars['String']>;
-  value_not_contains?: InputMaybe<Scalars['String']>;
-  value_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  value_starts_with?: InputMaybe<Scalars['String']>;
-  value_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  value_not_starts_with?: InputMaybe<Scalars['String']>;
-  value_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  value_ends_with?: InputMaybe<Scalars['String']>;
-  value_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  value_not_ends_with?: InputMaybe<Scalars['String']>;
-  value_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  value2?: InputMaybe<Scalars['String']>;
-  value2_not?: InputMaybe<Scalars['String']>;
-  value2_gt?: InputMaybe<Scalars['String']>;
-  value2_lt?: InputMaybe<Scalars['String']>;
-  value2_gte?: InputMaybe<Scalars['String']>;
-  value2_lte?: InputMaybe<Scalars['String']>;
-  value2_in?: InputMaybe<Array<Scalars['String']>>;
-  value2_not_in?: InputMaybe<Array<Scalars['String']>>;
-  value2_contains?: InputMaybe<Scalars['String']>;
-  value2_contains_nocase?: InputMaybe<Scalars['String']>;
-  value2_not_contains?: InputMaybe<Scalars['String']>;
-  value2_not_contains_nocase?: InputMaybe<Scalars['String']>;
-  value2_starts_with?: InputMaybe<Scalars['String']>;
-  value2_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  value2_not_starts_with?: InputMaybe<Scalars['String']>;
-  value2_not_starts_with_nocase?: InputMaybe<Scalars['String']>;
-  value2_ends_with?: InputMaybe<Scalars['String']>;
-  value2_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  value2_not_ends_with?: InputMaybe<Scalars['String']>;
-  value2_not_ends_with_nocase?: InputMaybe<Scalars['String']>;
-  /** Filter for the block changed event. */
-  _change_block?: InputMaybe<BlockChangedFilter>;
-  and?: InputMaybe<Array<InputMaybe<Event_filter>>>;
-  or?: InputMaybe<Array<InputMaybe<Event_filter>>>;
-};
-
-export type Event_orderBy =
-  | 'id'
-  | 'from'
-  | 'blockNumber'
-  | 'blockTimestamp'
-  | 'blsPubKeyForKnot'
-  | 'key'
-  | 'value'
-  | 'value2';
-
 export type GoodieBagItem = {
   id: Scalars['ID'];
   name: Scalars['String'];
@@ -1600,401 +5127,6 @@ export type KNOT_orderBy =
   | 'specialExitFee'
   | 'associatedBrandTokenId';
 
-/** Defines the order direction, either ascending or descending */
-export type OrderDirection =
-  | 'asc'
-  | 'desc';
-
-export type Query = {
-  universeGlobalValue?: Maybe<UniverseGlobalValue>;
-  universeGlobalValues: Array<UniverseGlobalValue>;
-  uniqueDepositor?: Maybe<UniqueDepositor>;
-  uniqueDepositors: Array<UniqueDepositor>;
-  uniqueRegisteredUser?: Maybe<UniqueRegisteredUser>;
-  uniqueRegisteredUsers: Array<UniqueRegisteredUser>;
-  event?: Maybe<Event>;
-  events: Array<Event>;
-  collateralizedKnotOwner?: Maybe<CollateralizedKnotOwner>;
-  collateralizedKnotOwners: Array<CollateralizedKnotOwner>;
-  knot?: Maybe<KNOT>;
-  knots: Array<KNOT>;
-  savETHIndex?: Maybe<savETHIndex>;
-  savETHIndexes: Array<savETHIndex>;
-  savETHIndexGlobal?: Maybe<savETHIndexGlobal>;
-  savETHIndexGlobals: Array<savETHIndexGlobal>;
-  brandCentralGlobal?: Maybe<BrandCentralGlobal>;
-  brandCentralGlobals: Array<BrandCentralGlobal>;
-  brandNft?: Maybe<BrandNft>;
-  brandNfts: Array<BrandNft>;
-  houseGoodieBag?: Maybe<HouseGoodieBag>;
-  houseGoodieBags: Array<HouseGoodieBag>;
-  goodieBagItem?: Maybe<GoodieBagItem>;
-  goodieBagItems: Array<GoodieBagItem>;
-  stakeHouse?: Maybe<StakeHouse>;
-  stakeHouses: Array<StakeHouse>;
-  efdepositContractEvent?: Maybe<EFDepositContractEvent>;
-  efdepositContractEvents: Array<EFDepositContractEvent>;
-  efdeposit?: Maybe<EFDeposit>;
-  efdeposits: Array<EFDeposit>;
-  stakehouseAccount?: Maybe<StakehouseAccount>;
-  stakehouseAccounts: Array<StakehouseAccount>;
-  decryptionPiece?: Maybe<DecryptionPiece>;
-  decryptionPieces: Array<DecryptionPiece>;
-  decryptionRequest?: Maybe<DecryptionRequest>;
-  decryptionRequests: Array<DecryptionRequest>;
-  guardian?: Maybe<Guardian>;
-  guardians: Array<Guardian>;
-  /** Access to subgraph metadata */
-  _meta?: Maybe<_Meta_>;
-};
-
-
-export type QueryuniverseGlobalValueArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryuniverseGlobalValuesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniverseGlobalValue_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniverseGlobalValue_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryuniqueDepositorArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryuniqueDepositorsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniqueDepositor_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniqueDepositor_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryuniqueRegisteredUserArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryuniqueRegisteredUsersArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniqueRegisteredUser_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniqueRegisteredUser_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryeventArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryeventsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Event_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<Event_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerycollateralizedKnotOwnerArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerycollateralizedKnotOwnersArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<CollateralizedKnotOwner_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<CollateralizedKnotOwner_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryknotArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryknotsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<KNOT_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<KNOT_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerysavETHIndexArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerysavETHIndexesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<savETHIndex_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<savETHIndex_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerysavETHIndexGlobalArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerysavETHIndexGlobalsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<savETHIndexGlobal_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<savETHIndexGlobal_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerybrandCentralGlobalArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerybrandCentralGlobalsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<BrandCentralGlobal_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<BrandCentralGlobal_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerybrandNftArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerybrandNftsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<BrandNft_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<BrandNft_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryhouseGoodieBagArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryhouseGoodieBagsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<HouseGoodieBag_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<HouseGoodieBag_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerygoodieBagItemArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerygoodieBagItemsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<GoodieBagItem_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<GoodieBagItem_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerystakeHouseArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerystakeHousesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<StakeHouse_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<StakeHouse_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryefdepositContractEventArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryefdepositContractEventsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<EFDepositContractEvent_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<EFDepositContractEvent_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryefdepositArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryefdepositsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<EFDeposit_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<EFDeposit_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerystakehouseAccountArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerystakehouseAccountsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<StakehouseAccount_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<StakehouseAccount_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerydecryptionPieceArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerydecryptionPiecesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<DecryptionPiece_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<DecryptionPiece_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerydecryptionRequestArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QuerydecryptionRequestsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<DecryptionRequest_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<DecryptionRequest_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryguardianArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type QueryguardiansArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Guardian_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<Guardian_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type Query_metaArgs = {
-  block?: InputMaybe<Block_height>;
-};
-
 export type StakeHouse = {
   id: Scalars['ID'];
   index: Scalars['BigInt'];
@@ -2599,396 +5731,6 @@ export type StakehouseAccount_orderBy =
   | 'lastDepositDepositCount'
   | 'blsSigningKeyCipherText';
 
-export type Subscription = {
-  universeGlobalValue?: Maybe<UniverseGlobalValue>;
-  universeGlobalValues: Array<UniverseGlobalValue>;
-  uniqueDepositor?: Maybe<UniqueDepositor>;
-  uniqueDepositors: Array<UniqueDepositor>;
-  uniqueRegisteredUser?: Maybe<UniqueRegisteredUser>;
-  uniqueRegisteredUsers: Array<UniqueRegisteredUser>;
-  event?: Maybe<Event>;
-  events: Array<Event>;
-  collateralizedKnotOwner?: Maybe<CollateralizedKnotOwner>;
-  collateralizedKnotOwners: Array<CollateralizedKnotOwner>;
-  knot?: Maybe<KNOT>;
-  knots: Array<KNOT>;
-  savETHIndex?: Maybe<savETHIndex>;
-  savETHIndexes: Array<savETHIndex>;
-  savETHIndexGlobal?: Maybe<savETHIndexGlobal>;
-  savETHIndexGlobals: Array<savETHIndexGlobal>;
-  brandCentralGlobal?: Maybe<BrandCentralGlobal>;
-  brandCentralGlobals: Array<BrandCentralGlobal>;
-  brandNft?: Maybe<BrandNft>;
-  brandNfts: Array<BrandNft>;
-  houseGoodieBag?: Maybe<HouseGoodieBag>;
-  houseGoodieBags: Array<HouseGoodieBag>;
-  goodieBagItem?: Maybe<GoodieBagItem>;
-  goodieBagItems: Array<GoodieBagItem>;
-  stakeHouse?: Maybe<StakeHouse>;
-  stakeHouses: Array<StakeHouse>;
-  efdepositContractEvent?: Maybe<EFDepositContractEvent>;
-  efdepositContractEvents: Array<EFDepositContractEvent>;
-  efdeposit?: Maybe<EFDeposit>;
-  efdeposits: Array<EFDeposit>;
-  stakehouseAccount?: Maybe<StakehouseAccount>;
-  stakehouseAccounts: Array<StakehouseAccount>;
-  decryptionPiece?: Maybe<DecryptionPiece>;
-  decryptionPieces: Array<DecryptionPiece>;
-  decryptionRequest?: Maybe<DecryptionRequest>;
-  decryptionRequests: Array<DecryptionRequest>;
-  guardian?: Maybe<Guardian>;
-  guardians: Array<Guardian>;
-  /** Access to subgraph metadata */
-  _meta?: Maybe<_Meta_>;
-};
-
-
-export type SubscriptionuniverseGlobalValueArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionuniverseGlobalValuesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniverseGlobalValue_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniverseGlobalValue_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionuniqueDepositorArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionuniqueDepositorsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniqueDepositor_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniqueDepositor_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionuniqueRegisteredUserArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionuniqueRegisteredUsersArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<UniqueRegisteredUser_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<UniqueRegisteredUser_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptioneventArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptioneventsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Event_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<Event_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptioncollateralizedKnotOwnerArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptioncollateralizedKnotOwnersArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<CollateralizedKnotOwner_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<CollateralizedKnotOwner_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionknotArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionknotsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<KNOT_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<KNOT_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionsavETHIndexArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionsavETHIndexesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<savETHIndex_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<savETHIndex_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionsavETHIndexGlobalArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionsavETHIndexGlobalsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<savETHIndexGlobal_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<savETHIndexGlobal_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionbrandCentralGlobalArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionbrandCentralGlobalsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<BrandCentralGlobal_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<BrandCentralGlobal_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionbrandNftArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionbrandNftsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<BrandNft_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<BrandNft_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionhouseGoodieBagArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionhouseGoodieBagsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<HouseGoodieBag_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<HouseGoodieBag_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiongoodieBagItemArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiongoodieBagItemsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<GoodieBagItem_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<GoodieBagItem_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionstakeHouseArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionstakeHousesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<StakeHouse_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<StakeHouse_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionefdepositContractEventArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionefdepositContractEventsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<EFDepositContractEvent_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<EFDepositContractEvent_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionefdepositArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionefdepositsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<EFDeposit_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<EFDeposit_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionstakehouseAccountArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionstakehouseAccountsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<StakehouseAccount_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<StakehouseAccount_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiondecryptionPieceArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiondecryptionPiecesArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<DecryptionPiece_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<DecryptionPiece_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiondecryptionRequestArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptiondecryptionRequestsArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<DecryptionRequest_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<DecryptionRequest_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionguardianArgs = {
-  id: Scalars['ID'];
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type SubscriptionguardiansArgs = {
-  skip?: InputMaybe<Scalars['Int']>;
-  first?: InputMaybe<Scalars['Int']>;
-  orderBy?: InputMaybe<Guardian_orderBy>;
-  orderDirection?: InputMaybe<OrderDirection>;
-  where?: InputMaybe<Guardian_filter>;
-  block?: InputMaybe<Block_height>;
-  subgraphError?: _SubgraphErrorPolicy_;
-};
-
-
-export type Subscription_metaArgs = {
-  block?: InputMaybe<Block_height>;
-};
-
 export type UniqueDepositor = {
   id: Scalars['ID'];
 };
@@ -3309,37 +6051,6 @@ export type UniverseGlobalValue_orderBy =
   | 'dETHMinted'
   | 'SLOTMinted';
 
-export type _Block_ = {
-  /** The hash of the block */
-  hash?: Maybe<Scalars['Bytes']>;
-  /** The block number */
-  number: Scalars['Int'];
-  /** Integer representation of the timestamp stored in blocks for the chain */
-  timestamp?: Maybe<Scalars['Int']>;
-};
-
-/** The type for the top-level _meta field */
-export type _Meta_ = {
-  /**
-   * Information about a specific subgraph block. The hash of the block
-   * will be null if the _meta field has a block constraint that asks for
-   * a block number. It will be filled if the _meta field has no block constraint
-   * and therefore asks for the latest  block
-   *
-   */
-  block: _Block_;
-  /** The deployment ID */
-  deployment: Scalars['String'];
-  /** If `true`, the subgraph encountered indexing errors at some past block */
-  hasIndexingErrors: Scalars['Boolean'];
-};
-
-export type _SubgraphErrorPolicy_ =
-  /** Data will be returned even if the subgraph has indexing errors */
-  | 'allow'
-  /** If the subgraph has indexing errors, data will be omitted. The default. */
-  | 'deny';
-
 export type savETHIndex = {
   id: Scalars['ID'];
   indexId: Scalars['BigInt'];
@@ -3642,18 +6353,79 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
+  Query: ResolverTypeWrapper<{}>;
+  Subscription: ResolverTypeWrapper<{}>;
   BigDecimal: ResolverTypeWrapper<Scalars['BigDecimal']>;
   BigInt: ResolverTypeWrapper<Scalars['BigInt']>;
   BlockChangedFilter: BlockChangedFilter;
   Block_height: Block_height;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Bytes: ResolverTypeWrapper<Scalars['Bytes']>;
+  Depositor: ResolverTypeWrapper<Depositor>;
+  Depositor_filter: Depositor_filter;
+  Depositor_orderBy: Depositor_orderBy;
+  Event: ResolverTypeWrapper<Event>;
+  Event_filter: Event_filter;
+  Event_orderBy: Event_orderBy;
+  FeesAndMevBatch: ResolverTypeWrapper<FeesAndMevBatch>;
+  FeesAndMevBatch_filter: FeesAndMevBatch_filter;
+  FeesAndMevBatch_orderBy: FeesAndMevBatch_orderBy;
+  FeesAndMevDeposit: ResolverTypeWrapper<FeesAndMevDeposit>;
+  FeesAndMevDeposit_filter: FeesAndMevDeposit_filter;
+  FeesAndMevDeposit_orderBy: FeesAndMevDeposit_orderBy;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
+  GiantFeesAndMevLiquidityProvider: ResolverTypeWrapper<GiantFeesAndMevLiquidityProvider>;
+  GiantFeesAndMevLiquidityProvider_filter: GiantFeesAndMevLiquidityProvider_filter;
+  GiantFeesAndMevLiquidityProvider_orderBy: GiantFeesAndMevLiquidityProvider_orderBy;
+  GiantFeesAndMevPool: ResolverTypeWrapper<GiantFeesAndMevPool>;
+  GiantFeesAndMevPool_filter: GiantFeesAndMevPool_filter;
+  GiantFeesAndMevPool_orderBy: GiantFeesAndMevPool_orderBy;
+  GiantLiquidityProvider: ResolverTypeWrapper<GiantLiquidityProvider>;
+  GiantLiquidityProvider_filter: GiantLiquidityProvider_filter;
+  GiantLiquidityProvider_orderBy: GiantLiquidityProvider_orderBy;
+  GiantSavETHPool: ResolverTypeWrapper<GiantSavETHPool>;
+  GiantSavETHPool_filter: GiantSavETHPool_filter;
+  GiantSavETHPool_orderBy: GiantSavETHPool_orderBy;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  LPToken: ResolverTypeWrapper<LPToken>;
+  LPToken_filter: LPToken_filter;
+  LPToken_orderBy: LPToken_orderBy;
+  LSDValidator: ResolverTypeWrapper<LSDValidator>;
+  LSDValidator_filter: LSDValidator_filter;
+  LSDValidator_orderBy: LSDValidator_orderBy;
+  LiquidStakingNetwork: ResolverTypeWrapper<LiquidStakingNetwork>;
+  LiquidStakingNetwork_filter: LiquidStakingNetwork_filter;
+  LiquidStakingNetwork_orderBy: LiquidStakingNetwork_orderBy;
+  NodeRunner: ResolverTypeWrapper<NodeRunner>;
+  NodeRunner_filter: NodeRunner_filter;
+  NodeRunner_orderBy: NodeRunner_orderBy;
+  OrderDirection: OrderDirection;
+  Payout: ResolverTypeWrapper<Payout>;
+  Payout_filter: Payout_filter;
+  Payout_orderBy: Payout_orderBy;
+  ProtectedBatch: ResolverTypeWrapper<ProtectedBatch>;
+  ProtectedBatch_filter: ProtectedBatch_filter;
+  ProtectedBatch_orderBy: ProtectedBatch_orderBy;
+  ProtectedDeposit: ResolverTypeWrapper<ProtectedDeposit>;
+  ProtectedDeposit_filter: ProtectedDeposit_filter;
+  ProtectedDeposit_orderBy: ProtectedDeposit_orderBy;
+  SmartWallet: ResolverTypeWrapper<SmartWallet>;
+  SmartWallet_filter: SmartWallet_filter;
+  SmartWallet_orderBy: SmartWallet_orderBy;
+  String: ResolverTypeWrapper<Scalars['String']>;
+  Syndicate: ResolverTypeWrapper<Syndicate>;
+  Syndicate_filter: Syndicate_filter;
+  Syndicate_orderBy: Syndicate_orderBy;
+  _Block_: ResolverTypeWrapper<_Block_>;
+  _Meta_: ResolverTypeWrapper<_Meta_>;
+  _SubgraphErrorPolicy_: _SubgraphErrorPolicy_;
   BrandCentralGlobal: ResolverTypeWrapper<BrandCentralGlobal>;
   BrandCentralGlobal_filter: BrandCentralGlobal_filter;
   BrandCentralGlobal_orderBy: BrandCentralGlobal_orderBy;
   BrandNft: ResolverTypeWrapper<BrandNft>;
   BrandNft_filter: BrandNft_filter;
   BrandNft_orderBy: BrandNft_orderBy;
-  Bytes: ResolverTypeWrapper<Scalars['Bytes']>;
   CollateralizedKnotOwner: ResolverTypeWrapper<CollateralizedKnotOwner>;
   CollateralizedKnotOwner_filter: CollateralizedKnotOwner_filter;
   CollateralizedKnotOwner_orderBy: CollateralizedKnotOwner_orderBy;
@@ -3669,10 +6441,6 @@ export type ResolversTypes = ResolversObject<{
   EFDepositContractEvent_orderBy: EFDepositContractEvent_orderBy;
   EFDeposit_filter: EFDeposit_filter;
   EFDeposit_orderBy: EFDeposit_orderBy;
-  Event: ResolverTypeWrapper<Event>;
-  Event_filter: Event_filter;
-  Event_orderBy: Event_orderBy;
-  Float: ResolverTypeWrapper<Scalars['Float']>;
   GoodieBagItem: ResolverTypeWrapper<GoodieBagItem>;
   GoodieBagItem_filter: GoodieBagItem_filter;
   GoodieBagItem_orderBy: GoodieBagItem_orderBy;
@@ -3682,21 +6450,15 @@ export type ResolversTypes = ResolversObject<{
   HouseGoodieBag: ResolverTypeWrapper<HouseGoodieBag>;
   HouseGoodieBag_filter: HouseGoodieBag_filter;
   HouseGoodieBag_orderBy: HouseGoodieBag_orderBy;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   KNOT: ResolverTypeWrapper<KNOT>;
   KNOT_filter: KNOT_filter;
   KNOT_orderBy: KNOT_orderBy;
-  OrderDirection: OrderDirection;
-  Query: ResolverTypeWrapper<{}>;
   StakeHouse: ResolverTypeWrapper<StakeHouse>;
   StakeHouse_filter: StakeHouse_filter;
   StakeHouse_orderBy: StakeHouse_orderBy;
   StakehouseAccount: ResolverTypeWrapper<StakehouseAccount>;
   StakehouseAccount_filter: StakehouseAccount_filter;
   StakehouseAccount_orderBy: StakehouseAccount_orderBy;
-  String: ResolverTypeWrapper<Scalars['String']>;
-  Subscription: ResolverTypeWrapper<{}>;
   UniqueDepositor: ResolverTypeWrapper<UniqueDepositor>;
   UniqueDepositor_filter: UniqueDepositor_filter;
   UniqueDepositor_orderBy: UniqueDepositor_orderBy;
@@ -3706,9 +6468,6 @@ export type ResolversTypes = ResolversObject<{
   UniverseGlobalValue: ResolverTypeWrapper<UniverseGlobalValue>;
   UniverseGlobalValue_filter: UniverseGlobalValue_filter;
   UniverseGlobalValue_orderBy: UniverseGlobalValue_orderBy;
-  _Block_: ResolverTypeWrapper<_Block_>;
-  _Meta_: ResolverTypeWrapper<_Meta_>;
-  _SubgraphErrorPolicy_: _SubgraphErrorPolicy_;
   savETHIndex: ResolverTypeWrapper<savETHIndex>;
   savETHIndexGlobal: ResolverTypeWrapper<savETHIndexGlobal>;
   savETHIndexGlobal_filter: savETHIndexGlobal_filter;
@@ -3719,16 +6478,58 @@ export type ResolversTypes = ResolversObject<{
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
+  Query: {};
+  Subscription: {};
   BigDecimal: Scalars['BigDecimal'];
   BigInt: Scalars['BigInt'];
   BlockChangedFilter: BlockChangedFilter;
   Block_height: Block_height;
   Boolean: Scalars['Boolean'];
+  Bytes: Scalars['Bytes'];
+  Depositor: Depositor;
+  Depositor_filter: Depositor_filter;
+  Event: Event;
+  Event_filter: Event_filter;
+  FeesAndMevBatch: FeesAndMevBatch;
+  FeesAndMevBatch_filter: FeesAndMevBatch_filter;
+  FeesAndMevDeposit: FeesAndMevDeposit;
+  FeesAndMevDeposit_filter: FeesAndMevDeposit_filter;
+  Float: Scalars['Float'];
+  GiantFeesAndMevLiquidityProvider: GiantFeesAndMevLiquidityProvider;
+  GiantFeesAndMevLiquidityProvider_filter: GiantFeesAndMevLiquidityProvider_filter;
+  GiantFeesAndMevPool: GiantFeesAndMevPool;
+  GiantFeesAndMevPool_filter: GiantFeesAndMevPool_filter;
+  GiantLiquidityProvider: GiantLiquidityProvider;
+  GiantLiquidityProvider_filter: GiantLiquidityProvider_filter;
+  GiantSavETHPool: GiantSavETHPool;
+  GiantSavETHPool_filter: GiantSavETHPool_filter;
+  ID: Scalars['ID'];
+  Int: Scalars['Int'];
+  LPToken: LPToken;
+  LPToken_filter: LPToken_filter;
+  LSDValidator: LSDValidator;
+  LSDValidator_filter: LSDValidator_filter;
+  LiquidStakingNetwork: LiquidStakingNetwork;
+  LiquidStakingNetwork_filter: LiquidStakingNetwork_filter;
+  NodeRunner: NodeRunner;
+  NodeRunner_filter: NodeRunner_filter;
+  Payout: Payout;
+  Payout_filter: Payout_filter;
+  ProtectedBatch: ProtectedBatch;
+  ProtectedBatch_filter: ProtectedBatch_filter;
+  ProtectedDeposit: ProtectedDeposit;
+  ProtectedDeposit_filter: ProtectedDeposit_filter;
+  SmartWallet: SmartWallet;
+  SmartWallet_filter: SmartWallet_filter;
+  String: Scalars['String'];
+  Syndicate: Syndicate;
+  Syndicate_filter: Syndicate_filter;
+  _Block_: _Block_;
+  _Meta_: _Meta_;
   BrandCentralGlobal: BrandCentralGlobal;
   BrandCentralGlobal_filter: BrandCentralGlobal_filter;
   BrandNft: BrandNft;
   BrandNft_filter: BrandNft_filter;
-  Bytes: Scalars['Bytes'];
   CollateralizedKnotOwner: CollateralizedKnotOwner;
   CollateralizedKnotOwner_filter: CollateralizedKnotOwner_filter;
   DecryptionPiece: DecryptionPiece;
@@ -3739,34 +6540,24 @@ export type ResolversParentTypes = ResolversObject<{
   EFDepositContractEvent: EFDepositContractEvent;
   EFDepositContractEvent_filter: EFDepositContractEvent_filter;
   EFDeposit_filter: EFDeposit_filter;
-  Event: Event;
-  Event_filter: Event_filter;
-  Float: Scalars['Float'];
   GoodieBagItem: GoodieBagItem;
   GoodieBagItem_filter: GoodieBagItem_filter;
   Guardian: Guardian;
   Guardian_filter: Guardian_filter;
   HouseGoodieBag: HouseGoodieBag;
   HouseGoodieBag_filter: HouseGoodieBag_filter;
-  ID: Scalars['ID'];
-  Int: Scalars['Int'];
   KNOT: KNOT;
   KNOT_filter: KNOT_filter;
-  Query: {};
   StakeHouse: StakeHouse;
   StakeHouse_filter: StakeHouse_filter;
   StakehouseAccount: StakehouseAccount;
   StakehouseAccount_filter: StakehouseAccount_filter;
-  String: Scalars['String'];
-  Subscription: {};
   UniqueDepositor: UniqueDepositor;
   UniqueDepositor_filter: UniqueDepositor_filter;
   UniqueRegisteredUser: UniqueRegisteredUser;
   UniqueRegisteredUser_filter: UniqueRegisteredUser_filter;
   UniverseGlobalValue: UniverseGlobalValue;
   UniverseGlobalValue_filter: UniverseGlobalValue_filter;
-  _Block_: _Block_;
-  _Meta_: _Meta_;
   savETHIndex: savETHIndex;
   savETHIndexGlobal: savETHIndexGlobal;
   savETHIndexGlobal_filter: savETHIndexGlobal_filter;
@@ -3789,6 +6580,154 @@ export type derivedFromDirectiveArgs = {
 
 export type derivedFromDirectiveResolver<Result, Parent, ContextType = MeshContext, Args = derivedFromDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
+export type QueryResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  liquidStakingNetwork?: Resolver<Maybe<ResolversTypes['LiquidStakingNetwork']>, ParentType, ContextType, RequireFields<QueryliquidStakingNetworkArgs, 'id' | 'subgraphError'>>;
+  liquidStakingNetworks?: Resolver<Array<ResolversTypes['LiquidStakingNetwork']>, ParentType, ContextType, RequireFields<QueryliquidStakingNetworksArgs, 'skip' | 'first' | 'subgraphError'>>;
+  nodeRunner?: Resolver<Maybe<ResolversTypes['NodeRunner']>, ParentType, ContextType, RequireFields<QuerynodeRunnerArgs, 'id' | 'subgraphError'>>;
+  nodeRunners?: Resolver<Array<ResolversTypes['NodeRunner']>, ParentType, ContextType, RequireFields<QuerynodeRunnersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  smartWallet?: Resolver<Maybe<ResolversTypes['SmartWallet']>, ParentType, ContextType, RequireFields<QuerysmartWalletArgs, 'id' | 'subgraphError'>>;
+  smartWallets?: Resolver<Array<ResolversTypes['SmartWallet']>, ParentType, ContextType, RequireFields<QuerysmartWalletsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  lsdvalidator?: Resolver<Maybe<ResolversTypes['LSDValidator']>, ParentType, ContextType, RequireFields<QuerylsdvalidatorArgs, 'id' | 'subgraphError'>>;
+  lsdvalidators?: Resolver<Array<ResolversTypes['LSDValidator']>, ParentType, ContextType, RequireFields<QuerylsdvalidatorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  protectedDeposit?: Resolver<Maybe<ResolversTypes['ProtectedDeposit']>, ParentType, ContextType, RequireFields<QueryprotectedDepositArgs, 'id' | 'subgraphError'>>;
+  protectedDeposits?: Resolver<Array<ResolversTypes['ProtectedDeposit']>, ParentType, ContextType, RequireFields<QueryprotectedDepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  feesAndMevDeposit?: Resolver<Maybe<ResolversTypes['FeesAndMevDeposit']>, ParentType, ContextType, RequireFields<QueryfeesAndMevDepositArgs, 'id' | 'subgraphError'>>;
+  feesAndMevDeposits?: Resolver<Array<ResolversTypes['FeesAndMevDeposit']>, ParentType, ContextType, RequireFields<QueryfeesAndMevDepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantSavETHPool?: Resolver<Maybe<ResolversTypes['GiantSavETHPool']>, ParentType, ContextType, RequireFields<QuerygiantSavETHPoolArgs, 'id' | 'subgraphError'>>;
+  giantSavETHPools?: Resolver<Array<ResolversTypes['GiantSavETHPool']>, ParentType, ContextType, RequireFields<QuerygiantSavETHPoolsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantFeesAndMevPool?: Resolver<Maybe<ResolversTypes['GiantFeesAndMevPool']>, ParentType, ContextType, RequireFields<QuerygiantFeesAndMevPoolArgs, 'id' | 'subgraphError'>>;
+  giantFeesAndMevPools?: Resolver<Array<ResolversTypes['GiantFeesAndMevPool']>, ParentType, ContextType, RequireFields<QuerygiantFeesAndMevPoolsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  event?: Resolver<Maybe<ResolversTypes['Event']>, ParentType, ContextType, RequireFields<QueryeventArgs, 'id' | 'subgraphError'>>;
+  events?: Resolver<Array<ResolversTypes['Event']>, ParentType, ContextType, RequireFields<QueryeventsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  lptoken?: Resolver<Maybe<ResolversTypes['LPToken']>, ParentType, ContextType, RequireFields<QuerylptokenArgs, 'id' | 'subgraphError'>>;
+  lptokens?: Resolver<Array<ResolversTypes['LPToken']>, ParentType, ContextType, RequireFields<QuerylptokensArgs, 'skip' | 'first' | 'subgraphError'>>;
+  protectedBatch?: Resolver<Maybe<ResolversTypes['ProtectedBatch']>, ParentType, ContextType, RequireFields<QueryprotectedBatchArgs, 'id' | 'subgraphError'>>;
+  protectedBatches?: Resolver<Array<ResolversTypes['ProtectedBatch']>, ParentType, ContextType, RequireFields<QueryprotectedBatchesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  feesAndMevBatch?: Resolver<Maybe<ResolversTypes['FeesAndMevBatch']>, ParentType, ContextType, RequireFields<QueryfeesAndMevBatchArgs, 'id' | 'subgraphError'>>;
+  feesAndMevBatches?: Resolver<Array<ResolversTypes['FeesAndMevBatch']>, ParentType, ContextType, RequireFields<QueryfeesAndMevBatchesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantLiquidityProvider?: Resolver<Maybe<ResolversTypes['GiantLiquidityProvider']>, ParentType, ContextType, RequireFields<QuerygiantLiquidityProviderArgs, 'id' | 'subgraphError'>>;
+  giantLiquidityProviders?: Resolver<Array<ResolversTypes['GiantLiquidityProvider']>, ParentType, ContextType, RequireFields<QuerygiantLiquidityProvidersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantFeesAndMevLiquidityProvider?: Resolver<Maybe<ResolversTypes['GiantFeesAndMevLiquidityProvider']>, ParentType, ContextType, RequireFields<QuerygiantFeesAndMevLiquidityProviderArgs, 'id' | 'subgraphError'>>;
+  giantFeesAndMevLiquidityProviders?: Resolver<Array<ResolversTypes['GiantFeesAndMevLiquidityProvider']>, ParentType, ContextType, RequireFields<QuerygiantFeesAndMevLiquidityProvidersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  depositor?: Resolver<Maybe<ResolversTypes['Depositor']>, ParentType, ContextType, RequireFields<QuerydepositorArgs, 'id' | 'subgraphError'>>;
+  depositors?: Resolver<Array<ResolversTypes['Depositor']>, ParentType, ContextType, RequireFields<QuerydepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  syndicate?: Resolver<Maybe<ResolversTypes['Syndicate']>, ParentType, ContextType, RequireFields<QuerysyndicateArgs, 'id' | 'subgraphError'>>;
+  syndicates?: Resolver<Array<ResolversTypes['Syndicate']>, ParentType, ContextType, RequireFields<QuerysyndicatesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  payout?: Resolver<Maybe<ResolversTypes['Payout']>, ParentType, ContextType, RequireFields<QuerypayoutArgs, 'id' | 'subgraphError'>>;
+  payouts?: Resolver<Array<ResolversTypes['Payout']>, ParentType, ContextType, RequireFields<QuerypayoutsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  _meta?: Resolver<Maybe<ResolversTypes['_Meta_']>, ParentType, ContextType, Partial<Query_metaArgs>>;
+  universeGlobalValue?: Resolver<Maybe<ResolversTypes['UniverseGlobalValue']>, ParentType, ContextType, RequireFields<QueryuniverseGlobalValueArgs, 'id' | 'subgraphError'>>;
+  universeGlobalValues?: Resolver<Array<ResolversTypes['UniverseGlobalValue']>, ParentType, ContextType, RequireFields<QueryuniverseGlobalValuesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  uniqueDepositor?: Resolver<Maybe<ResolversTypes['UniqueDepositor']>, ParentType, ContextType, RequireFields<QueryuniqueDepositorArgs, 'id' | 'subgraphError'>>;
+  uniqueDepositors?: Resolver<Array<ResolversTypes['UniqueDepositor']>, ParentType, ContextType, RequireFields<QueryuniqueDepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  uniqueRegisteredUser?: Resolver<Maybe<ResolversTypes['UniqueRegisteredUser']>, ParentType, ContextType, RequireFields<QueryuniqueRegisteredUserArgs, 'id' | 'subgraphError'>>;
+  uniqueRegisteredUsers?: Resolver<Array<ResolversTypes['UniqueRegisteredUser']>, ParentType, ContextType, RequireFields<QueryuniqueRegisteredUsersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  collateralizedKnotOwner?: Resolver<Maybe<ResolversTypes['CollateralizedKnotOwner']>, ParentType, ContextType, RequireFields<QuerycollateralizedKnotOwnerArgs, 'id' | 'subgraphError'>>;
+  collateralizedKnotOwners?: Resolver<Array<ResolversTypes['CollateralizedKnotOwner']>, ParentType, ContextType, RequireFields<QuerycollateralizedKnotOwnersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  knot?: Resolver<Maybe<ResolversTypes['KNOT']>, ParentType, ContextType, RequireFields<QueryknotArgs, 'id' | 'subgraphError'>>;
+  knots?: Resolver<Array<ResolversTypes['KNOT']>, ParentType, ContextType, RequireFields<QueryknotsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  savETHIndex?: Resolver<Maybe<ResolversTypes['savETHIndex']>, ParentType, ContextType, RequireFields<QuerysavETHIndexArgs, 'id' | 'subgraphError'>>;
+  savETHIndexes?: Resolver<Array<ResolversTypes['savETHIndex']>, ParentType, ContextType, RequireFields<QuerysavETHIndexesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  savETHIndexGlobal?: Resolver<Maybe<ResolversTypes['savETHIndexGlobal']>, ParentType, ContextType, RequireFields<QuerysavETHIndexGlobalArgs, 'id' | 'subgraphError'>>;
+  savETHIndexGlobals?: Resolver<Array<ResolversTypes['savETHIndexGlobal']>, ParentType, ContextType, RequireFields<QuerysavETHIndexGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  brandCentralGlobal?: Resolver<Maybe<ResolversTypes['BrandCentralGlobal']>, ParentType, ContextType, RequireFields<QuerybrandCentralGlobalArgs, 'id' | 'subgraphError'>>;
+  brandCentralGlobals?: Resolver<Array<ResolversTypes['BrandCentralGlobal']>, ParentType, ContextType, RequireFields<QuerybrandCentralGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  brandNft?: Resolver<Maybe<ResolversTypes['BrandNft']>, ParentType, ContextType, RequireFields<QuerybrandNftArgs, 'id' | 'subgraphError'>>;
+  brandNfts?: Resolver<Array<ResolversTypes['BrandNft']>, ParentType, ContextType, RequireFields<QuerybrandNftsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  houseGoodieBag?: Resolver<Maybe<ResolversTypes['HouseGoodieBag']>, ParentType, ContextType, RequireFields<QueryhouseGoodieBagArgs, 'id' | 'subgraphError'>>;
+  houseGoodieBags?: Resolver<Array<ResolversTypes['HouseGoodieBag']>, ParentType, ContextType, RequireFields<QueryhouseGoodieBagsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  goodieBagItem?: Resolver<Maybe<ResolversTypes['GoodieBagItem']>, ParentType, ContextType, RequireFields<QuerygoodieBagItemArgs, 'id' | 'subgraphError'>>;
+  goodieBagItems?: Resolver<Array<ResolversTypes['GoodieBagItem']>, ParentType, ContextType, RequireFields<QuerygoodieBagItemsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  stakeHouse?: Resolver<Maybe<ResolversTypes['StakeHouse']>, ParentType, ContextType, RequireFields<QuerystakeHouseArgs, 'id' | 'subgraphError'>>;
+  stakeHouses?: Resolver<Array<ResolversTypes['StakeHouse']>, ParentType, ContextType, RequireFields<QuerystakeHousesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  efdepositContractEvent?: Resolver<Maybe<ResolversTypes['EFDepositContractEvent']>, ParentType, ContextType, RequireFields<QueryefdepositContractEventArgs, 'id' | 'subgraphError'>>;
+  efdepositContractEvents?: Resolver<Array<ResolversTypes['EFDepositContractEvent']>, ParentType, ContextType, RequireFields<QueryefdepositContractEventsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  efdeposit?: Resolver<Maybe<ResolversTypes['EFDeposit']>, ParentType, ContextType, RequireFields<QueryefdepositArgs, 'id' | 'subgraphError'>>;
+  efdeposits?: Resolver<Array<ResolversTypes['EFDeposit']>, ParentType, ContextType, RequireFields<QueryefdepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  stakehouseAccount?: Resolver<Maybe<ResolversTypes['StakehouseAccount']>, ParentType, ContextType, RequireFields<QuerystakehouseAccountArgs, 'id' | 'subgraphError'>>;
+  stakehouseAccounts?: Resolver<Array<ResolversTypes['StakehouseAccount']>, ParentType, ContextType, RequireFields<QuerystakehouseAccountsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  decryptionPiece?: Resolver<Maybe<ResolversTypes['DecryptionPiece']>, ParentType, ContextType, RequireFields<QuerydecryptionPieceArgs, 'id' | 'subgraphError'>>;
+  decryptionPieces?: Resolver<Array<ResolversTypes['DecryptionPiece']>, ParentType, ContextType, RequireFields<QuerydecryptionPiecesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  decryptionRequest?: Resolver<Maybe<ResolversTypes['DecryptionRequest']>, ParentType, ContextType, RequireFields<QuerydecryptionRequestArgs, 'id' | 'subgraphError'>>;
+  decryptionRequests?: Resolver<Array<ResolversTypes['DecryptionRequest']>, ParentType, ContextType, RequireFields<QuerydecryptionRequestsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  guardian?: Resolver<Maybe<ResolversTypes['Guardian']>, ParentType, ContextType, RequireFields<QueryguardianArgs, 'id' | 'subgraphError'>>;
+  guardians?: Resolver<Array<ResolversTypes['Guardian']>, ParentType, ContextType, RequireFields<QueryguardiansArgs, 'skip' | 'first' | 'subgraphError'>>;
+}>;
+
+export type SubscriptionResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = ResolversObject<{
+  liquidStakingNetwork?: SubscriptionResolver<Maybe<ResolversTypes['LiquidStakingNetwork']>, "liquidStakingNetwork", ParentType, ContextType, RequireFields<SubscriptionliquidStakingNetworkArgs, 'id' | 'subgraphError'>>;
+  liquidStakingNetworks?: SubscriptionResolver<Array<ResolversTypes['LiquidStakingNetwork']>, "liquidStakingNetworks", ParentType, ContextType, RequireFields<SubscriptionliquidStakingNetworksArgs, 'skip' | 'first' | 'subgraphError'>>;
+  nodeRunner?: SubscriptionResolver<Maybe<ResolversTypes['NodeRunner']>, "nodeRunner", ParentType, ContextType, RequireFields<SubscriptionnodeRunnerArgs, 'id' | 'subgraphError'>>;
+  nodeRunners?: SubscriptionResolver<Array<ResolversTypes['NodeRunner']>, "nodeRunners", ParentType, ContextType, RequireFields<SubscriptionnodeRunnersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  smartWallet?: SubscriptionResolver<Maybe<ResolversTypes['SmartWallet']>, "smartWallet", ParentType, ContextType, RequireFields<SubscriptionsmartWalletArgs, 'id' | 'subgraphError'>>;
+  smartWallets?: SubscriptionResolver<Array<ResolversTypes['SmartWallet']>, "smartWallets", ParentType, ContextType, RequireFields<SubscriptionsmartWalletsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  lsdvalidator?: SubscriptionResolver<Maybe<ResolversTypes['LSDValidator']>, "lsdvalidator", ParentType, ContextType, RequireFields<SubscriptionlsdvalidatorArgs, 'id' | 'subgraphError'>>;
+  lsdvalidators?: SubscriptionResolver<Array<ResolversTypes['LSDValidator']>, "lsdvalidators", ParentType, ContextType, RequireFields<SubscriptionlsdvalidatorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  protectedDeposit?: SubscriptionResolver<Maybe<ResolversTypes['ProtectedDeposit']>, "protectedDeposit", ParentType, ContextType, RequireFields<SubscriptionprotectedDepositArgs, 'id' | 'subgraphError'>>;
+  protectedDeposits?: SubscriptionResolver<Array<ResolversTypes['ProtectedDeposit']>, "protectedDeposits", ParentType, ContextType, RequireFields<SubscriptionprotectedDepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  feesAndMevDeposit?: SubscriptionResolver<Maybe<ResolversTypes['FeesAndMevDeposit']>, "feesAndMevDeposit", ParentType, ContextType, RequireFields<SubscriptionfeesAndMevDepositArgs, 'id' | 'subgraphError'>>;
+  feesAndMevDeposits?: SubscriptionResolver<Array<ResolversTypes['FeesAndMevDeposit']>, "feesAndMevDeposits", ParentType, ContextType, RequireFields<SubscriptionfeesAndMevDepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantSavETHPool?: SubscriptionResolver<Maybe<ResolversTypes['GiantSavETHPool']>, "giantSavETHPool", ParentType, ContextType, RequireFields<SubscriptiongiantSavETHPoolArgs, 'id' | 'subgraphError'>>;
+  giantSavETHPools?: SubscriptionResolver<Array<ResolversTypes['GiantSavETHPool']>, "giantSavETHPools", ParentType, ContextType, RequireFields<SubscriptiongiantSavETHPoolsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantFeesAndMevPool?: SubscriptionResolver<Maybe<ResolversTypes['GiantFeesAndMevPool']>, "giantFeesAndMevPool", ParentType, ContextType, RequireFields<SubscriptiongiantFeesAndMevPoolArgs, 'id' | 'subgraphError'>>;
+  giantFeesAndMevPools?: SubscriptionResolver<Array<ResolversTypes['GiantFeesAndMevPool']>, "giantFeesAndMevPools", ParentType, ContextType, RequireFields<SubscriptiongiantFeesAndMevPoolsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  event?: SubscriptionResolver<Maybe<ResolversTypes['Event']>, "event", ParentType, ContextType, RequireFields<SubscriptioneventArgs, 'id' | 'subgraphError'>>;
+  events?: SubscriptionResolver<Array<ResolversTypes['Event']>, "events", ParentType, ContextType, RequireFields<SubscriptioneventsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  lptoken?: SubscriptionResolver<Maybe<ResolversTypes['LPToken']>, "lptoken", ParentType, ContextType, RequireFields<SubscriptionlptokenArgs, 'id' | 'subgraphError'>>;
+  lptokens?: SubscriptionResolver<Array<ResolversTypes['LPToken']>, "lptokens", ParentType, ContextType, RequireFields<SubscriptionlptokensArgs, 'skip' | 'first' | 'subgraphError'>>;
+  protectedBatch?: SubscriptionResolver<Maybe<ResolversTypes['ProtectedBatch']>, "protectedBatch", ParentType, ContextType, RequireFields<SubscriptionprotectedBatchArgs, 'id' | 'subgraphError'>>;
+  protectedBatches?: SubscriptionResolver<Array<ResolversTypes['ProtectedBatch']>, "protectedBatches", ParentType, ContextType, RequireFields<SubscriptionprotectedBatchesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  feesAndMevBatch?: SubscriptionResolver<Maybe<ResolversTypes['FeesAndMevBatch']>, "feesAndMevBatch", ParentType, ContextType, RequireFields<SubscriptionfeesAndMevBatchArgs, 'id' | 'subgraphError'>>;
+  feesAndMevBatches?: SubscriptionResolver<Array<ResolversTypes['FeesAndMevBatch']>, "feesAndMevBatches", ParentType, ContextType, RequireFields<SubscriptionfeesAndMevBatchesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantLiquidityProvider?: SubscriptionResolver<Maybe<ResolversTypes['GiantLiquidityProvider']>, "giantLiquidityProvider", ParentType, ContextType, RequireFields<SubscriptiongiantLiquidityProviderArgs, 'id' | 'subgraphError'>>;
+  giantLiquidityProviders?: SubscriptionResolver<Array<ResolversTypes['GiantLiquidityProvider']>, "giantLiquidityProviders", ParentType, ContextType, RequireFields<SubscriptiongiantLiquidityProvidersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  giantFeesAndMevLiquidityProvider?: SubscriptionResolver<Maybe<ResolversTypes['GiantFeesAndMevLiquidityProvider']>, "giantFeesAndMevLiquidityProvider", ParentType, ContextType, RequireFields<SubscriptiongiantFeesAndMevLiquidityProviderArgs, 'id' | 'subgraphError'>>;
+  giantFeesAndMevLiquidityProviders?: SubscriptionResolver<Array<ResolversTypes['GiantFeesAndMevLiquidityProvider']>, "giantFeesAndMevLiquidityProviders", ParentType, ContextType, RequireFields<SubscriptiongiantFeesAndMevLiquidityProvidersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  depositor?: SubscriptionResolver<Maybe<ResolversTypes['Depositor']>, "depositor", ParentType, ContextType, RequireFields<SubscriptiondepositorArgs, 'id' | 'subgraphError'>>;
+  depositors?: SubscriptionResolver<Array<ResolversTypes['Depositor']>, "depositors", ParentType, ContextType, RequireFields<SubscriptiondepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  syndicate?: SubscriptionResolver<Maybe<ResolversTypes['Syndicate']>, "syndicate", ParentType, ContextType, RequireFields<SubscriptionsyndicateArgs, 'id' | 'subgraphError'>>;
+  syndicates?: SubscriptionResolver<Array<ResolversTypes['Syndicate']>, "syndicates", ParentType, ContextType, RequireFields<SubscriptionsyndicatesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  payout?: SubscriptionResolver<Maybe<ResolversTypes['Payout']>, "payout", ParentType, ContextType, RequireFields<SubscriptionpayoutArgs, 'id' | 'subgraphError'>>;
+  payouts?: SubscriptionResolver<Array<ResolversTypes['Payout']>, "payouts", ParentType, ContextType, RequireFields<SubscriptionpayoutsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  _meta?: SubscriptionResolver<Maybe<ResolversTypes['_Meta_']>, "_meta", ParentType, ContextType, Partial<Subscription_metaArgs>>;
+  universeGlobalValue?: SubscriptionResolver<Maybe<ResolversTypes['UniverseGlobalValue']>, "universeGlobalValue", ParentType, ContextType, RequireFields<SubscriptionuniverseGlobalValueArgs, 'id' | 'subgraphError'>>;
+  universeGlobalValues?: SubscriptionResolver<Array<ResolversTypes['UniverseGlobalValue']>, "universeGlobalValues", ParentType, ContextType, RequireFields<SubscriptionuniverseGlobalValuesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  uniqueDepositor?: SubscriptionResolver<Maybe<ResolversTypes['UniqueDepositor']>, "uniqueDepositor", ParentType, ContextType, RequireFields<SubscriptionuniqueDepositorArgs, 'id' | 'subgraphError'>>;
+  uniqueDepositors?: SubscriptionResolver<Array<ResolversTypes['UniqueDepositor']>, "uniqueDepositors", ParentType, ContextType, RequireFields<SubscriptionuniqueDepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  uniqueRegisteredUser?: SubscriptionResolver<Maybe<ResolversTypes['UniqueRegisteredUser']>, "uniqueRegisteredUser", ParentType, ContextType, RequireFields<SubscriptionuniqueRegisteredUserArgs, 'id' | 'subgraphError'>>;
+  uniqueRegisteredUsers?: SubscriptionResolver<Array<ResolversTypes['UniqueRegisteredUser']>, "uniqueRegisteredUsers", ParentType, ContextType, RequireFields<SubscriptionuniqueRegisteredUsersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  collateralizedKnotOwner?: SubscriptionResolver<Maybe<ResolversTypes['CollateralizedKnotOwner']>, "collateralizedKnotOwner", ParentType, ContextType, RequireFields<SubscriptioncollateralizedKnotOwnerArgs, 'id' | 'subgraphError'>>;
+  collateralizedKnotOwners?: SubscriptionResolver<Array<ResolversTypes['CollateralizedKnotOwner']>, "collateralizedKnotOwners", ParentType, ContextType, RequireFields<SubscriptioncollateralizedKnotOwnersArgs, 'skip' | 'first' | 'subgraphError'>>;
+  knot?: SubscriptionResolver<Maybe<ResolversTypes['KNOT']>, "knot", ParentType, ContextType, RequireFields<SubscriptionknotArgs, 'id' | 'subgraphError'>>;
+  knots?: SubscriptionResolver<Array<ResolversTypes['KNOT']>, "knots", ParentType, ContextType, RequireFields<SubscriptionknotsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  savETHIndex?: SubscriptionResolver<Maybe<ResolversTypes['savETHIndex']>, "savETHIndex", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexArgs, 'id' | 'subgraphError'>>;
+  savETHIndexes?: SubscriptionResolver<Array<ResolversTypes['savETHIndex']>, "savETHIndexes", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  savETHIndexGlobal?: SubscriptionResolver<Maybe<ResolversTypes['savETHIndexGlobal']>, "savETHIndexGlobal", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexGlobalArgs, 'id' | 'subgraphError'>>;
+  savETHIndexGlobals?: SubscriptionResolver<Array<ResolversTypes['savETHIndexGlobal']>, "savETHIndexGlobals", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  brandCentralGlobal?: SubscriptionResolver<Maybe<ResolversTypes['BrandCentralGlobal']>, "brandCentralGlobal", ParentType, ContextType, RequireFields<SubscriptionbrandCentralGlobalArgs, 'id' | 'subgraphError'>>;
+  brandCentralGlobals?: SubscriptionResolver<Array<ResolversTypes['BrandCentralGlobal']>, "brandCentralGlobals", ParentType, ContextType, RequireFields<SubscriptionbrandCentralGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  brandNft?: SubscriptionResolver<Maybe<ResolversTypes['BrandNft']>, "brandNft", ParentType, ContextType, RequireFields<SubscriptionbrandNftArgs, 'id' | 'subgraphError'>>;
+  brandNfts?: SubscriptionResolver<Array<ResolversTypes['BrandNft']>, "brandNfts", ParentType, ContextType, RequireFields<SubscriptionbrandNftsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  houseGoodieBag?: SubscriptionResolver<Maybe<ResolversTypes['HouseGoodieBag']>, "houseGoodieBag", ParentType, ContextType, RequireFields<SubscriptionhouseGoodieBagArgs, 'id' | 'subgraphError'>>;
+  houseGoodieBags?: SubscriptionResolver<Array<ResolversTypes['HouseGoodieBag']>, "houseGoodieBags", ParentType, ContextType, RequireFields<SubscriptionhouseGoodieBagsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  goodieBagItem?: SubscriptionResolver<Maybe<ResolversTypes['GoodieBagItem']>, "goodieBagItem", ParentType, ContextType, RequireFields<SubscriptiongoodieBagItemArgs, 'id' | 'subgraphError'>>;
+  goodieBagItems?: SubscriptionResolver<Array<ResolversTypes['GoodieBagItem']>, "goodieBagItems", ParentType, ContextType, RequireFields<SubscriptiongoodieBagItemsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  stakeHouse?: SubscriptionResolver<Maybe<ResolversTypes['StakeHouse']>, "stakeHouse", ParentType, ContextType, RequireFields<SubscriptionstakeHouseArgs, 'id' | 'subgraphError'>>;
+  stakeHouses?: SubscriptionResolver<Array<ResolversTypes['StakeHouse']>, "stakeHouses", ParentType, ContextType, RequireFields<SubscriptionstakeHousesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  efdepositContractEvent?: SubscriptionResolver<Maybe<ResolversTypes['EFDepositContractEvent']>, "efdepositContractEvent", ParentType, ContextType, RequireFields<SubscriptionefdepositContractEventArgs, 'id' | 'subgraphError'>>;
+  efdepositContractEvents?: SubscriptionResolver<Array<ResolversTypes['EFDepositContractEvent']>, "efdepositContractEvents", ParentType, ContextType, RequireFields<SubscriptionefdepositContractEventsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  efdeposit?: SubscriptionResolver<Maybe<ResolversTypes['EFDeposit']>, "efdeposit", ParentType, ContextType, RequireFields<SubscriptionefdepositArgs, 'id' | 'subgraphError'>>;
+  efdeposits?: SubscriptionResolver<Array<ResolversTypes['EFDeposit']>, "efdeposits", ParentType, ContextType, RequireFields<SubscriptionefdepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  stakehouseAccount?: SubscriptionResolver<Maybe<ResolversTypes['StakehouseAccount']>, "stakehouseAccount", ParentType, ContextType, RequireFields<SubscriptionstakehouseAccountArgs, 'id' | 'subgraphError'>>;
+  stakehouseAccounts?: SubscriptionResolver<Array<ResolversTypes['StakehouseAccount']>, "stakehouseAccounts", ParentType, ContextType, RequireFields<SubscriptionstakehouseAccountsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  decryptionPiece?: SubscriptionResolver<Maybe<ResolversTypes['DecryptionPiece']>, "decryptionPiece", ParentType, ContextType, RequireFields<SubscriptiondecryptionPieceArgs, 'id' | 'subgraphError'>>;
+  decryptionPieces?: SubscriptionResolver<Array<ResolversTypes['DecryptionPiece']>, "decryptionPieces", ParentType, ContextType, RequireFields<SubscriptiondecryptionPiecesArgs, 'skip' | 'first' | 'subgraphError'>>;
+  decryptionRequest?: SubscriptionResolver<Maybe<ResolversTypes['DecryptionRequest']>, "decryptionRequest", ParentType, ContextType, RequireFields<SubscriptiondecryptionRequestArgs, 'id' | 'subgraphError'>>;
+  decryptionRequests?: SubscriptionResolver<Array<ResolversTypes['DecryptionRequest']>, "decryptionRequests", ParentType, ContextType, RequireFields<SubscriptiondecryptionRequestsArgs, 'skip' | 'first' | 'subgraphError'>>;
+  guardian?: SubscriptionResolver<Maybe<ResolversTypes['Guardian']>, "guardian", ParentType, ContextType, RequireFields<SubscriptionguardianArgs, 'id' | 'subgraphError'>>;
+  guardians?: SubscriptionResolver<Array<ResolversTypes['Guardian']>, "guardians", ParentType, ContextType, RequireFields<SubscriptionguardiansArgs, 'skip' | 'first' | 'subgraphError'>>;
+}>;
+
 export interface BigDecimalScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['BigDecimal'], any> {
   name: 'BigDecimal';
 }
@@ -3796,6 +6735,216 @@ export interface BigDecimalScalarConfig extends GraphQLScalarTypeConfig<Resolver
 export interface BigIntScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['BigInt'], any> {
   name: 'BigInt';
 }
+
+export interface BytesScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Bytes'], any> {
+  name: 'Bytes';
+}
+
+export type DepositorResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Depositor'] = ResolversParentTypes['Depositor']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  lpAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type EventResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Event'] = ResolversParentTypes['Event']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  tx?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  from?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  blsPubKeyForKnot?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  value2?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type FeesAndMevBatchResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['FeesAndMevBatch'] = ResolversParentTypes['FeesAndMevBatch']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  blsPublicKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  vaultLPToken?: Resolver<Maybe<ResolversTypes['LPToken']>, ParentType, ContextType>;
+  lsdValidator?: Resolver<Maybe<ResolversTypes['LSDValidator']>, ParentType, ContextType>;
+  listOfLiquidityProviderAddresses?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  liquidityProviders?: Resolver<Array<ResolversTypes['GiantFeesAndMevLiquidityProvider']>, ParentType, ContextType, RequireFields<FeesAndMevBatchliquidityProvidersArgs, 'skip' | 'first'>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type FeesAndMevDepositResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['FeesAndMevDeposit'] = ResolversParentTypes['FeesAndMevDeposit']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  liquidStakingNetwork?: Resolver<ResolversTypes['LiquidStakingNetwork'], ParentType, ContextType>;
+  validator?: Resolver<ResolversTypes['LSDValidator'], ParentType, ContextType>;
+  token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  depositor?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  totalDeposit?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type GiantFeesAndMevLiquidityProviderResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['GiantFeesAndMevLiquidityProvider'] = ResolversParentTypes['GiantFeesAndMevLiquidityProvider']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  lpAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  batch?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  contractAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  withdrawn?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type GiantFeesAndMevPoolResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['GiantFeesAndMevPool'] = ResolversParentTypes['GiantFeesAndMevPool']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  contractAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  availableToStake?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  sentToLiquidStakingNetworks?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  giantLPToken?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type GiantLiquidityProviderResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['GiantLiquidityProvider'] = ResolversParentTypes['GiantLiquidityProvider']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  lpAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  batch?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  contractAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  withdrawn?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type GiantSavETHPoolResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['GiantSavETHPool'] = ResolversParentTypes['GiantSavETHPool']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  contractAddress?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  availableToStake?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  sentToLiquidStakingNetworks?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  giantLPToken?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type LPTokenResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['LPToken'] = ResolversParentTypes['LPToken']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  blsPublicKey?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  minted?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  withdrawn?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  liquidStakingNetwork?: Resolver<ResolversTypes['LiquidStakingNetwork'], ParentType, ContextType>;
+  issuer?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  tokenType?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  giantPoolBalance?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  lifecycleStatus?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  protectedBatch?: Resolver<Maybe<ResolversTypes['ProtectedBatch']>, ParentType, ContextType>;
+  feesAndMevBatch?: Resolver<Maybe<ResolversTypes['FeesAndMevBatch']>, ParentType, ContextType>;
+  liquidityProviders?: Resolver<Array<ResolversTypes['Depositor']>, ParentType, ContextType, RequireFields<LPTokenliquidityProvidersArgs, 'skip' | 'first'>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type LSDValidatorResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['LSDValidator'] = ResolversParentTypes['LSDValidator']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  smartWallet?: Resolver<ResolversTypes['SmartWallet'], ParentType, ContextType>;
+  status?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  isReadyToStake?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  liquidStakingManager?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  withdrawn?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  currentIndex?: Resolver<Maybe<ResolversTypes['BigInt']>, ParentType, ContextType>;
+  totalETHStaked?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  totalETHFundedFromGiantPool?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  totalETHFromGiantProtectedStakingPool?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  totalETHFromGiantFeesAndMevPool?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  giantPoolLastFundedTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  registerInitialsBlockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  ethSentToDepositContractBlockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  derivativesMintedBlockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type LiquidStakingNetworkResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['LiquidStakingNetwork'] = ResolversParentTypes['LiquidStakingNetwork']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  liquidStakingManager?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
+  dao?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
+  feeRecipientAndSyndicate?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
+  savETHPool?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
+  feesAndMevPool?: Resolver<ResolversTypes['Bytes'], ParentType, ContextType>;
+  stakehouseAddress?: Resolver<Maybe<ResolversTypes['Bytes']>, ParentType, ContextType>;
+  optionalGatekeeper?: Resolver<Maybe<ResolversTypes['Bytes']>, ParentType, ContextType>;
+  lsdIndex?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  ticker?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  commission?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  isNodeRunningBehindGatekeeper?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  firstKnot?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  numberOfValidatorsBeingPrepared?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  numberOfStakedValidators?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  numberOfKnotsThatHaveMintedDerivatives?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type NodeRunnerResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['NodeRunner'] = ResolversParentTypes['NodeRunner']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  smartWallets?: Resolver<Array<ResolversTypes['SmartWallet']>, ParentType, ContextType, RequireFields<NodeRunnersmartWalletsArgs, 'skip' | 'first'>>;
+  liquidStakingNetworks?: Resolver<Array<ResolversTypes['LiquidStakingNetwork']>, ParentType, ContextType, RequireFields<NodeRunnerliquidStakingNetworksArgs, 'skip' | 'first'>>;
+  validators?: Resolver<Array<ResolversTypes['LSDValidator']>, ParentType, ContextType, RequireFields<NodeRunnervalidatorsArgs, 'skip' | 'first'>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type PayoutResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Payout'] = ResolversParentTypes['Payout']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  user?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  recipient?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  blsPublicKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  timestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ProtectedBatchResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['ProtectedBatch'] = ResolversParentTypes['ProtectedBatch']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  blsPublicKey?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  vaultLPToken?: Resolver<Maybe<ResolversTypes['LPToken']>, ParentType, ContextType>;
+  lsdValidator?: Resolver<Maybe<ResolversTypes['LSDValidator']>, ParentType, ContextType>;
+  listOfLiquidityProviderAddresses?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  liquidityProviders?: Resolver<Array<ResolversTypes['GiantLiquidityProvider']>, ParentType, ContextType, RequireFields<ProtectedBatchliquidityProvidersArgs, 'skip' | 'first'>>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ProtectedDepositResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['ProtectedDeposit'] = ResolversParentTypes['ProtectedDeposit']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  liquidStakingNetwork?: Resolver<ResolversTypes['LiquidStakingNetwork'], ParentType, ContextType>;
+  validator?: Resolver<ResolversTypes['LSDValidator'], ParentType, ContextType>;
+  token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  depositor?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  totalDeposit?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type SmartWalletResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['SmartWallet'] = ResolversParentTypes['SmartWallet']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  liquidStakingNetwork?: Resolver<ResolversTypes['LiquidStakingNetwork'], ParentType, ContextType>;
+  nodeRunner?: Resolver<ResolversTypes['NodeRunner'], ParentType, ContextType>;
+  availableToStake?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  inProcessOfAwaitingActivation?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type SyndicateResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Syndicate'] = ResolversParentTypes['Syndicate']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  liquidStakingNetwork?: Resolver<ResolversTypes['LiquidStakingNetwork'], ParentType, ContextType>;
+  totalPayout?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  payouts?: Resolver<Array<ResolversTypes['Payout']>, ParentType, ContextType, RequireFields<SyndicatepayoutsArgs, 'skip' | 'first'>>;
+  totalNodeOperatorPayout?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  totalFeesAndMevPayout?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type _Block_Resolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Block_'] = ResolversParentTypes['_Block_']> = ResolversObject<{
+  hash?: Resolver<Maybe<ResolversTypes['Bytes']>, ParentType, ContextType>;
+  number?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  timestamp?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type _Meta_Resolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Meta_'] = ResolversParentTypes['_Meta_']> = ResolversObject<{
+  block?: Resolver<ResolversTypes['_Block_'], ParentType, ContextType>;
+  deployment?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  hasIndexingErrors?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
 
 export type BrandCentralGlobalResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['BrandCentralGlobal'] = ResolversParentTypes['BrandCentralGlobal']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -3821,10 +6970,6 @@ export type BrandNftResolvers<ContextType = MeshContext, ParentType extends Reso
   numberOfLootItems?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
-
-export interface BytesScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Bytes'], any> {
-  name: 'Bytes';
-}
 
 export type CollateralizedKnotOwnerResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['CollateralizedKnotOwner'] = ResolversParentTypes['CollateralizedKnotOwner']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -3877,18 +7022,6 @@ export type EFDepositContractEventResolvers<ContextType = MeshContext, ParentTyp
   amount?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
   signature?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   withdrawalCredentials?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
-export type EventResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Event'] = ResolversParentTypes['Event']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  from?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  blockNumber?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
-  blockTimestamp?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
-  blsPubKeyForKnot?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  value2?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -3953,48 +7086,6 @@ export type KNOTResolvers<ContextType = MeshContext, ParentType extends Resolver
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type QueryResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  universeGlobalValue?: Resolver<Maybe<ResolversTypes['UniverseGlobalValue']>, ParentType, ContextType, RequireFields<QueryuniverseGlobalValueArgs, 'id' | 'subgraphError'>>;
-  universeGlobalValues?: Resolver<Array<ResolversTypes['UniverseGlobalValue']>, ParentType, ContextType, RequireFields<QueryuniverseGlobalValuesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  uniqueDepositor?: Resolver<Maybe<ResolversTypes['UniqueDepositor']>, ParentType, ContextType, RequireFields<QueryuniqueDepositorArgs, 'id' | 'subgraphError'>>;
-  uniqueDepositors?: Resolver<Array<ResolversTypes['UniqueDepositor']>, ParentType, ContextType, RequireFields<QueryuniqueDepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  uniqueRegisteredUser?: Resolver<Maybe<ResolversTypes['UniqueRegisteredUser']>, ParentType, ContextType, RequireFields<QueryuniqueRegisteredUserArgs, 'id' | 'subgraphError'>>;
-  uniqueRegisteredUsers?: Resolver<Array<ResolversTypes['UniqueRegisteredUser']>, ParentType, ContextType, RequireFields<QueryuniqueRegisteredUsersArgs, 'skip' | 'first' | 'subgraphError'>>;
-  event?: Resolver<Maybe<ResolversTypes['Event']>, ParentType, ContextType, RequireFields<QueryeventArgs, 'id' | 'subgraphError'>>;
-  events?: Resolver<Array<ResolversTypes['Event']>, ParentType, ContextType, RequireFields<QueryeventsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  collateralizedKnotOwner?: Resolver<Maybe<ResolversTypes['CollateralizedKnotOwner']>, ParentType, ContextType, RequireFields<QuerycollateralizedKnotOwnerArgs, 'id' | 'subgraphError'>>;
-  collateralizedKnotOwners?: Resolver<Array<ResolversTypes['CollateralizedKnotOwner']>, ParentType, ContextType, RequireFields<QuerycollateralizedKnotOwnersArgs, 'skip' | 'first' | 'subgraphError'>>;
-  knot?: Resolver<Maybe<ResolversTypes['KNOT']>, ParentType, ContextType, RequireFields<QueryknotArgs, 'id' | 'subgraphError'>>;
-  knots?: Resolver<Array<ResolversTypes['KNOT']>, ParentType, ContextType, RequireFields<QueryknotsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  savETHIndex?: Resolver<Maybe<ResolversTypes['savETHIndex']>, ParentType, ContextType, RequireFields<QuerysavETHIndexArgs, 'id' | 'subgraphError'>>;
-  savETHIndexes?: Resolver<Array<ResolversTypes['savETHIndex']>, ParentType, ContextType, RequireFields<QuerysavETHIndexesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  savETHIndexGlobal?: Resolver<Maybe<ResolversTypes['savETHIndexGlobal']>, ParentType, ContextType, RequireFields<QuerysavETHIndexGlobalArgs, 'id' | 'subgraphError'>>;
-  savETHIndexGlobals?: Resolver<Array<ResolversTypes['savETHIndexGlobal']>, ParentType, ContextType, RequireFields<QuerysavETHIndexGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  brandCentralGlobal?: Resolver<Maybe<ResolversTypes['BrandCentralGlobal']>, ParentType, ContextType, RequireFields<QuerybrandCentralGlobalArgs, 'id' | 'subgraphError'>>;
-  brandCentralGlobals?: Resolver<Array<ResolversTypes['BrandCentralGlobal']>, ParentType, ContextType, RequireFields<QuerybrandCentralGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  brandNft?: Resolver<Maybe<ResolversTypes['BrandNft']>, ParentType, ContextType, RequireFields<QuerybrandNftArgs, 'id' | 'subgraphError'>>;
-  brandNfts?: Resolver<Array<ResolversTypes['BrandNft']>, ParentType, ContextType, RequireFields<QuerybrandNftsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  houseGoodieBag?: Resolver<Maybe<ResolversTypes['HouseGoodieBag']>, ParentType, ContextType, RequireFields<QueryhouseGoodieBagArgs, 'id' | 'subgraphError'>>;
-  houseGoodieBags?: Resolver<Array<ResolversTypes['HouseGoodieBag']>, ParentType, ContextType, RequireFields<QueryhouseGoodieBagsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  goodieBagItem?: Resolver<Maybe<ResolversTypes['GoodieBagItem']>, ParentType, ContextType, RequireFields<QuerygoodieBagItemArgs, 'id' | 'subgraphError'>>;
-  goodieBagItems?: Resolver<Array<ResolversTypes['GoodieBagItem']>, ParentType, ContextType, RequireFields<QuerygoodieBagItemsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  stakeHouse?: Resolver<Maybe<ResolversTypes['StakeHouse']>, ParentType, ContextType, RequireFields<QuerystakeHouseArgs, 'id' | 'subgraphError'>>;
-  stakeHouses?: Resolver<Array<ResolversTypes['StakeHouse']>, ParentType, ContextType, RequireFields<QuerystakeHousesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  efdepositContractEvent?: Resolver<Maybe<ResolversTypes['EFDepositContractEvent']>, ParentType, ContextType, RequireFields<QueryefdepositContractEventArgs, 'id' | 'subgraphError'>>;
-  efdepositContractEvents?: Resolver<Array<ResolversTypes['EFDepositContractEvent']>, ParentType, ContextType, RequireFields<QueryefdepositContractEventsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  efdeposit?: Resolver<Maybe<ResolversTypes['EFDeposit']>, ParentType, ContextType, RequireFields<QueryefdepositArgs, 'id' | 'subgraphError'>>;
-  efdeposits?: Resolver<Array<ResolversTypes['EFDeposit']>, ParentType, ContextType, RequireFields<QueryefdepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  stakehouseAccount?: Resolver<Maybe<ResolversTypes['StakehouseAccount']>, ParentType, ContextType, RequireFields<QuerystakehouseAccountArgs, 'id' | 'subgraphError'>>;
-  stakehouseAccounts?: Resolver<Array<ResolversTypes['StakehouseAccount']>, ParentType, ContextType, RequireFields<QuerystakehouseAccountsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  decryptionPiece?: Resolver<Maybe<ResolversTypes['DecryptionPiece']>, ParentType, ContextType, RequireFields<QuerydecryptionPieceArgs, 'id' | 'subgraphError'>>;
-  decryptionPieces?: Resolver<Array<ResolversTypes['DecryptionPiece']>, ParentType, ContextType, RequireFields<QuerydecryptionPiecesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  decryptionRequest?: Resolver<Maybe<ResolversTypes['DecryptionRequest']>, ParentType, ContextType, RequireFields<QuerydecryptionRequestArgs, 'id' | 'subgraphError'>>;
-  decryptionRequests?: Resolver<Array<ResolversTypes['DecryptionRequest']>, ParentType, ContextType, RequireFields<QuerydecryptionRequestsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  guardian?: Resolver<Maybe<ResolversTypes['Guardian']>, ParentType, ContextType, RequireFields<QueryguardianArgs, 'id' | 'subgraphError'>>;
-  guardians?: Resolver<Array<ResolversTypes['Guardian']>, ParentType, ContextType, RequireFields<QueryguardiansArgs, 'skip' | 'first' | 'subgraphError'>>;
-  _meta?: Resolver<Maybe<ResolversTypes['_Meta_']>, ParentType, ContextType, Partial<Query_metaArgs>>;
-}>;
-
 export type StakeHouseResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['StakeHouse'] = ResolversParentTypes['StakeHouse']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   index?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
@@ -4049,48 +7140,6 @@ export type StakehouseAccountResolvers<ContextType = MeshContext, ParentType ext
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type SubscriptionResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = ResolversObject<{
-  universeGlobalValue?: SubscriptionResolver<Maybe<ResolversTypes['UniverseGlobalValue']>, "universeGlobalValue", ParentType, ContextType, RequireFields<SubscriptionuniverseGlobalValueArgs, 'id' | 'subgraphError'>>;
-  universeGlobalValues?: SubscriptionResolver<Array<ResolversTypes['UniverseGlobalValue']>, "universeGlobalValues", ParentType, ContextType, RequireFields<SubscriptionuniverseGlobalValuesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  uniqueDepositor?: SubscriptionResolver<Maybe<ResolversTypes['UniqueDepositor']>, "uniqueDepositor", ParentType, ContextType, RequireFields<SubscriptionuniqueDepositorArgs, 'id' | 'subgraphError'>>;
-  uniqueDepositors?: SubscriptionResolver<Array<ResolversTypes['UniqueDepositor']>, "uniqueDepositors", ParentType, ContextType, RequireFields<SubscriptionuniqueDepositorsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  uniqueRegisteredUser?: SubscriptionResolver<Maybe<ResolversTypes['UniqueRegisteredUser']>, "uniqueRegisteredUser", ParentType, ContextType, RequireFields<SubscriptionuniqueRegisteredUserArgs, 'id' | 'subgraphError'>>;
-  uniqueRegisteredUsers?: SubscriptionResolver<Array<ResolversTypes['UniqueRegisteredUser']>, "uniqueRegisteredUsers", ParentType, ContextType, RequireFields<SubscriptionuniqueRegisteredUsersArgs, 'skip' | 'first' | 'subgraphError'>>;
-  event?: SubscriptionResolver<Maybe<ResolversTypes['Event']>, "event", ParentType, ContextType, RequireFields<SubscriptioneventArgs, 'id' | 'subgraphError'>>;
-  events?: SubscriptionResolver<Array<ResolversTypes['Event']>, "events", ParentType, ContextType, RequireFields<SubscriptioneventsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  collateralizedKnotOwner?: SubscriptionResolver<Maybe<ResolversTypes['CollateralizedKnotOwner']>, "collateralizedKnotOwner", ParentType, ContextType, RequireFields<SubscriptioncollateralizedKnotOwnerArgs, 'id' | 'subgraphError'>>;
-  collateralizedKnotOwners?: SubscriptionResolver<Array<ResolversTypes['CollateralizedKnotOwner']>, "collateralizedKnotOwners", ParentType, ContextType, RequireFields<SubscriptioncollateralizedKnotOwnersArgs, 'skip' | 'first' | 'subgraphError'>>;
-  knot?: SubscriptionResolver<Maybe<ResolversTypes['KNOT']>, "knot", ParentType, ContextType, RequireFields<SubscriptionknotArgs, 'id' | 'subgraphError'>>;
-  knots?: SubscriptionResolver<Array<ResolversTypes['KNOT']>, "knots", ParentType, ContextType, RequireFields<SubscriptionknotsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  savETHIndex?: SubscriptionResolver<Maybe<ResolversTypes['savETHIndex']>, "savETHIndex", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexArgs, 'id' | 'subgraphError'>>;
-  savETHIndexes?: SubscriptionResolver<Array<ResolversTypes['savETHIndex']>, "savETHIndexes", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  savETHIndexGlobal?: SubscriptionResolver<Maybe<ResolversTypes['savETHIndexGlobal']>, "savETHIndexGlobal", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexGlobalArgs, 'id' | 'subgraphError'>>;
-  savETHIndexGlobals?: SubscriptionResolver<Array<ResolversTypes['savETHIndexGlobal']>, "savETHIndexGlobals", ParentType, ContextType, RequireFields<SubscriptionsavETHIndexGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  brandCentralGlobal?: SubscriptionResolver<Maybe<ResolversTypes['BrandCentralGlobal']>, "brandCentralGlobal", ParentType, ContextType, RequireFields<SubscriptionbrandCentralGlobalArgs, 'id' | 'subgraphError'>>;
-  brandCentralGlobals?: SubscriptionResolver<Array<ResolversTypes['BrandCentralGlobal']>, "brandCentralGlobals", ParentType, ContextType, RequireFields<SubscriptionbrandCentralGlobalsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  brandNft?: SubscriptionResolver<Maybe<ResolversTypes['BrandNft']>, "brandNft", ParentType, ContextType, RequireFields<SubscriptionbrandNftArgs, 'id' | 'subgraphError'>>;
-  brandNfts?: SubscriptionResolver<Array<ResolversTypes['BrandNft']>, "brandNfts", ParentType, ContextType, RequireFields<SubscriptionbrandNftsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  houseGoodieBag?: SubscriptionResolver<Maybe<ResolversTypes['HouseGoodieBag']>, "houseGoodieBag", ParentType, ContextType, RequireFields<SubscriptionhouseGoodieBagArgs, 'id' | 'subgraphError'>>;
-  houseGoodieBags?: SubscriptionResolver<Array<ResolversTypes['HouseGoodieBag']>, "houseGoodieBags", ParentType, ContextType, RequireFields<SubscriptionhouseGoodieBagsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  goodieBagItem?: SubscriptionResolver<Maybe<ResolversTypes['GoodieBagItem']>, "goodieBagItem", ParentType, ContextType, RequireFields<SubscriptiongoodieBagItemArgs, 'id' | 'subgraphError'>>;
-  goodieBagItems?: SubscriptionResolver<Array<ResolversTypes['GoodieBagItem']>, "goodieBagItems", ParentType, ContextType, RequireFields<SubscriptiongoodieBagItemsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  stakeHouse?: SubscriptionResolver<Maybe<ResolversTypes['StakeHouse']>, "stakeHouse", ParentType, ContextType, RequireFields<SubscriptionstakeHouseArgs, 'id' | 'subgraphError'>>;
-  stakeHouses?: SubscriptionResolver<Array<ResolversTypes['StakeHouse']>, "stakeHouses", ParentType, ContextType, RequireFields<SubscriptionstakeHousesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  efdepositContractEvent?: SubscriptionResolver<Maybe<ResolversTypes['EFDepositContractEvent']>, "efdepositContractEvent", ParentType, ContextType, RequireFields<SubscriptionefdepositContractEventArgs, 'id' | 'subgraphError'>>;
-  efdepositContractEvents?: SubscriptionResolver<Array<ResolversTypes['EFDepositContractEvent']>, "efdepositContractEvents", ParentType, ContextType, RequireFields<SubscriptionefdepositContractEventsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  efdeposit?: SubscriptionResolver<Maybe<ResolversTypes['EFDeposit']>, "efdeposit", ParentType, ContextType, RequireFields<SubscriptionefdepositArgs, 'id' | 'subgraphError'>>;
-  efdeposits?: SubscriptionResolver<Array<ResolversTypes['EFDeposit']>, "efdeposits", ParentType, ContextType, RequireFields<SubscriptionefdepositsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  stakehouseAccount?: SubscriptionResolver<Maybe<ResolversTypes['StakehouseAccount']>, "stakehouseAccount", ParentType, ContextType, RequireFields<SubscriptionstakehouseAccountArgs, 'id' | 'subgraphError'>>;
-  stakehouseAccounts?: SubscriptionResolver<Array<ResolversTypes['StakehouseAccount']>, "stakehouseAccounts", ParentType, ContextType, RequireFields<SubscriptionstakehouseAccountsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  decryptionPiece?: SubscriptionResolver<Maybe<ResolversTypes['DecryptionPiece']>, "decryptionPiece", ParentType, ContextType, RequireFields<SubscriptiondecryptionPieceArgs, 'id' | 'subgraphError'>>;
-  decryptionPieces?: SubscriptionResolver<Array<ResolversTypes['DecryptionPiece']>, "decryptionPieces", ParentType, ContextType, RequireFields<SubscriptiondecryptionPiecesArgs, 'skip' | 'first' | 'subgraphError'>>;
-  decryptionRequest?: SubscriptionResolver<Maybe<ResolversTypes['DecryptionRequest']>, "decryptionRequest", ParentType, ContextType, RequireFields<SubscriptiondecryptionRequestArgs, 'id' | 'subgraphError'>>;
-  decryptionRequests?: SubscriptionResolver<Array<ResolversTypes['DecryptionRequest']>, "decryptionRequests", ParentType, ContextType, RequireFields<SubscriptiondecryptionRequestsArgs, 'skip' | 'first' | 'subgraphError'>>;
-  guardian?: SubscriptionResolver<Maybe<ResolversTypes['Guardian']>, "guardian", ParentType, ContextType, RequireFields<SubscriptionguardianArgs, 'id' | 'subgraphError'>>;
-  guardians?: SubscriptionResolver<Array<ResolversTypes['Guardian']>, "guardians", ParentType, ContextType, RequireFields<SubscriptionguardiansArgs, 'skip' | 'first' | 'subgraphError'>>;
-  _meta?: SubscriptionResolver<Maybe<ResolversTypes['_Meta_']>, "_meta", ParentType, ContextType, Partial<Subscription_metaArgs>>;
-}>;
-
 export type UniqueDepositorResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['UniqueDepositor'] = ResolversParentTypes['UniqueDepositor']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -4129,20 +7178,6 @@ export type UniverseGlobalValueResolvers<ContextType = MeshContext, ParentType e
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type _Block_Resolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Block_'] = ResolversParentTypes['_Block_']> = ResolversObject<{
-  hash?: Resolver<Maybe<ResolversTypes['Bytes']>, ParentType, ContextType>;
-  number?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  timestamp?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
-export type _Meta_Resolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['_Meta_'] = ResolversParentTypes['_Meta_']> = ResolversObject<{
-  block?: Resolver<ResolversTypes['_Block_'], ParentType, ContextType>;
-  deployment?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  hasIndexingErrors?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type savETHIndexResolvers<ContextType = MeshContext, ParentType extends ResolversParentTypes['savETHIndex'] = ResolversParentTypes['savETHIndex']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   indexId?: Resolver<ResolversTypes['BigInt'], ParentType, ContextType>;
@@ -4170,30 +7205,46 @@ export type savETHIndexGlobalResolvers<ContextType = MeshContext, ParentType ext
 }>;
 
 export type Resolvers<ContextType = MeshContext> = ResolversObject<{
+  Query?: QueryResolvers<ContextType>;
+  Subscription?: SubscriptionResolvers<ContextType>;
   BigDecimal?: GraphQLScalarType;
   BigInt?: GraphQLScalarType;
+  Bytes?: GraphQLScalarType;
+  Depositor?: DepositorResolvers<ContextType>;
+  Event?: EventResolvers<ContextType>;
+  FeesAndMevBatch?: FeesAndMevBatchResolvers<ContextType>;
+  FeesAndMevDeposit?: FeesAndMevDepositResolvers<ContextType>;
+  GiantFeesAndMevLiquidityProvider?: GiantFeesAndMevLiquidityProviderResolvers<ContextType>;
+  GiantFeesAndMevPool?: GiantFeesAndMevPoolResolvers<ContextType>;
+  GiantLiquidityProvider?: GiantLiquidityProviderResolvers<ContextType>;
+  GiantSavETHPool?: GiantSavETHPoolResolvers<ContextType>;
+  LPToken?: LPTokenResolvers<ContextType>;
+  LSDValidator?: LSDValidatorResolvers<ContextType>;
+  LiquidStakingNetwork?: LiquidStakingNetworkResolvers<ContextType>;
+  NodeRunner?: NodeRunnerResolvers<ContextType>;
+  Payout?: PayoutResolvers<ContextType>;
+  ProtectedBatch?: ProtectedBatchResolvers<ContextType>;
+  ProtectedDeposit?: ProtectedDepositResolvers<ContextType>;
+  SmartWallet?: SmartWalletResolvers<ContextType>;
+  Syndicate?: SyndicateResolvers<ContextType>;
+  _Block_?: _Block_Resolvers<ContextType>;
+  _Meta_?: _Meta_Resolvers<ContextType>;
   BrandCentralGlobal?: BrandCentralGlobalResolvers<ContextType>;
   BrandNft?: BrandNftResolvers<ContextType>;
-  Bytes?: GraphQLScalarType;
   CollateralizedKnotOwner?: CollateralizedKnotOwnerResolvers<ContextType>;
   DecryptionPiece?: DecryptionPieceResolvers<ContextType>;
   DecryptionRequest?: DecryptionRequestResolvers<ContextType>;
   EFDeposit?: EFDepositResolvers<ContextType>;
   EFDepositContractEvent?: EFDepositContractEventResolvers<ContextType>;
-  Event?: EventResolvers<ContextType>;
   GoodieBagItem?: GoodieBagItemResolvers<ContextType>;
   Guardian?: GuardianResolvers<ContextType>;
   HouseGoodieBag?: HouseGoodieBagResolvers<ContextType>;
   KNOT?: KNOTResolvers<ContextType>;
-  Query?: QueryResolvers<ContextType>;
   StakeHouse?: StakeHouseResolvers<ContextType>;
   StakehouseAccount?: StakehouseAccountResolvers<ContextType>;
-  Subscription?: SubscriptionResolvers<ContextType>;
   UniqueDepositor?: UniqueDepositorResolvers<ContextType>;
   UniqueRegisteredUser?: UniqueRegisteredUserResolvers<ContextType>;
   UniverseGlobalValue?: UniverseGlobalValueResolvers<ContextType>;
-  _Block_?: _Block_Resolvers<ContextType>;
-  _Meta_?: _Meta_Resolvers<ContextType>;
   savETHIndex?: savETHIndexResolvers<ContextType>;
   savETHIndexGlobal?: savETHIndexGlobalResolvers<ContextType>;
 }>;
@@ -4204,7 +7255,7 @@ export type DirectiveResolvers<ContextType = MeshContext> = ResolversObject<{
   derivedFrom?: derivedFromDirectiveResolver<any, any, ContextType>;
 }>;
 
-export type MeshContext = StakehouseProtocolTypes.Context & BaseMeshContext;
+export type MeshContext = LiquidStakingDerivativeTypes.Context & StakehouseProtocolTypes.Context & BaseMeshContext;
 
 
 import { fileURLToPath } from '@graphql-mesh/utils';
@@ -4213,6 +7264,9 @@ const baseDir = pathModule.join(pathModule.dirname(fileURLToPath(import.meta.url
 const importFn: ImportFn = <T>(moduleId: string) => {
   const relativeModuleId = (pathModule.isAbsolute(moduleId) ? pathModule.relative(baseDir, moduleId) : moduleId).split('\\').join('/').replace(baseDir + '/', '');
   switch(relativeModuleId) {
+    case ".graphclient/sources/liquid-staking-derivative/introspectionSchema":
+      return import("./sources/liquid-staking-derivative/introspectionSchema") as T;
+    
     case ".graphclient/sources/stakehouse-protocol/introspectionSchema":
       return import("./sources/stakehouse-protocol/introspectionSchema") as T;
     
@@ -4247,6 +7301,7 @@ const sources: MeshResolvedSource[] = [];
 const transforms: MeshTransform[] = [];
 const additionalEnvelopPlugins: MeshPlugin<any>[] = [];
 const stakehouseProtocolTransforms = [];
+const liquidStakingDerivativeTransforms = [];
 const additionalTypeDefs = [] as any[];
 const stakehouseProtocolHandler = new GraphqlHandler({
               name: "stakehouse-protocol",
@@ -4258,17 +7313,32 @@ const stakehouseProtocolHandler = new GraphqlHandler({
               logger: logger.child("stakehouse-protocol"),
               importFn,
             });
+const liquidStakingDerivativeHandler = new GraphqlHandler({
+              name: "liquid-staking-derivative",
+              config: {"endpoint":"https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative"},
+              baseDir,
+              cache,
+              pubsub,
+              store: sourcesStore.child("liquid-staking-derivative"),
+              logger: logger.child("liquid-staking-derivative"),
+              importFn,
+            });
 sources[0] = {
           name: 'stakehouse-protocol',
           handler: stakehouseProtocolHandler,
           transforms: stakehouseProtocolTransforms
         }
+sources[1] = {
+          name: 'liquid-staking-derivative',
+          handler: liquidStakingDerivativeHandler,
+          transforms: liquidStakingDerivativeTransforms
+        }
 const additionalResolvers = [] as any[]
-const merger = new(BareMerger as any)({
+const merger = new(StitchingMerger as any)({
         cache,
         pubsub,
-        logger: logger.child('bareMerger'),
-        store: rootStore.child('bareMerger')
+        logger: logger.child('stitchingMerger'),
+        store: rootStore.child('stitchingMerger')
       })
 
   return {
@@ -4289,6 +7359,12 @@ const merger = new(BareMerger as any)({
           return printWithCache(StakeHousesQueryDocument);
         },
         location: 'StakeHousesQueryDocument.graphql'
+      },{
+        document: SyndicatesQueryDocument,
+        get rawSDL() {
+          return printWithCache(SyndicatesQueryDocument);
+        },
+        location: 'SyndicatesQueryDocument.graphql'
       }
     ];
     },
@@ -4332,6 +7408,14 @@ export type StakeHousesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type StakeHousesQueryQuery = { stakeHouses: Array<Pick<StakeHouse, 'dETHMintedWithinHouse' | 'numberOfKnots' | 'numberOfRageQuitKnots' | 'foundedBrandId' | 'id' | 'index' | 'sETH' | 'totalAmountOfSlotSlashed' | 'sETHTicker'>> };
 
+export type SyndicatesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SyndicatesQueryQuery = { syndicates: Array<(
+    Pick<Syndicate, 'totalPayout' | 'totalFeesAndMevPayout' | 'totalNodeOperatorPayout'>
+    & { liquidStakingNetwork: Pick<LiquidStakingNetwork, 'ticker'>, payouts: Array<Pick<Payout, 'amount' | 'timestamp' | 'type'>> }
+  )> };
+
 
 export const StakeHousesQueryDocument = gql`
     query StakeHousesQuery {
@@ -4348,6 +7432,24 @@ export const StakeHousesQueryDocument = gql`
   }
 }
     ` as unknown as DocumentNode<StakeHousesQueryQuery, StakeHousesQueryQueryVariables>;
+export const SyndicatesQueryDocument = gql`
+    query SyndicatesQuery {
+  syndicates {
+    totalPayout
+    liquidStakingNetwork {
+      ticker
+    }
+    totalFeesAndMevPayout
+    totalNodeOperatorPayout
+    payouts {
+      amount
+      timestamp
+      type
+    }
+  }
+}
+    ` as unknown as DocumentNode<SyndicatesQueryQuery, SyndicatesQueryQueryVariables>;
+
 
 
 export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
@@ -4355,6 +7457,9 @@ export function getSdk<C, E>(requester: Requester<C, E>) {
   return {
     StakeHousesQuery(variables?: StakeHousesQueryQueryVariables, options?: C): Promise<StakeHousesQueryQuery> {
       return requester<StakeHousesQueryQuery, StakeHousesQueryQueryVariables>(StakeHousesQueryDocument, variables, options) as Promise<StakeHousesQueryQuery>;
+    },
+    SyndicatesQuery(variables?: SyndicatesQueryQueryVariables, options?: C): Promise<SyndicatesQueryQuery> {
+      return requester<SyndicatesQueryQuery, SyndicatesQueryQueryVariables>(SyndicatesQueryDocument, variables, options) as Promise<SyndicatesQueryQuery>;
     }
   };
 }

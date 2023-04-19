@@ -1,0 +1,15 @@
+query SyndicatesQuery {
+  syndicates {
+    totalPayout
+    liquidStakingNetwork {
+      ticker
+    }
+    totalFeesAndMevPayout
+    totalNodeOperatorPayout
+    payouts {
+      amount
+      timestamp
+      type
+    }
+  }
+}

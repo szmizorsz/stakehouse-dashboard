@@ -3,6 +3,11 @@ sources:
     handler:
       graphql:
         endpoint: https://api.thegraph.com/subgraphs/name/bswap-eng/stakehouse-protocol
+  - name: liquid-staking-derivative
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/bsn-eng/liquid-staking-derivative
 
 documents:
   - ./src/graph/stakehouses.graphql
+  - ./src/graph/syndicates.graphql

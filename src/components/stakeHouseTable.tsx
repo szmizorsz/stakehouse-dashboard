@@ -10,11 +10,11 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
-import { StakeHousesQueryQuery } from "../../.graphclient";
 import { truncateString } from "@/util/stringUtil";
+import { StakeHousesWithSyndicateQueryQuery } from "@/hooks/useStakehouses";
 
 type StakeHouseChartsProps = {
-  data: StakeHousesQueryQuery | null | undefined;
+  data: StakeHousesWithSyndicateQueryQuery | null | undefined;
 };
 
 const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
@@ -53,6 +53,7 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
             <Th style={tableCellStyle}>dETH minted</Th>
             <Th style={tableCellStyle}>Sticker</Th>
             <Th style={tableCellStyle}>Slot Slashed</Th>
+            <Th style={tableCellStyle}>Payout</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -64,6 +65,7 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
               <Td style={tableCellStyle}>{sh.dETHMintedWithinHouse}</Td>
               <Td style={tableCellStyle}>{sh.sETHTicker}</Td>
               <Td style={tableCellStyle}>{sh.totalAmountOfSlotSlashed}</Td>
+              <Td style={tableCellStyle}>{sh.syndicate?.totalPayout}</Td>
             </Tr>
           ))}
         </Tbody>

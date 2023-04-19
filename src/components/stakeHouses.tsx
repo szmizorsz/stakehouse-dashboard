@@ -14,7 +14,7 @@ import StakeHouseTable from "./stakeHouseTable";
 import { useStakehouses } from "@/hooks/useStakehouses";
 
 function StakeHouses() {
-  const { data, isLoading } = useStakehouses();
+  const { stakeHouseWithSyndicate, isLoading } = useStakehouses();
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index: React.SetStateAction<number>) => {
@@ -45,12 +45,12 @@ function StakeHouses() {
           <TabPanels>
             <TabPanel>
               <Box minHeight="680px">
-                <StakeHouseTable data={data} />
+                <StakeHouseTable data={stakeHouseWithSyndicate} />
               </Box>
             </TabPanel>
             <TabPanel>
               <Box minHeight="680px">
-                <StakeHouseCharts data={data} />
+                <StakeHouseCharts data={stakeHouseWithSyndicate} />
               </Box>
             </TabPanel>
           </TabPanels>

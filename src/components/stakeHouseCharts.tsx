@@ -77,8 +77,6 @@ const StakeHouseCharts: React.FC<StakeHouseChartsProps> = ({ data }) => {
 
       setTopKnots(sortedKnots);
       setTopDeth(sortedDeth);
-      console.log("topKnots", topKnots);
-      console.log("topDeth", topDeth);
     }
   }, [data]);
 
