@@ -1,6 +1,6 @@
 import React from "react";
 import { Syndicate, LiquidStakingNetwork, Payout } from "../../.graphclient";
-import { Box, Text, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
+import { Box, Text, HStack } from "@chakra-ui/react";
 import { formatNumber, timestampToDate } from "@/util/stringUtil";
 import {
   Modal,
@@ -9,6 +9,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  Flex,
 } from "@chakra-ui/react";
 import { Bar } from "react-chartjs-2";
 
@@ -58,10 +59,18 @@ const PayoutDetails: React.FC<PayoutDetailsProps> = ({
     labels: payouts?.map((py) => timestampToDate(py.timestamp)),
     datasets: [
       {
-        label: "Payouts",
+        label: "Payout",
         data: payouts?.map((py) => formatNumber(py.amount)),
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: payouts?.map((py) =>
+          py.type === "NODE_OPERATOR"
+            ? "rgba(75, 192, 192, 0.5)"
+            : "rgba(255, 99, 132, 0.5)"
+        ),
+        borderColor: payouts?.map((py) =>
+          py.type === "NODE_OPERATOR"
+            ? "rgba(75, 192, 192, 0.5)"
+            : "rgba(255, 99, 132, 0.5)"
+        ),
         borderWidth: 1,
       },
     ],
@@ -81,18 +90,37 @@ const PayoutDetails: React.FC<PayoutDetailsProps> = ({
               Total Payout:{" "}
               {syndicate?.totalPayout && formatNumber(syndicate?.totalPayout)}
             </Text>
-            <Text>
-              Total Fees and MEV Payout:{" "}
-              {syndicate?.totalFeesAndMevPayout &&
-                formatNumber(syndicate?.totalFeesAndMevPayout)}
-            </Text>
-            <Text>
-              Total Node Operator Payout:{" "}
-              {syndicate?.totalNodeOperatorPayout &&
-                formatNumber(syndicate?.totalNodeOperatorPayout)}
-            </Text>
+
+            <HStack>
+              <Box
+                bg="#ff63847f"
+                width="1em"
+                height="1em"
+                display="inline-flex"
+                marginRight="0.5em"
+              />
+              <Text>Total Fees and MEV Payout: </Text>
+              <Text>
+                {syndicate?.totalFeesAndMevPayout &&
+                  formatNumber(syndicate?.totalFeesAndMevPayout)}
+              </Text>
+            </HStack>
+            <HStack>
+              <Box
+                bg="#4bc0c07f"
+                width="1em"
+                height="1em"
+                display="inline-flex"
+                marginRight="0.5em"
+              />
+              <Text>Total Node Operator Payout: </Text>
+              <Text>
+                {syndicate?.totalNodeOperatorPayout &&
+                  formatNumber(syndicate?.totalNodeOperatorPayout)}
+              </Text>
+            </HStack>
           </Box>
-          <Bar data={payoutsChart} options={barOptions} />
+          <Bar data={payoutsChart} options={barOptions} height="200px" />
         </ModalBody>
       </ModalContent>
     </Modal>
