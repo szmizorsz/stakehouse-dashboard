@@ -14,6 +14,9 @@ import {
 import { truncateString, formatNumber } from "@/util/stringUtil";
 import { StakeHousesWithSyndicateQueryQuery } from "@/hooks/useStakehouses";
 import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import PayoutDetails from "./payoutDetails";
+import { Syndicate, LiquidStakingNetwork, Payout } from "../../.graphclient";
+import { Modal, useDisclosure } from "@chakra-ui/react";
 
 type StakeHouseChartsProps = {
   data: StakeHousesWithSyndicateQueryQuery | null | undefined;
@@ -96,6 +99,26 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
       }
       return { key, direction: "asc" };
     });
+  };
+
+  const [selectedPayoutDetails, setSelectedPayoutDetails] = useState<{
+    syndicate?: Pick<
+      Syndicate,
+      "totalPayout" | "totalFeesAndMevPayout" | "totalNodeOperatorPayout"
+    >;
+    liquidStakingNetwork?: Pick<LiquidStakingNetwork, "ticker">;
+    payouts?: Pick<Payout, "amount" | "timestamp" | "type">[];
+  } | null>(null);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handlePayoutClick = (sh: StakeHouse) => {
+    setSelectedPayoutDetails({
+      syndicate: sh.syndicate,
+      liquidStakingNetwork: sh.syndicate?.liquidStakingNetwork,
+      payouts: sh.syndicate?.payouts,
+    });
+    onOpen();
   };
 
   return (
@@ -194,9 +217,13 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
                   : ""}
               </Td>
               <Td style={tableCellStyle}>
-                {sh.syndicate?.totalPayout
-                  ? formatNumber(sh.syndicate?.totalPayout)
-                  : ""}
+                {sh.syndicate?.totalPayout ? (
+                  <a onClick={() => handlePayoutClick(sh)}>
+                    {formatNumber(sh.syndicate?.totalPayout)}
+                  </a>
+                ) : (
+                  ""
+                )}
               </Td>
             </Tr>
           ))}
@@ -235,6 +262,13 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
           </Button>
         </Box>
       </Box>
+      <PayoutDetails
+        isOpen={isOpen}
+        onClose={onClose}
+        syndicate={selectedPayoutDetails?.syndicate}
+        liquidStakingNetwork={selectedPayoutDetails?.liquidStakingNetwork}
+        payouts={selectedPayoutDetails?.payouts || []}
+      />
     </>
   );
 };
