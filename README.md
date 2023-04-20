@@ -1,38 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Syndicate data
 
-## Getting Started
+1. I loaded the syndicate data from the Goerli subgraph and integrated it into the previous stakehouse dashboard by joining the syndicate.liquidStakingNetwork.ticker to stakehouse.sETHTicker.
 
-First, run the development server:
+2. For every stakehouse, we can now check the totalPayout in the stakehouses table. The table is now sortable on the number columns, including the totalPayout, and by default, it is sorted in descending order by the totalPayout. This way, we can rank stakehouses based on their earnings (execution layer tips and fees: MEV and fees, plus the node operator).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+3. Since, under normal circumstances, the syndicate contract splits the network rewards between the MEV pool and the node operators by 50-50, any discrepancy is worth checking out. An icon is displayed to indicate the discrepancy. Based on my current understanding of the protocol, there can be differences that make sense. For example, the node operator can have smaller rewards due to leakage periods where they do not earn, while the MEV pool gets the rewards. However, there is an example where the node operator has a higher payout than the MEV pool, like in the case of the NIC stakehouse, for which I have no explanation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. The payout details are displayed in a modal, where the total payout is split between the MEV pool and the node operators. The discrepancy is visible there as well.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+5. The list of payouts is also displayed as a histogram chart with different colors for the MEV pool and the node operators' payouts.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+6. Technical details of joining the syndicate data to the stakehouse list:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- These two sets of data come from different subgraphs.
+- I made the assumption that the ticker is unique, so I could join the data by the ticker.
+- To be able to rank stakehouses by the payouts, I first loaded both datasets and joined them in the frontend.
+- You can check the details in the useStakehouses hook.
+- This is obviously not ideal, as performing these kinds of operations on the frontend is not optimal. However, I had no other choice for now. The longer-term solution would be to have a single subgraph that contains all the data. This subgraph should index both the stakehouse and the syndicate contracts and join or reference the relevant entities.

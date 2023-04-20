@@ -72,7 +72,6 @@ export function useStakehouses() {
             stakeHouse.sETHTicker.substring(1, stakeHouse.sETHTicker.length) ===
             syndicate.liquidStakingNetwork.ticker
           ) {
-            debugger;
             stakeHouse.syndicate = syndicate;
             break;
           }
