@@ -10,13 +10,18 @@ import {
   Box,
   Text,
   HStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import { truncateString, formatNumber } from "@/util/stringUtil";
 import { StakeHousesWithSyndicateQueryQuery } from "@/hooks/useStakehouses";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import {
+  TriangleDownIcon,
+  TriangleUpIcon,
+  WarningTwoIcon,
+} from "@chakra-ui/icons";
 import PayoutDetails from "./payoutDetails";
 import { Syndicate, LiquidStakingNetwork, Payout } from "../../.graphclient";
-import { Modal, useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 
 type StakeHouseChartsProps = {
   data: StakeHousesWithSyndicateQueryQuery | null | undefined;
@@ -216,14 +221,39 @@ const StakeHouseTable: React.FC<StakeHouseChartsProps> = ({ data }) => {
                   ? formatNumber(sh.totalAmountOfSlotSlashed)
                   : ""}
               </Td>
+
               <Td style={tableCellStyle}>
-                {sh.syndicate?.totalPayout ? (
-                  <a onClick={() => handlePayoutClick(sh)}>
-                    {formatNumber(sh.syndicate?.totalPayout)}
-                  </a>
-                ) : (
-                  ""
-                )}
+                <HStack>
+                  {sh.syndicate?.totalPayout ? (
+                    <>
+                      {sh.syndicate?.totalPayout != 0 ? (
+                        <Button
+                          onClick={() => handlePayoutClick(sh)}
+                          size="sm"
+                          variant="outline"
+                          width="100%"
+                        >
+                          {formatNumber(sh.syndicate?.totalPayout)}
+                        </Button>
+                      ) : (
+                        <Text>0</Text>
+                      )}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {sh.syndicate?.totalFeesAndMevPayout &&
+                    sh.syndicate?.totalNodeOperatorPayout &&
+                    formatNumber(sh.syndicate?.totalFeesAndMevPayout) !=
+                      formatNumber(sh.syndicate?.totalNodeOperatorPayout) && (
+                      <Tooltip
+                        label="Fees and MEV payout is different from node operator payout, chek the payout details"
+                        placement="top"
+                      >
+                        <WarningTwoIcon />
+                      </Tooltip>
+                    )}
+                </HStack>
               </Td>
             </Tr>
           ))}

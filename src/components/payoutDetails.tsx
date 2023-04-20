@@ -9,7 +9,6 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Flex,
 } from "@chakra-ui/react";
 import { Bar } from "react-chartjs-2";
 
@@ -79,11 +78,11 @@ const PayoutDetails: React.FC<PayoutDetailsProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent backgroundColor="grey">
+      <ModalContent backgroundColor="gray.600">
         <ModalHeader color="white">
           Payout Details: {liquidStakingNetwork?.ticker}
         </ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton color="white" />
         <ModalBody>
           <Box>
             <Text>
